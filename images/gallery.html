@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hoylu Documentation - Image Gallery</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f6f8fa;
+    color: #24292f;
+    margin: 0;
+    padding: 24px;
+  }
+  h1 {
+    margin: 0 0 4px 0;
+    font-size: 24px;
+  }
+  p.subtitle {
+    color: #57606a;
+    margin: 0 0 24px 0;
+    font-size: 14px;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .thumb {
+    background: #f6f8fa;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #d0d7de;
+  }
+  .thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .caption {
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    word-break: break-word;
+  }
+  footer {
+    margin-top: 32px;
+    font-size: 12px;
+    color: #57606a;
+    text-align: center;
+  }
+  footer a { color: #0969da; text-decoration: none; }
+</style>
+</head>
+<body>
+<h1>Hoylu Documentation - Image Gallery</h1>
+<p class="subtitle">31 images. Click any thumbnail to open it on GitHub.</p>
+
+<div class="gallery" id="gallery"></div>
+
+<footer>
+  Source: <a href="https://github.com/hoylu/Hoylu-Documentation/tree/main/images" target="_blank" rel="noopener">hoylu/Hoylu-Documentation/images</a>
+</footer>
+
+<script>
+  const files = [
+    "Calendar - Default.png",
+    "Calendar - Make Default.png",
+    "Classic Task.png",
+    "Illustration - API.png",
+    "Illustration - Conflict resolution.png",
+    "Illustration - Cross Workspace reporting.png",
+    "Insights Panel - Charts.png",
+    "Insights Panel - Side by Side charts.png",
+    "Insights Panel - Task List.png",
+    "Insights Panel - Weekly work Plan.png",
+    "Labels - Upgrade workspace labels.png",
+    "Milestone Shell.png",
+    "Permissions - Join project confirmation.png",
+    "Permissions - Overview.png",
+    "Permissions - Public sharing.png",
+    "Plan - Overflow columns.png",
+    "Plan - Toggle modes.gif",
+    "Plan - Week Day Hour mode.png",
+    "Project Control Center - Calendar.png",
+    "Project Control Center.png",
+    "Task Editor - Connection Page.png",
+    "Task Editor - General.png",
+    "Task Editor - History Page.png",
+    "Task Editor - Navigation.gif",
+    "Task Editor - Progress Page.png",
+    "Task Shell - Multiweek with calendar visualization.png",
+    "Task Shell - Status Options.png",
+    "Task Shell - resizing.png",
+    "Task Shell Loading.gif",
+    "Task Shell.png",
+    "Team Editor - Set Calendar.png"
+  ];
+
+  const RAW_BASE = "https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/";
+  const BLOB_BASE = "https://github.com/hoylu/Hoylu-Documentation/blob/main/images/";
+
+  const gallery = document.getElementById("gallery");
+  files.forEach(name => {
+    const encoded = encodeURIComponent(name);
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = BLOB_BASE + encoded;
+    card.target = "_blank";
+    card.rel = "noopener";
+    card.innerHTML = `
+      <div class="thumb"><img loading="lazy" src="${RAW_BASE + encoded}" alt="${name}"></div>
+      <div class="caption">${name}</div>
+    `;
+    gallery.appendChild(card);
+  });
+</script>
+</body>
+</html>
