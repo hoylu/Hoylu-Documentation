@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoylu V4 — Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #1A2A47;
+  --navy-mid:  #243655;
+  --blue:      #2B5BA8;
+  --blue-light:#3A72C8;
+  --accent:    #00ADEF;
+  --accent2:   #0077C8;
+  --bg:        #F4F6FA;
+  --surface:   #FFFFFF;
+  --border:    #DDE3EE;
+  --text:      #1A2A47;
+  --muted:     #5A6A87;
+  --light:     #8898AA;
+  --coming:    #FEE8F2;
+  --coming-border: #F0A0C8;
+  --pink:      #E8177A;
+  --pink-light: #FEE8F2;
+  --callout-bg: #FFF8E6;
+  --callout-border: #F0C040;
+  --sidebar-w: 280px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+#sidebar {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  background: var(--navy);
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sidebar-logo img {
+  display: block;
+  height: 28px;
+  width: auto;
+  margin-bottom: 6px;
+}
+.sidebar-logo .sub {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+nav { padding: 16px 0 32px; flex: 1; }
+
+nav a {
+  display: block;
+  padding: 9px 24px;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.4;
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+}
+nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+}
+nav a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: rgba(0,173,239,0.08);
+  font-weight: 700;
+}
+
+nav .nav-num {
+  display: inline-block;
+  width: 20px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 300;
+}
+
+/* ── MAIN ── */
+#main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
+  padding: 56px 64px 48px;
+  color: #fff;
+}
+.page-header .header-logo {
+  display: block;
+  height: 32px;
+  width: auto;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+.page-header h1 {
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.page-header .tagline {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  max-width: 560px;
+}
+
+/* ── CONTENT AREA ── */
+.content-area {
+  max-width: 860px;
+  padding: 0 64px 80px;
+}
+
+/* ── SECTIONS ── */
+.doc-section {
+  padding-top: 64px;
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+}
+.doc-section:first-of-type {
+  border-top: none;
+  margin-top: 48px;
+  padding-top: 0;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 8px;
+}
+
+.doc-section h1 {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 900;
+  color: var(--navy);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.doc-section > .intro-para {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── HEADINGS WITHIN SECTIONS ── */
+.doc-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 40px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+.doc-section h2:first-of-type { margin-top: 28px; }
+
+.doc-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 28px 0 8px;
+}
+
+.doc-section h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 20px 0 6px;
+}
+
+/* ── BODY TEXT ── */
+.doc-section p {
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.doc-section p:last-child { margin-bottom: 0; }
+
+.doc-section em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.doc-section strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── LISTS ── */
+.doc-section ul, .doc-section ol {
+  margin: 12px 0 16px 20px;
+}
+.doc-section li {
+  margin-bottom: 8px;
+  line-height: 1.65;
+}
+.doc-section li:last-child { margin-bottom: 0; }
+
+/* ── DEFINITION ITEMS (key concepts) ── */
+.concept-list { margin: 16px 0 24px; }
+.concept-item {
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 8px;
+}
+.concept-item .term {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* ── IMAGES ── */
+.doc-image {
+  margin: 24px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.doc-image img {
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  margin: 0 auto;
+}
+.doc-image .img-label {
+  padding: 6px 12px;
+  font-size: 12px;
+  color: var(--light);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+/* ── CALLOUT ── */
+.callout {
+  background: var(--callout-bg);
+  border: 1px solid var(--callout-border);
+  border-left: 4px solid var(--callout-border);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 14.5px;
+  color: #5a4a00;
+}
+
+/* ── COMING SOON callout ── */
+.coming-soon {
+  background: var(--coming);
+  border: 1px solid var(--coming-border);
+  border-left: 4px solid var(--pink);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 14.5px;
+  color: #8a0048;
+}
+
+/* ── HORIZONTAL RULE ── */
+.doc-section hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 36px 0;
+}
+
+/* ── TABLE ── */
+.doc-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 14px;
+}
+.doc-section th {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+}
+.doc-section td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.doc-section tr:last-child td { border-bottom: none; }
+.doc-section tr:nth-child(even) td { background: var(--bg); }
+
+/* ── EXAMPLE BLOCKS ── */
+.example {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+.example .example-title {
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+.example p {
+  margin-bottom: 10px;
+}
+.example p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── FAQ ── */
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item .faq-q {
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.faq-item .faq-a { color: var(--text); }
+
+/* ── CROSS-REFERENCE LINKS ── */
+.doc-section a {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43,91,168,0.3);
+  transition: border-color 0.15s;
+}
+.doc-section a:hover {
+  border-bottom-color: var(--blue);
+}
+
+/* ── INDEX GRID ── */
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+.index-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.15s;
+}
+.index-card:hover {
+  border-color: var(--blue);
+  background: var(--coming);
+  color: var(--navy);
+}
+.index-card .num {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--light);
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ── COMING SOON BADGE ── */
+.badge-coming {
+  display: inline-block;
+  background: var(--coming);
+  color: var(--pink);
+  border: 1px solid var(--coming-border);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+/* ── SECTION NAV PREV/NEXT ── */
+.section-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  gap: 16px;
+}
+.section-nav a {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  max-width: 48%;
+  transition: border-color 0.15s;
+}
+.section-nav a:hover { border-color: var(--blue); }
+.section-nav .nav-dir {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--light);
+  margin-bottom: 2px;
+}
+.section-nav .nav-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.section-nav .next { margin-left: auto; text-align: right; }
+
+@media (max-width: 900px) {
+  #sidebar { display: none; }
+  #main { margin-left: 0; }
+  .page-header, .content-area { padding-left: 24px; padding-right: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sidebar-logo">
+    <img src="https://github.com/hoylu/Hoylu-Documentation/blob/main/images/Hoylu%20Logo%20white.png?raw=true" alt="Hoylu" />
+    <div class="sub">V4 Documentation</div>
+  </div>
+  <nav>
+    <a href="#intro" class="active"><span class="nav-num">0</span> Introduction</a>
+    <a href="#central-task-database"><span class="nav-num">1</span> Central Task Database</a>
+    <a href="#task-visualization"><span class="nav-num">2</span> Task Visualization</a>
+    <a href="#task-editor"><span class="nav-num">3</span> Task Editor</a>
+    <a href="#task-dependencies"><span class="nav-num">4</span> Task Dependencies &amp; Connections</a>
+    <a href="#plan-visualization"><span class="nav-num">5</span> Plan Visualization</a>
+    <a href="#project-insights"><span class="nav-num">6</span> Project Insights</a>
+    <a href="#bulk-import"><span class="nav-num">7</span> Bulk Import &amp; Workspace Sync</a>
+    <a href="#project-control-center"><span class="nav-num">8</span> Project Control Center &amp; Labels</a>
+    <a href="#calendars"><span class="nav-num">9</span> Calendars</a>
+    <a href="#permissions"><span class="nav-num">10</span> Permissions</a>
+    <a href="#public-api"><span class="nav-num">11</span> Public API</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main id="main">
+
+<header class="page-header">
+  <img class="header-logo" src="https://github.com/hoylu/Hoylu-Documentation/blob/main/images/Hoylu%20Logo%20white.png?raw=true" alt="Hoylu" />
+  <h1>Hoylu V4 — Documentation</h1>
+  <p class="tagline">Source material for Sales, Customer Success, and Marketing. Complete and accurate — not marketing copy.</p>
+</header>
+
+<div class="content-area">
+
+<!-- ═══════════════════════════════════════════════════ 0. INTRO -->
+<section class="doc-section" id="intro">
+  <div class="section-eyebrow">Introduction &amp; Overview</div>
+  <h1>Hoylu V4</h1>
+
+  <p class="intro-para">Over the past few years, Hoylu has evolved from a general-purpose whiteboard into a focused visual planning and collaboration solution for construction and project teams. That evolution has been continuous — roughly ten meaningful updates a year, each shaped by how teams were actually using the product.</p>
+
+  <p>Over time, a long list of improvements accumulated that couldn't be addressed through incremental changes alone — things that required a different foundation entirely. Four stood out as the clearest drivers. Large projects were hitting <strong>performance ceilings</strong> as plans grew — long-duration tasks, dense programmes, and multi-workspace setups exposed the limits of a document-based model. Project managers wanted <strong>real-time project reporting</strong> — insights that reflected the current state of a plan, not the last time someone manually synced a workspace. Organisations wanted to <strong>connect Hoylu to the rest of their toolchain</strong> — scheduling software, reporting platforms, BIM tools — without manual exports or one-off integrations. And teams wanted a <strong>mobile app</strong> their field crews could actually use on site. All four were technically impossible within the V3 architecture, where every workspace was its own self-contained file. There was no shared layer above workspaces to build on.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Central%20Project%20Data%20Repository.png" alt="Central project data repository illustration" />
+  </div>
+
+  <hr>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Project</span> — The top-level container in V4. Owns the task database, shared settings (teams, labels, calendars, variance reasons), and all workspaces that belong to it.</div>
+    <div class="concept-item"><span class="term">Workspace</span> — A canvas within a project containing a curated set of task shells. Multiple workspaces can exist within the same project, each showing a different view of the same underlying task data.</div>
+    <div class="concept-item"><span class="term">Task</span> — A project-level record with a unique identity. Holds all task data — title, dates, duration, team, status, progress, dependencies, and history. Belongs to the project, not to any individual workspace. Tasks in V4 are live — any change is immediately reflected everywhere the task appears.</div>
+    <div class="concept-item"><span class="term">Task shell</span> — The visual representation of a task record on a workspace canvas. The same task can have shells in multiple workspaces simultaneously. Interacting with a shell — editing, updating status, changing dates — always writes to the underlying task record.</div>
+  </div>
+
+  <hr>
+
+  <h2>What changed and why</h2>
+  <p>The single most important change in V4 is that <strong>task data now lives at the project level</strong>, not inside individual workspace documents. In V3, every workspace was its own island — tasks, teams, labels, and settings all lived inside a workspace file. Getting data across workspaces meant duplicating it. Getting a project-wide report meant downloading every workspace and extracting the relevant data client-side. A mobile app would have to download thousands of tasks just to show a foreman their five tasks for the week.</p>
+  <p>In V4, tasks, milestones, and constraints are stored in a central project database. A task belongs to the project — it can appear in multiple workspaces simultaneously, and any change to that task is immediately reflected everywhere, regardless of where the change came from. A status update made through a task shell on one workspace, an edit opened from a different workspace, a progress update submitted from the mobile app on site, or a date change pushed in from an external scheduling tool via the API — all of these write to the same underlying record and are visible across all views instantly. There is no sync step, no version conflict, and no workspace that holds a "fresher" version of the data than another.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Cross%20workspace%20updates.png" alt="Cross-workspace updates illustration" />
+  </div>
+
+  <p><em>A concrete foreman marks a task complete on their phone on site. At the same moment, the project manager's programme plan on their desktop reflects the update — as does the Insights dashboard and any other workspace that task appears in.</em></p>
+
+  <h2>The most impactful improvements</h2>
+  <p><strong>Real-time project reporting.</strong> Project Insights now draws directly from the task database. Any change made to a task is immediately reflected in charts, PPC calculations, and the weekly work plan view. In V3, project-level insights showed the last synced state, which could be hours or days out of date. <em>A project manager opening the dashboard on Monday morning sees the current state of the project — not Friday afternoon's sync.</em></p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Cross%20Workspace%20reporting.png" alt="Cross-workspace reporting illustration" />
+  </div>
+
+  <p><strong>A redesigned task visualization.</strong> Tasks on a plan now render as a single continuous element across their full duration — the title appears once and stays readable at any zoom level, instead of being truncated and repeated across weekly segments. The new shell adapts freely to different contexts: resize it on the whiteboard, collapse it to a small square on a floorplan, or read it in a dense overview without losing status or team information. Rendering performance is dramatically improved. <em>A programme plan with phases spanning twelve weeks is now as fast and readable as a single-week task — and tasks stay legible even when zoomed out to see the full project.</em></p>
+  <p><strong>Multiple plans per workspace.</strong> In V3, one workspace meant one plan. In V4, you can have as many plans as you need, each covering a different time range, team, or level of detail — all drawing from the same project task database. <em>A superintendent can run a full phase plan and a 6-week look-ahead side by side in the same workspace, both reflecting the same live task data.</em></p>
+  <p><strong>A structured task editor.</strong> The task editor has moved from a single scrolling panel to a multi-page design, with dedicated pages for general details, progress, connections, and history. Dependencies and task history — previously only visible on the canvas — are now accessible from the editor in any context. <em>A foreman checking their tasks in a list view can see upstream dependencies and the full change history for a task without ever opening the plan.</em></p>
+  <p><strong>Hourly planning.</strong> Plans in V4 support a new hour-level zoom, making it possible to plan and coordinate work at a finer granularity than a full day. This is particularly useful for sequencing trades on congested sites where multiple teams are working in the same area across a single day. <em>A site manager coordinating concrete pours, formwork removal, and MEP rough-in on the same floor can lay out each activity by the hour and spot conflicts before crews arrive on site.</em></p>
+  <p><strong>Project-level calendars.</strong> Each project can now have multiple calendars. Teams and individual tasks can be assigned their own calendar, so different trades with different working weeks can coexist in the same plan without interference. <em>A concrete crew on a six-day week and a finishing trade on a five-day week can sit in the same plan with correct date calculations and off-day visualisation for each.</em></p>
+  <p><strong>A public API.</strong> For the first time, Hoylu exposes a read and write API for project task data. External tools — reporting platforms, scheduling software, BIM integrations — can connect directly to live project data using service tokens, without any manual export or sync step. <em>A Power BI dashboard can pull live PPC and milestone data from Hoylu automatically, giving executives an always-current programme view without anyone having to prepare a report.</em></p>
+  <p><strong>Project-level settings.</strong> Teams, label categories, variance reasons, and calendars are now defined once at the project level and apply across all workspaces. A new Project Control Center sits alongside the workspace Control Center, with the project's own visual identity, so the scope of every setting is immediately clear. <em>Adding a new trade team mid-project means one update in the Project Control Center — it appears in every workspace instantly, with no per-workspace configuration needed.</em></p>
+
+  <h2>What this means for your team</h2>
+  <p>V4 delivers meaningful improvements across nearly every area of Hoylu, and teams should upgrade now to benefit from them. Like any ambitious product release, there are specific areas still in progress — master schedule alignment with XER import and the mobile app are the most notable examples, and a handful of interaction models are still being finalized. These are known gaps that are actively being worked on. Hoylu has always been a product that evolves quickly in response to how teams actually use it, and V4 is no exception — it is a strong foundation that will keep getting better.</p>
+  <p>Teams who are actively running multiple workspaces on a single project will see an immediate benefit — cross-workspace reporting, shared settings, and tasks that update live across all views are available from day one. Teams managing large plans with many long-running tasks will notice the performance and readability improvements straight away. And teams with an interest in connecting Hoylu to external reporting or coordination tools now have a clear path via the API that didn't exist before. None of these require master schedule alignment or the mobile app to be in place — they are valuable independently of the known gaps.</p>
+
+  <hr>
+
+  <h2>About these guides</h2>
+  <p>This series of guides is designed to give Sales, Customer Success, and Marketing teams a complete and accurate picture of what V4 is, how it works, and how it differs from V3. Each section covers one topic area in depth — not just what changed, but why, how it works in practice, and what existing V3 users will notice.</p>
+  <p>The guides follow a consistent structure:</p>
+  <ul>
+    <li><strong>Intro</strong> — plain-language summary</li>
+    <li><strong>Key concepts</strong> — definitions</li>
+    <li><strong>The problem it solves</strong> — what was true before</li>
+    <li><strong>How it works</strong> — full functional description including what is still in progress</li>
+    <li><strong>What's different from V3</strong> — scannable comparison</li>
+    <li><strong>What this means for your team</strong> — workflow examples</li>
+    <li><strong>FAQs</strong> — questions we know will come up</li>
+  </ul>
+  <p>These documents are intended as source material — a foundation from which Sales decks, help articles, release notes, and customer-facing guides can be derived. The language is neutral and descriptive. Marketing copy is not the goal here; accuracy and clarity are.</p>
+
+  <h2>Guide index</h2>
+  <div class="index-grid">
+    <a class="index-card" href="#central-task-database"><span class="num">1</span>Central Task Database</a>
+    <a class="index-card" href="#task-visualization"><span class="num">2</span>Task Visualization</a>
+    <a class="index-card" href="#task-editor"><span class="num">3</span>Task Editor</a>
+    <a class="index-card" href="#task-dependencies"><span class="num">4</span>Task Dependencies &amp; Connections</a>
+    <a class="index-card" href="#plan-visualization"><span class="num">5</span>Plan Visualization</a>
+    <a class="index-card" href="#project-insights"><span class="num">6</span>Project Insights</a>
+    <a class="index-card" href="#bulk-import"><span class="num">7</span>Bulk Import &amp; Workspace Sync</a>
+    <a class="index-card" href="#project-control-center"><span class="num">8</span>Project Control Center &amp; Labels</a>
+    <a class="index-card" href="#calendars"><span class="num">9</span>Calendars</a>
+    <a class="index-card" href="#permissions"><span class="num">10</span>Permissions</a>
+    <a class="index-card" href="#public-api"><span class="num">11</span>Public API &amp; Third-Party Integrations</a>
+  </div>
+
+  <div class="section-nav">
+    <div></div>
+    <a class="next" href="#central-task-database"><span class="nav-dir">Next →</span><span class="nav-title">Central Task Database</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 1. CENTRAL TASK DATABASE -->
+<section class="doc-section" id="central-task-database">
+  <div class="section-eyebrow">Guide 1</div>
+  <h1>Central Task Database</h1>
+
+  <p class="intro-para">The central task database is the architectural foundation of Hoylu V4. Rather than storing tasks, milestones, and constraints inside individual workspaces, V4 maintains them in a shared project-level database. A task belongs to the project — not to any single workspace — and can be displayed in multiple workspaces at the same time without being duplicated. What you see on a workspace is a <strong>task shell</strong>: a visual representation of a task that lives in the project database. All V4 features described in this guide require a workspace to be part of a Hoylu project — workspaces that are not part of a project continue to work in V3 mode.</p>
+
+  <h2>The problem it solves</h2>
+  <p>In V3, every workspace was its own island. Tasks existed within a workspace and only within that workspace — if you needed the same task to appear in two planning views, you had to duplicate it and keep both copies manually in sync. There was no concept of a project-level task record, which meant reporting was always scoped to individual workspaces, cross-workspace planning was effectively impossible, and there was no single source of truth for what was planned and completed across a project. A new architecture was needed — one where the task is the primary record, and workspaces are views onto it.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Task</span> — A project-level record representing a unit of work. A task belongs to the project and can be brought into one or multiple workspaces as a task shell. The task holds all the planning data: title, dates, team, status, progress, labels, and connections to other tasks.</div>
+    <div class="concept-item"><span class="term">Task shell</span> — The visual representation of a task, milestone, or constraint on a workspace. A shell is always connected to its underlying project record — any change made through a shell is a change to the record itself, and is reflected wherever else that record has a shell.</div>
+    <div class="concept-item"><span class="term">Milestone</span> — A project-level record representing a significant point in time rather than a duration. Milestones share most task fields but have no duration.</div>
+    <div class="concept-item"><span class="term">Constraint</span> — A project-level record used to mark an external dependency or a fixed date that cannot move. Like a milestone, a constraint has no duration — it is displayed on its required date. Constraints can be assigned to teams and have connections to other tasks like any other project element.</div>
+    <div class="concept-item"><span class="term">Workspace</span> — A planning view within a project containing a curated set of task shells, arranged by the team for a specific planning purpose. Removing a shell from a workspace does not affect the task or its shells in other workspaces.</div>
+    <div class="concept-item"><span class="term">Project</span> — The top-level container. It owns the task database, the shared settings (teams, labels, calendars, variance reasons), and all workspaces.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>What a project contains</h3>
+  <p>A Hoylu project is the container for all planning data related to this project. Every task, milestone, and constraint that has been created or imported — along with shared project settings like teams, label categories, variance reasons, and calendars are stored in one central project database. Workspaces belong to a project and draw from its task database. You can have many workspaces in a single project, each showing a different slice of the same data. Workspaces that are not part of a project are not connected to the task database and continue to operate in V3 mode.</p>
+
+  <h3>Tasks and task shells</h3>
+  <p>Every item in the task database — whether it's a task, a milestone, or a constraint — is a project-level record with a unique identity. When you place one of these items on a workspace, what you're placing is a <strong>task shell</strong>: a visual representation of that record on that workspace. The underlying task exists once in the database; the shell is just a window onto it.</p>
+  <p>This means the same task can have shells in multiple workspaces at the same time. A task planned in a six-week look-ahead and tracked in a weekly work plan is the same record — update its status in one workspace and the change is reflected everywhere. Removing a shell from a workspace does not affect the task itself or its presence in other workspaces.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20Loading.gif" alt="Task shell loading animation" />
+  </div>
+
+  <h3>What a task contains</h3>
+  <p>Each task holds a standard set of fields: title, start and end date, duration, assigned team or person, status, progress, variance reason, labels, and connections to other tasks. Milestones share most of the same fields but represent a point in time rather than a duration. Constraints are used to mark external dependencies or fixed dates that affect the plan. All three types are stored in the same database and are available across all workspaces in the project.</p>
+
+  <h3>Adding tasks to the database</h3>
+  <p>There are two ways live tasks enter the project database.</p>
+  <p><strong>Creating tasks directly.</strong> For new projects or when adding new work, you simply open a workspace and create tasks on it. Each task created this way is immediately stored in the project database as a live task and gets a shell placed on the workspace.</p>
+  <p><strong>Syncing an existing V3 workspace.</strong> If your project already has planning data in V3, the sync process uploads that task data to the project database — converting classic tasks into live task records. The sync does not automatically replace the classic tasks on the workspace with live task shells. After syncing, you bring live tasks onto the workspace by importing them — either individually through the import dialog or by using the Create plan from project tasks option. Because the V3-to-V4 migration involves decisions that vary by project, it is covered in a dedicated guide.</p>
+
+  <div class="callout">✏️ <strong>To be written:</strong> V3 to V4 upgrade guide — covering the workspace sync process, decisions required, and recommended migration sequence.</div>
+
+  <h3>Getting tasks from the database onto a workspace</h3>
+  <p>Once tasks exist in the project database, you can bring any selection of them onto a workspace at any time using the import dialog. Filter by team, label category, date range, or a combination to pull in only what's relevant for a particular planning session. Each task appears as a shell on the workspace — connected to the same underlying record as any other workspace showing that task. This makes it easy to set up focused views for specific teams or phases, run a short planning session in a temporary workspace, or build a look-ahead from a subset of the full project without duplicating any data.</p>
+
+  <h3>Mobile app <span class="badge-coming">In development</span></h3>
+  <p>The central task database architecture was built in part to support a mobile experience for field users — superintendents and trade foremen who need to view and update their tasks without opening a full desktop session. A Hoylu mobile app is in development. Because task data lives in the project database rather than inside workspace documents, the app can load only the tasks relevant to a specific user without pulling in an entire workspace.</p>
+
+  <h2>What's different from V3</h2>
+  <p>Project settings — teams, label categories, variance reasons, and calendars — are now defined once at the project level and apply to all workspaces. In V3, these were configured per workspace. This reduces setup work but means changes have broader reach: updating a shared setting affects every workspace in the project at once.</p>
+  <ul>
+    <li><strong>One definition, every workspace</strong> — create a team or label category once and it is immediately available across all workspaces in the project</li>
+    <li><strong>Duplicate shell vs. duplicate task</strong> — duplicating a shell creates a second view of the same underlying task; both reflect any changes made to it. Duplicating the task itself creates an independent record — changes to one do not affect the other</li>
+    <li><strong>Remove shell vs. delete task</strong> — removing a shell takes a task off a workspace without affecting the task record, its presence in other workspaces, or its inclusion in project-level reporting. Deleting the task removes the underlying record from the project database and triggers a deleted state indicator across all workspaces that currently show a shell for it</li>
+    <li><strong>Full change history</strong> — every update to a task is recorded automatically at the project level, regardless of which workspace the change was made from. This did not exist in V3</li>
+  </ul>
+  <p><em>The full details of deletion behavior are covered in the <a href="#task-visualization">Task Visualization guide</a>.</em></p>
+
+  <h2>What this means for your team</h2>
+  <p>These are examples of how teams use the central task database in practice. Each one is independent — you can adopt any of them without the others.</p>
+  <div class="example"><div class="example-title">Example 1 — Project overview across multiple buildings</div><p>On a multi-building project, a project manager maintains a single high-level workspace showing the main phases and milestones for each building. Each building has its own detailed phase planning workspace where the day-to-day planning happens. Because all workspaces draw from the same project task database, a milestone updated in a building-level workspace is immediately reflected in the project overview — no manual sync, no separate copy to maintain. The project workspace can also be shared directly with the owner or executive stakeholders, giving them a live, accurate view of project health at the right level of detail — without exposing them to the operational complexity of the planning workspaces below it.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Multiple lenses on the same plan</div><p>A main phase plan is organized by building area — floors, zones, or systems — giving the full team a spatial view of the work. Alongside it, a trade-specific workspace pulls the same tasks into a single view for one discipline, showing that trade's full workload across all areas in one place. Both workspaces show the same underlying tasks. A status update made in the trade view is immediately visible in the area plan. There is nothing to reconcile.</p></div>
+  <div class="example"><div class="example-title">Example 3 — From plan to daily huddle without leaving the data</div><p>At the start of the shift, the superintendent opens a dedicated huddle workspace and imports this week's committed tasks from the project database. The tasks appear as a Kanban board — To Do, Doing, Done — giving the team a focused view without having to navigate the full phase plan. The daily huddle stays short and focused on execution. As the team marks tasks complete or flags blockers directly in the Kanban, those changes are reflected live in the phase plan. The plan stays current without anyone having to update it separately.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Is upgrading to V4 mandatory?</div><div class="faq-a">Not immediately. V3 continues to work after V4 launches, and there is no forced migration. The upgrade is a deliberate step that teams take when they are ready.</div></div>
+  <div class="faq-item"><div class="faq-q">Do all workspaces need to be part of a project to use V4 features?</div><div class="faq-a">Yes. The central task database and all V4 planning capabilities require a workspace to be part of a Hoylu project. Workspaces that are not part of a project continue to work exactly as they did in V3 and are not affected by the changes described in this guide. The goal over time is for all active workspaces to move into projects, but there is no forced migration and non-project workspaces remain fully supported.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I still use V3 after V4 launches?</div><div class="faq-a">Yes, V3 continues to work and there is no forced migration. That said, our focus going forward is V4 — it delivers meaningful improvements for projects of all sizes, not just large or complex ones. The long-term goal is to phase out V3, and while there is no set timeline for that, teams are encouraged to move to V4 when they are ready. The upgrade process is designed to be manageable, and the benefits are available from day one.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I use V3 and V4 at the same time, on the same project?</div><div class="faq-a">The two versions use different data models and do not share a live connection. You can sync existing V3 workspaces into V4 as part of a migration, but after that the V4 version of the data lives in the project database and is no longer linked back to the V3 workspace. Running both in parallel as an ongoing workflow — where changes in V3 automatically reflect in V4 or the other way around — is not supported. The recommended approach is to migrate a project to V4 when your team is ready to make the switch fully.</div></div>
+
+  <div class="section-nav">
+    <a href="#intro"><span class="nav-dir">← Previous</span><span class="nav-title">Introduction</span></a>
+    <a class="next" href="#task-visualization"><span class="nav-dir">Next →</span><span class="nav-title">Task Visualization</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 2. TASK VISUALIZATION -->
+<section class="doc-section" id="task-visualization">
+  <div class="section-eyebrow">Guide 2</div>
+  <h1>Task Visualization</h1>
+
+  <p class="intro-para">The way tasks, milestones, and constraints appear on the Hoylu workspace has been redesigned from the ground up for V4. The goal was to make planning information clearer and more readable across all the contexts where tasks appear — not just on a plan, but on a whiteboard, in a kanban view, and when zoomed out to an overview. Tasks on a plan now render as a single continuous element across their full duration, so the title appears once and remains readable at any zoom level rather than being truncated and repeated across weekly segments. The new design adapts to available space, communicates status at a glance, and removes the rendering limitations that previously forced tradeoffs between performance and readability.</p>
+
+  <p>This section describes how task shells look and behave — their visual layout, how they communicate status and progress, how they adapt to different sizes and contexts, and what happens when you remove or delete them.</p>
+
+  <h2>The problem it solves</h2>
+  <p>In V3, tasks, milestones, and constraints shared a fixed visual shape regardless of where they appeared — on a plan, on a whiteboard, or in a kanban board. That shape was designed for the plan, which meant it worked reasonably well in that context but was awkward everywhere else. On the whiteboard, elements could not be freely resized, so longer titles or descriptions were often hidden behind labels or simply cut off. There was no way to expand a task to read its full content without opening the editor.</p>
+  <p>The plan view had its own structural problem. Because tasks were rendered as a separate element for each week they spanned, a single ten-week task was actually ten elements internally — glued together to appear as one. This meant the title had to be truncated and repeated on each segment, so when zoomed out only a few letters were visible per segment. It also meant that rendering a long task was proportionally more expensive: a ten-week task cost ten times as much to render as a one-week task. At project scale, this performance ceiling forced the overview mode to abandon text entirely and fall back to colored bars with no task information visible at all.</p>
+  <p>Both problems had the same root cause: the visual element and the data were inseparable. There was no room to redesign how tasks looked without also changing how they worked.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Task shell</span> — The visual element placed on a workspace representing a task, milestone, or constraint from the project database. The shell is not the task — it is a view onto it. Covered in full in the <a href="#central-task-database">Central Task Database guide</a>.</div>
+    <div class="concept-item"><span class="term">Shell layout</span> — The three-area structure of every task shell: the team strip on the left, the body showing title and description, and the status area at the bottom-right.</div>
+    <div class="concept-item"><span class="term">Status color bar</span> — The thin colored line running along the bottom edge of every shell, reflecting the current task status. Remains visible even when the shell is very small or the status icon scrolls out of view.</div>
+    <div class="concept-item"><span class="term">Deleted state</span> — The visual state a shell enters when its underlying task has been deleted from the project database. The shell remains on the workspace with a dark overlay and a trash icon, giving collaborators visibility and the option to restore or remove it. <span class="badge-coming">Coming soon</span></div>
+    <div class="concept-item"><span class="term">Remove shell</span> — A workspace curation action that takes a shell off the current workspace without affecting the underlying task record, its reporting inclusion, or its presence in other workspaces. <span class="badge-coming">Coming soon</span></div>
+    <div class="concept-item"><span class="term">Delete task</span> — A project-level action that flags the underlying task record as deleted across the entire project. All shells for that task enter the deleted state simultaneously. <span class="badge-coming">Coming soon</span></div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>Visual design</h3>
+  <h4>Shell layout</h4>
+  <p>Every task shell is divided into three areas. The left strip shows the team color and team name — this area is always visible regardless of how small the shell gets, giving a consistent visual anchor for who owns the task. The main body shows the task title and, when there is enough space, the description. The status area sits at the bottom-right and changes color to reflect the current status of the task. A thin color bar runs along the very bottom edge of the shell, ensuring the status color remains visible even when the shell is small or the status icon scrolls out of view.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell.png" alt="Task shell layout" />
+  </div>
+
+  <h4>Adaptive sizing</h4>
+  <p>The shell adapts its layout to the space available to it. On the whiteboard it can be resized freely — shrinking to a compact square that shows only the essential team and status information, or expanding to show a full title and long description. In a kanban view it resizes vertically to reveal more content. The smallest size is suited to use cases like overlaying tasks on a floorplan, and is also prepared for future compact plan layouts including takt-style plans.</p>
+  <p>Text layout adjusts as the shell resizes. When horizontal space is limited, the title moves into the description area and scales up to remain readable. When a task has no description, the title makes use of the available space more efficiently. The shell always tries to show as much useful information as the space allows.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Task%20Variants.png" alt="Task shell variants" />
+  </div>
+
+  <h4>Multi-week tasks</h4>
+  <p>In the plan view, a task that spans multiple weeks is rendered as a single continuous element. The title appears once and reads cleanly across the full width of the task at any zoom level. This replaces the segmented approach in V3 where each week was a separate element — a change that also brings a significant performance improvement, since a ten-week task now costs the same to render as a one-week task.</p>
+  <p>Old:</p>
+  <div class="doc-image"><img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Classic%20Task.png" alt="V3 classic task rendering" /></div>
+  <p>New:</p>
+  <div class="doc-image"><img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20multi%20week.png" alt="V4 multi-week task shell" /></div>
+
+  <h4>Status colors</h4>
+  <p>Each of the five task statuses has a distinct color reflected in both the status area and the bottom color bar. Status is readable at a glance even when zoomed out, without needing to read the status icon. Title and status remain visible at all zoom levels.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20Status%20Options.png" alt="Task shell status options" />
+  </div>
+
+  <h4>Milestones and constraints</h4>
+  <p>Milestones and constraints use the same shell structure as tasks but with an inverted color scheme — dark background with light text — making them easy to distinguish at a glance even in a dense plan. They each have a distinctive icon: a diamond for milestones and a stylized hourglass for constraints. Both have no duration and are displayed on a single date.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Milestone%20Shell.png" alt="Milestone shell" />
+  </div>
+
+  <hr>
+
+  <h3>Interactions</h3>
+  <h4>Creating tasks</h4>
+  <p>Tasks, milestones, and constraints can be created directly from the toolbar. When a workspace has live tasks enabled, the toolbar shows the V4 element types. Selecting a tool and placing it on the workspace creates a new task shell and simultaneously registers a new task record in the project database.</p>
+
+  <h4>Status interaction</h4>
+  <p>Clicking the status area of a task shell opens a status menu directly on the workspace, without needing to open the full editor. The menu shows all available status options with their respective colors, allowing a quick status change in a single step.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20Change%20Status.png" alt="Status change interaction" />
+  </div>
+
+  <h4>Replanning an incomplete task <span class="badge-coming">Coming soon</span></h4>
+  <p>In V3, setting a task to Incomplete automatically prompted the creation of a replacement task linked to the original with a Start-to-Start dependency. This behaviour is returning in V4, rebuilt to take advantage of the new replanned connection type.</p>
+  <p>When a replacement task is created for an incomplete task, it will be linked using a dedicated replanned connection rather than a generic dependency. The replanned connection is excluded from all dependency validation — a task cannot be in conflict with its own replacement — and enables more precise filtering for replanned work across the project.</p>
+  <p>An incomplete task that has no replacement connected via a replanned connection will display a warning on its shell. This allows a foreman to mark a task incomplete in the field, for example on a mobile device, without needing to replan it immediately. In the next planning session the team can filter for incomplete tasks without a replacement and work through the replanning together.</p>
+  <p>The replanned connection is described in full in the <a href="#task-dependencies">Task Dependencies &amp; Connections guide</a>.</p>
+
+  <h4>Removing and deleting <span class="badge-coming">Coming soon</span></h4>
+  <div class="callout">🚧 The remove and delete interactions are currently in development. The design below reflects the intended behaviour — the exact implementation may evolve before release.</div>
+  <p>Because a task shell is a representation of a project-level record, removing it from a workspace and deleting it from the project are two distinct operations with very different consequences.</p>
+  <p><strong>Removing a shell</strong> takes the task off the current workspace only. The task record remains fully active in the project database — it continues to appear in any other workspace that has a shell for it and is still included in all project-level reporting and PPC calculations. Removing a shell is a workspace curation action; it does not affect the task's existence or visibility anywhere else.</p>
+  <p><strong>Deleting a task</strong> removes the underlying record from the project database. The task is flagged as deleted and immediately enters a deleted state in every workspace where it currently has a shell — not just the one you deleted it from. A deleted shell renders with a dark overlay and a trash icon. The task is excluded from all reporting and dashboards from the moment it is deleted.</p>
+
+  <h4>The deleted state <span class="badge-coming">Coming soon</span></h4>
+  <p>When a task is deleted, its shell remains visible on every workspace where it appeared — it does not disappear immediately. This is intentional. The deleted state serves two purposes: it gives the user who deleted the task a visible confirmation and an opportunity to restore it, and it notifies collaborators in other workspaces that the task has been removed from the project so they can react independently.</p>
+  <p>From a deleted shell, clicking the trash icon opens a small action menu with two options: <strong>Restore</strong>, which reverses the deletion and returns the task to its previous state across all workspaces, or <strong>Remove</strong>, which clears the shell from the current workspace while leaving it in the deleted state elsewhere.</p>
+
+  <h4>Keyboard shortcuts <span class="badge-coming">Coming soon</span></h4>
+  <table>
+    <tr><th>Key</th><th>Action</th></tr>
+    <tr><td>Del (first press)</td><td>Deletes the task from the project — shell enters deleted state in all workspaces</td></tr>
+    <tr><td>Del (second press)</td><td>Removes the deleted shell from the current workspace</td></tr>
+    <tr><td>Shift + Del</td><td>Deletes from project and removes from current workspace in one step</td></tr>
+    <tr><td>Minus</td><td>Removes the shell from the current workspace without deleting the task</td></tr>
+    <tr><td>Plus</td><td>Opens the import dialog to add tasks to the workspace</td></tr>
+  </table>
+  <div class="callout"><strong>Note:</strong> The plus and minus keys are being remapped from zoom in/out. Zooming remains available via scroll wheel, pinch, Ctrl+scroll, and toolbar controls.</div>
+
+  <h2>What's different from V3</h2>
+  <p>The visual element on the workspace was the task in V3 — the representation and the data were inseparable. The V4 task shell is a purpose-built visual component that is independent of the data it represents, which makes a number of improvements possible.</p>
+  <ul>
+    <li><strong>Single element per task</strong> — in V3, a task spanning multiple weeks was rendered as a separate element per week, glued together internally. In V4 it is a single continuous element. The title appears once across the full width and is readable at any zoom level</li>
+    <li><strong>Free resize</strong> — task shells can be freely resized on the whiteboard and resized vertically in a kanban. In V3 the element had a fixed shape regardless of context</li>
+    <li><strong>Adaptive text layout</strong> — the shell adjusts what it shows based on available space, scaling text and repositioning content intelligently. In V3, content that didn't fit was simply hidden or truncated per segment</li>
+    <li><strong>Text visible at all zoom levels</strong> — in V3, performance constraints at project scale forced the overview mode to abandon text entirely and fall back to colored bars only. In V4, the lighter rendering model means title and status remain visible even when zoomed out. The team label is hidden at very small sizes but the team color remains, keeping the essential visual context intact</li>
+    <li><strong>Status color bar</strong> — status is now visible as a color at the bottom edge of every shell, even when zoomed out or when the status icon itself is off screen. V3 had no equivalent</li>
+    <li><strong>Significantly better rendering performance</strong> — one element per task regardless of duration means large plans with many long tasks are substantially faster to render than in V3</li>
+    <li><strong>Remove vs. delete distinction</strong> — in V3, deleting a task from the workspace was the only option. V4 introduces a clear separation between removing a shell from a workspace and deleting the task from the project <span class="badge-coming">Coming soon</span></li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — A high-level programme plan that's actually readable</div><p>A programme manager sets up a project overview with tasks spanning six to twelve weeks each — major phases like Groundworks, Structure, MEP Rough-In, and Finishes. In V4 each phase renders as a single continuous element with its full title visible across the entire width. Zooming out to see the full project doesn't reduce tasks to unreadable coloured bars — the title and status colour are still visible at overview level. The plan also loads noticeably faster than it would have in V3, where a twelve-week task was internally twelve separate elements.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Tasks overlaid on a floor plan</div><p>A superintendent places a site plan image on a whiteboard workspace and imports the week's tasks from the project database. Each task shell is resized down to a compact square and positioned over the area of the floor plan where the work is happening. At this small size the shell shows the team colour and status colour bar — enough to see at a glance which trade is working where and whether anything is blocked, without the workspace becoming cluttered. Opening any shell reveals the full detail when needed.</p></div>
+  <div class="example"><div class="example-title">Example 3 — A kanban where you can actually read the tasks</div><p>During a daily huddle, the superintendent opens a kanban view of this week's committed tasks. Some tasks have descriptions with key information — access requirements, crew size, material delivery notes. By dragging the bottom edge of a shell down, the description becomes readable directly in the kanban without opening the editor. The team can talk through the day's work without switching views.</p></div>
+  <div class="example"><div class="example-title">Example 4 — A whiteboard infographic for a project kick-off</div><p>A lean lead prepares a kick-off workspace on the whiteboard — not a scaled plan, but a visual overview of the full project flow. Live task shells representing major phases are placed freely on the workspace and resized to loosely reflect their relative duration, giving stakeholders an at-a-glance sense of sequence and proportion without the precision of a schedule. Dependency lines are drawn between phases to show the critical handoffs. Milestones mark the key contractual commitments. Because the tasks are live, their current status is always visible — the same infographic that introduced the project at kick-off remains a live health snapshot throughout its duration.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Why does the task look different from V3?</div><div class="faq-a">The task shell has been redesigned from the ground up. The new design is a single element regardless of how many weeks a task spans, adapts its layout to available space, and communicates status through color at the bottom edge. The underlying task data is the same — only the visual representation has changed.</div></div>
+  <div class="faq-item"><div class="faq-q">Why can't I see the team name when zoomed out?</div><div class="faq-a">At very small sizes the shell hides the team label to save space, but the team color strip on the left remains visible so you can still identify which team owns the task. Title and status are also still visible at all zoom levels.</div></div>
+  <div class="faq-item"><div class="faq-q">What happens to a task in other workspaces when I delete it?</div><div class="faq-a">Deleting a task from the project flags it as deleted across all workspaces simultaneously. Any workspace that currently shows a shell for that task will display it in the deleted state — a dark overlay with a trash icon. Collaborators in those workspaces can then choose to restore the task or remove the shell from their own view independently. <span class="badge-coming">Coming soon</span></div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between removing a shell and deleting a task?</div><div class="faq-a">Removing a shell takes the task off the current workspace only — the task remains fully active in the project, in other workspaces, and in all reporting. Deleting the task removes the underlying record from the project database and affects every workspace at once. See the <a href="#central-task-database">Central Task Database guide</a> for a full explanation. <span class="badge-coming">Coming soon</span></div></div>
+
+  <div class="section-nav">
+    <a href="#central-task-database"><span class="nav-dir">← Previous</span><span class="nav-title">Central Task Database</span></a>
+    <a class="next" href="#task-editor"><span class="nav-dir">Next →</span><span class="nav-title">Task Editor</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 3. TASK EDITOR -->
+<section class="doc-section" id="task-editor">
+  <div class="section-eyebrow">Guide 3</div>
+  <h1>Task Editor</h1>
+
+  <p class="intro-para">The task editor is the primary interface for viewing and editing the full details of a task, milestone, or constraint. It is organised into a set of focused pages — each covering a specific aspect of the task — and is designed to work consistently across the desktop application and the mobile app.</p>
+
+  <h2>The problem it solves</h2>
+  <p>In V3, task information was split across two places. Some details — title, dates, team, status — were accessible through the editor panel. But other information, like dependencies or labels, was only visible on the task visualization directly on the workspace. This meant that any context where tasks were shown differently — a list view, a filtered view, or eventually a mobile screen — could only ever show a subset of the task's full picture. There was no single place where all task information was consistently accessible regardless of how or where you were looking at the task.</p>
+  <p>The new task editor was built to be that single place. By organising all task information into a structured set of pages, the editor can surface the full picture — details, progress, connections, history — in any context it appears in. It is also built as a shared component that can show more or fewer pages depending on the context, which means the same editor works across the desktop application and the mobile app without requiring separate implementations.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Task editor</span> — The panel that opens to display and edit the full details of a task, milestone, or constraint. Organised into pages, each covering a specific category of information.</div>
+    <div class="concept-item"><span class="term">Editor page</span> — A focused view within the task editor dedicated to one aspect of the task. The pages available depend on the context the editor is opened from and the settings of the workspace.</div>
+    <div class="concept-item"><span class="term">Status</span> — The current state of a task in the planning cycle. Reflected visually by both a label and a color throughout the editor and on the task shell. The five states are: Unplanned, Planned, Committed, Complete, and Incomplete.</div>
+    <div class="concept-item"><span class="term">Progress</span> — A percentage value indicating how much of the work on a task has been completed. Distinct from status — a task can be in progress without its status having changed.</div>
+    <div class="concept-item"><span class="term">Variance reason</span> — The recorded explanation for why a committed task was not completed as planned. Selected from a project-level list defined in the <a href="#project-control-center">Project Control Center</a>.</div>
+    <div class="concept-item"><span class="term">Outcome notes</span> — A free-text field for adding context to a variance reason — what specifically happened, what the impact was, or what the next step is.</div>
+    <div class="concept-item"><span class="term">Dependency</span> — A relationship between two tasks that defines the order in which work should happen. Managed on the Connections page and covered in detail in the <a href="#task-dependencies">Task Dependencies &amp; Connections guide</a>.</div>
+    <div class="concept-item"><span class="term">History entry</span> — A recorded snapshot of a change made to a task, including what changed, who made the change, and when. Entries are created automatically whenever a task is updated.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>Navigation</h3>
+  <p>The editor is organised into pages. You move between them using the dropdown at the top of the editor, or by clicking the page indicator dots at the bottom. The number of dots reflects how many pages are currently available — some pages can be enabled or disabled at the workspace level, so the editor may show more or fewer pages depending on how the workspace is configured.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20Navigation.gif" alt="Task editor navigation" />
+  </div>
+
+  <h3>General page</h3>
+  <p>The General page is the main details view for a task. It shows the task title, assigned team or person, start date, due date, duration, and current status. The status button reflects the current state through both label and color, and can be changed directly from this page. Optional time fields allow start time and due time to be set when hour-level precision is needed. Variance reason and outcome notes are also managed here — available when a task has not been completed as planned.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20General.png" alt="Task editor general page" />
+  </div>
+
+  <h3>Progress Update page</h3>
+  <p>The Progress Update page shows the current completion percentage for a task and allows it to be updated directly. This page can be enabled or disabled at the workspace level — it is typically active in workspaces where teams are tracking weekly progress, and hidden in workspaces where that level of detail is not needed. The intent for this page is to evolve into a running daily log of progress updates over the life of a task, giving a more detailed view of how work advances between planning cycles. That fuller log capability is planned for a future release.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20Progress%20Page.png" alt="Task editor progress page" />
+  </div>
+
+  <h3>Connections page</h3>
+  <p>The Connections page lists all dependencies and links associated with the task. In V3, dependency information was only visible on the task visualization on the workspace — there was no way to see or manage connections from the editor itself. In V4, the Connections page brings this information into the editor, making it accessible regardless of how or where the task is being viewed. Dependencies show connected tasks and whether they are upstream or downstream. Links are external references such as URLs to documents or resources. From this page you can navigate directly to a connected task or remove a connection. Dependency conflict warnings — flagging cases where a task's schedule is in tension with connected tasks — are coming soon to this page.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20Connection%20Page.png" alt="Task editor connections page" />
+  </div>
+
+  <h3>History page</h3>
+  <p>The History page is a read-only log of every recorded change to the task. Each entry shows when the change was made, who made it, and what changed — including status, dates, and crew size. Fields that changed since the previous entry are highlighted, making it easy to see what shifted between planning cycles. The history captures changes regardless of which workspace or context the edit was made from.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20History%20Page.png" alt="Task editor history page" />
+  </div>
+
+  <div class="coming-soon">A dedicated <strong>Labels page</strong> is the next planned addition to the editor. Labels can already be assigned to tasks today through the existing label assignment dialog on the workspace — the new page will bring that management directly into the task editor.</div>
+
+  <h2>What's different from V3</h2>
+  <p>The editor has moved from a single scrolling panel to a structured multi-page design, and several capabilities that were either missing or only accessible on the workspace are now available directly within the editor.</p>
+  <ul>
+    <li><strong>Multi-page structure</strong> — task information is organised into focused pages rather than a single form, making it faster to navigate and easier to extend with new capabilities over time</li>
+    <li><strong>Time fields</strong> — start time and due time can now be set for hour-level precision, which was not available in V3</li>
+    <li><strong>Calendar picker</strong> — a task can now be assigned a specific project calendar, ensuring date calculations respect the correct working days</li>
+    <li><strong>Connections page</strong> — dependencies and links are now viewable and manageable directly in the editor. In V3, connection information was only visible on the task visualization on the workspace, making it inaccessible in list views or other contexts</li>
+    <li><strong>History page</strong> — a full, read-only audit trail of every change made to a task, recorded automatically. This had no equivalent in V3</li>
+    <li><strong>Extensible by design</strong> — the page structure is built to accommodate new pages over time. Labels are the next planned addition</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — Understanding why a task moved</div><p>During a weekly look-ahead session, a superintendent notices that a concrete task has shifted two weeks later than originally planned. Rather than asking around, they open the task editor and navigate to the History page. The log shows three entries: a date change made by the foreman six days ago, a crew size reduction the week before that, and the original committed date at the start of the phase. The superintendent can see exactly what changed, who changed it, and when — without having to piece it together from memory or a chat thread.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Reviewing a task's dependencies without opening the plan</div><p>A foreman is working from the task list view during the daily huddle and wants to check what needs to finish before their MEP rough-in task can start. Rather than navigating to the full phase plan to find the dependency lines, they open the task editor and go to the Connections page. The upstream dependencies are listed there — including which tasks are complete and which are still in progress. They get the information they need without switching context.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Where do I find variance reasons and outcome notes?</div><div class="faq-a">Both are on the General page of the editor, available when a task has a status of Incomplete.</div></div>
+  <div class="faq-item"><div class="faq-q">Why can't I see the Progress Update page in some workspaces?</div><div class="faq-a">Progress tracking can be enabled or disabled at the workspace level. If the page isn't visible, it has been turned off for that workspace. A Workspace Admin can enable it in the workspace settings.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I see a task's full history from any workspace?</div><div class="faq-a">Yes. The History page shows all changes made to the task across its entire lifetime, regardless of which workspace or context the change was made from.</div></div>
+
+  <div class="section-nav">
+    <a href="#task-visualization"><span class="nav-dir">← Previous</span><span class="nav-title">Task Visualization</span></a>
+    <a class="next" href="#task-dependencies"><span class="nav-dir">Next →</span><span class="nav-title">Task Dependencies &amp; Connections</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 4. TASK DEPENDENCIES -->
+<section class="doc-section" id="task-dependencies">
+  <div class="section-eyebrow">Guide 4</div>
+  <h1>Task Dependencies &amp; Connections</h1>
+
+  <p class="intro-para">Connections define relationships between tasks, milestones, and constraints. In V4, project-level connections are stored in the central task database — they belong to the project, not to a specific workspace, and are visible wherever a task has a shell. There are two types of connection in a V4 project workspace: <strong>dependencies</strong> between project elements, and <strong>links</strong> to external resources such as URLs. Workspace-only elements like notes can still be connected with visual lines on the whiteboard, but these are not stored in the project database.</p>
+
+  <h2>The problem it solves</h2>
+  <p>In V3, connections grew organically from the whiteboard model. The original connection type was a visual line between any two elements — useful for showing relationships but carrying no structured meaning. A dependency type was added later, introducing typed relationships (FS, SS, FF, SF), lag values, and order warnings. Both types coexisted, and both could be freely restyled — color, line width, and line style were all configurable per connection.</p>
+  <p>This flexibility had a cost. Because connection styling was freeform, there was no consistent visual language for what a connection meant. Color and style choices were personal and inconsistent across teams. More importantly, as V4 moves task data to the project level, connections between tasks need to be stored and validated at the project level too — not as workspace-level drawing elements. A connection drawn between two shells in one workspace needs to be the same connection visible in any other workspace where those tasks appear.</p>
+  <p>V4 addresses this by storing dependency connections in the project database and moving toward a semantic visual language where color and style always communicate something specific about the connection, rather than being decorative choices.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Dependency</span> — A typed relationship between two project elements defining the order in which work should happen. Stored in the project database and visible across all workspaces. Types: FS, SS, FF, SF.</div>
+    <div class="concept-item"><span class="term">Lag</span> — A duration offset applied to a dependency. A positive lag adds a gap between the predecessor and successor; a negative lag (lead) allows overlap.</div>
+    <div class="concept-item"><span class="term">Upstream / Downstream</span> — The direction of a dependency relationship. The predecessor is upstream; the successor is downstream. The dotted line direction indicator points downstream.</div>
+    <div class="concept-item"><span class="term">Dependency warning</span> — A flag raised when a task's dates conflict with its dependency relationships. Validated server-side and shown in red on the connection and on the Connections page in the task editor.</div>
+    <div class="concept-item"><span class="term">Link</span> — An external reference attached to a task, such as a URL to a document or resource. Managed in the task editor and visible across all workspaces.</div>
+    <div class="concept-item"><span class="term">Workspace connection</span> — A visual line between non-project elements on the whiteboard. Stored at the workspace level only, retains full styling options, and is not synced to the project database.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>Drawing connections</h3>
+  <p>Connections between task shells can be drawn directly on the whiteboard — the same interaction as V3. Hovering over a task shell reveals connection points, and dragging from a connection point to another shell creates a dependency. The connection is immediately stored in the project database and appears in the Connections page of the task editor for both tasks involved.</p>
+
+  <h3>Dependency types</h3>
+  <p>V4 supports four dependency types, following standard CPM scheduling conventions:</p>
+  <ul>
+    <li><strong>Finish to Start (FS)</strong> — the successor cannot start until the predecessor finishes. The most common dependency type</li>
+    <li><strong>Start to Start (SS)</strong> — the successor cannot start until the predecessor starts</li>
+    <li><strong>Finish to Finish (FF)</strong> — the successor cannot finish until the predecessor finishes</li>
+    <li><strong>Start to Finish (SF)</strong> — the successor cannot finish until the predecessor starts. Rarely used</li>
+  </ul>
+  <p>Dependencies can also include a <strong>lag</strong> value — a positive or negative duration that offsets the relationship. A positive lag adds a gap between the two tasks; a negative lag (lead) allows overlap.</p>
+
+  <h3>Visual language</h3>
+  <p>In V4, the visual appearance of a connection communicates its state automatically — there are no manual styling options for project-level dependencies. A dotted line with a small dot indicates direction: the dot acts as an arrowhead pointing downstream toward the successor. Connections that are causing a schedule warning are shown in red, making it immediately clear which relationships are in conflict without having to inspect each task individually.</p>
+  <p>The goal is for all connection styles to carry semantic meaning — visual properties will be added over time to represent new relationship types as they are introduced.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Connection%20-%20Warning.png" alt="Connection warning visual" />
+  </div>
+
+  <h3>Dependency warnings</h3>
+  <p>Dependency warnings are validated server-side, which means they apply regardless of which workspace a task is viewed from or whether all connected tasks are currently visible on the whiteboard. If a task's dates conflict with its dependency relationships, a warning is shown on the connection and flagged on the Connections page in the task editor. This server-side approach ensures warnings are consistent across all workspaces and accessible to the mobile app without requiring all tasks to be loaded.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20%20Connections%20Warning.png" alt="Connections warning illustration" />
+  </div>
+
+  <h3>Links</h3>
+  <p>In addition to dependencies, a task can have links — external references such as URLs to documents, drawings, or other resources. Links are managed on the Connections page in the task editor and are visible in all workspaces where the task has a shell.</p>
+
+  <h3>Workspace-only connections</h3>
+  <p>Visual line connections between non-project elements — notes, shapes, and other whiteboard content — continue to work as before. These connections retain their full styling options (color, width, style) and are stored at the workspace level. They are not synced to the project database and do not appear in the task editor or project reporting.</p>
+
+  <h3>Assistive rescheduling</h3>
+  <p>When a dependency conflict exists between two tasks, a warning border appears on the affected task and a red triangle appears in the connection menu. Clicking the triangle opens a resolution dialog with four options: run the tasks in parallel (converting to a Start-to-Start dependency), push the conflicting task to a later date, pull it to an earlier date, or adjust the lag. Push can also be triggered with Ctrl+A and pull with Ctrl+Shift+A. Both tasks need to be visible on the same workspace for the conflict indicator and resolution options to appear.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Assistive%20Rescheduling%20Options.png" alt="Assistive rescheduling options dialog" />
+  </div>
+
+  <h3>Replanned connection <span class="badge-coming">Coming soon</span></h3>
+  <p>When a task is marked Incomplete, Hoylu will prompt the creation of a replacement task. The original and its replacement are linked with a dedicated replanned connection — a distinct connection type that differs from standard dependencies in several important ways.</p>
+  <p>The replanned connection is excluded from all dependency validation. A task cannot be in a scheduling conflict with its own replacement, so replanned pairs are never flagged with warnings regardless of how their dates relate to each other.</p>
+  <p>Replanned connections also enable more precise filtering. Teams can filter for incomplete tasks that have no replacement yet connected — useful in planning sessions where foremen may have marked tasks incomplete in the field without replanning them on the spot. The plan can surface these as a distinct group, so the team can work through them together.</p>
+  <p>An incomplete task without a replanned replacement will display a warning on its shell, making unresolved replanning visible at a glance without disrupting the ability to mark tasks incomplete quickly in the field.</p>
+  <p>The replanned connection is visually distinct from standard dependency connections, and like all project-level connections it is stored in the project database and visible across all workspaces where the connected tasks have shells.</p>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>Project dependencies are stored in the database, not on the whiteboard</strong> — in V3, connections were workspace-level drawing elements. In V4, dependencies between tasks are stored in the project database and appear in every workspace where the connected tasks have shells</li>
+    <li><strong>No manual styling for project connections</strong> — in V3, all connections could be recolored and restyled freely. In V4, project dependency appearance is set automatically based on connection state and type. Manual styling is retained only for workspace-level line connections between non-project elements</li>
+    <li><strong>Semantic visual language</strong> — connection color and style now communicate meaning. Warning states show in red; direction is indicated by the dotted line and dot marker. Additional semantic styles will be added as new connection types are introduced</li>
+    <li><strong>Server-side dependency validation</strong> — warnings are validated at the project level rather than client-side, ensuring they are consistent across all workspaces and accessible regardless of which tasks are loaded on the whiteboard</li>
+    <li><strong>Replanned connection coming</strong> — a dedicated connection type will link incomplete tasks to their replacements, excluded from dependency validation and enabling filtering for unresolved replanning <span class="badge-coming">Coming soon</span></li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — A conflict visible across workspaces</div><p>A trade foreman moves a task in the phase planning workspace — pushing it a week later to reflect a material delay. That task has a Finish-to-Start dependency with a project milestone. The PM, working from a separate high-level programme workspace, sees a red warning outline appear on the milestone shell — indicating that something upstream is now in conflict with it. They don't need to be in the phase planning workspace to know something needs attention, and the trade task doesn't need to be imported into the programme workspace. The validation happens server-side against the full project data, surfacing the conflict wherever the milestone has a shell.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Dependency warnings on the whiteboard during a pull planning session</div><p>During a pull planning session, the team is working on the whiteboard — tasks placed freely, not yet arranged in a formal plan. Some tasks already have dates assigned from earlier discussions. As the facilitator draws a dependency between two tasks to capture a handoff agreement, a warning appears immediately on the connection — the successor's start date is earlier than the predecessor's finish date. The conflict is visible right there in the session, before it ever makes it into the plan, giving the team the chance to resolve it in the room.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Can I still draw connections directly on the whiteboard?</div><div class="faq-a">Yes. The interaction is the same as V3 — hover over a task shell to reveal connection points and drag to create a connection. The difference is that the connection is now stored in the project database rather than as a drawing element on the whiteboard.</div></div>
+  <div class="faq-item"><div class="faq-q">Why can't I change the color of a dependency connection?</div><div class="faq-a">In V4, project dependency appearance is managed automatically based on the connection's state and type — color communicates something specific, such as a warning. Freeform styling has been removed for project connections to make the visual language consistent and meaningful across all workspaces and users.</div></div>
+  <div class="faq-item"><div class="faq-q">What happened to connections between notes and other non-task elements?</div><div class="faq-a">These remain as workspace-level connections and work exactly as before, including full styling options. They are not stored in the project database.</div></div>
+  <div class="faq-item"><div class="faq-q">How do dependency warnings work if not all tasks are loaded in my workspace?</div><div class="faq-a">Warnings are validated server-side against the full project data, so they apply regardless of which tasks are currently visible on the whiteboard. A warning will appear on a task even if its connected predecessor or successor is not imported into the current workspace.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the replanned connection?</div><div class="faq-a">A planned connection type that links an incomplete task to its replacement when work is replanned. Unlike standard dependencies, replanned connections are excluded from dependency validation — a task cannot conflict with its own replacement. Incomplete tasks without a replanned replacement display a warning on their shell, making unresolved replanning visible in the plan. It is coming in a future release.</div></div>
+
+  <div class="section-nav">
+    <a href="#task-editor"><span class="nav-dir">← Previous</span><span class="nav-title">Task Editor</span></a>
+    <a class="next" href="#plan-visualization"><span class="nav-dir">Next →</span><span class="nav-title">Plan Visualization</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 5. PLAN VISUALIZATION -->
+<section class="doc-section" id="plan-visualization">
+  <div class="section-eyebrow">Guide 5</div>
+  <h1>Plan Visualization</h1>
+
+  <p class="intro-para">The plan is the primary structured layout for scheduling and tracking work in Hoylu. It organises task shells into a timeline with swimlanes — a structure familiar from V3. In V4 the plan is built on a new technical foundation that improves performance, adds new timeline zoom levels, and lays the groundwork for tighter integration between how tasks are arranged in a plan and how they are reported on across the project.</p>
+
+  <h2>The problem it solves</h2>
+  <p>In V3, each workspace could contain only one plan, and that plan was fixed in place — it could not be moved or repositioned on the workspace. All tasks shared a single workspace-wide calendar, swimlanes could not easily be reordered, and the timeline supported only week and day zoom levels. These were practical limitations, but the deeper structural issue ran further.</p>
+  <p>In V3, tasks didn't actually store their own dates. The plan had a fixed reference point — an anchor date — and a task's dates were calculated on the fly based on where it sat on the canvas relative to that anchor. This worked well enough when Hoylu was primarily a visual planning tool, but created significant problems as the product became more data-driven. Changing the plan's anchor date did not move any tasks — it silently recalculated all their dates, effectively replanning the entire workspace in one step. Adding a public holiday after tasks had already been placed could shift end dates even on tasks that had already been completed. The plan was the source of truth for task dates, not the task itself.</p>
+  <p>The same principle applied to swimlanes. In V3, a task's swimlane position was used as a proxy for reporting — which trade or area a task belonged to was determined by where it sat on the workspace, not by any data field on the task. This meant that moving a task to a different swimlane changed how it was reported on, and tasks viewed in a list or any context outside the plan had no reliable way to communicate that grouping information.</p>
+  <p>Performance was also a growing constraint. As covered in the <a href="#task-visualization">Task Visualization guide</a>, tasks were rendered as one element per week, which meant long tasks were disproportionately expensive to render and limited how many tasks a plan could show at reasonable performance.</p>
+  <p>Cleanup — the user-triggered operation that sorts and repositions task shells within a swimlane — also carried a fundamental limitation in V3. The V3 algorithm was greedy: it aimed for the smallest possible swimlane height by filling every available slot as tightly as it could. This kept the plan compact, but at a significant cost to readability. There was no apparent structure to where tasks ended up, adding or removing a single task could reshuffle the entire arrangement, and the dense packing made it difficult to follow dependency connections between tasks. The V4 cleanup replaces this with the Structured Waterfall — deliberately trading some space efficiency for a layout that is far easier to read at a glance. An open limitation remains: users who manually arrange a swimlane to their preference have no way to protect that layout from being overwritten if cleanup is triggered. We are aware of this and are considering options, including a per-swimlane opt-out.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Plan</span> — A timeline element placed on a workspace, containing one or more swimlanes. Connected to the project's task database. Multiple plans can exist in the same workspace.</div>
+    <div class="concept-item"><span class="term">Swimlane</span> — A horizontal row within a plan representing a grouping of tasks. In V4, swimlanes will be linked to a data dimension — team, label category, or WBS code — so that a task's swimlane position reflects a real field on the task record. <span class="badge-coming">Coming soon</span></div>
+    <div class="concept-item"><span class="term">Timeline</span> — The date header running across the top of a plan. Controls the visible date range and zoom level. Clickable to change zoom level for any segment.</div>
+    <div class="concept-item"><span class="term">Zoom level</span> — The granularity at which the timeline displays time. Available levels: week, day, and hour. Collapsed week is coming soon.</div>
+    <div class="concept-item"><span class="term">Overflow column</span> — A column at either end of the plan's active date range showing tasks that fall outside it. Prevents tasks from being hidden when the plan's date range is adjusted.</div>
+    <div class="concept-item"><span class="term">Anchor date</span> — <em>(V3 term, for reference)</em> In V3, the reference date used to calculate task dates from their position on the whiteboard. This concept no longer exists in V4 — task dates are stored on the task itself.</div>
+    <div class="concept-item"><span class="term">Cleanup</span> — A user-triggered operation that sorts and repositions task shells within a plan. Accessible from the plan context menu, which applies it to all swimlanes simultaneously, or from an individual swimlane context menu, which applies it to that swimlane only. In V4, cleanup uses the Structured Waterfall algorithm.</div>
+    <div class="concept-item"><span class="term">Structured Waterfall</span> — The cleanup algorithm introduced in V4. Divides the swimlane timeline into configurable segments and arranges tasks in a cascading sequence within each segment, ordered by start date and then duration. Produces a chronologically coherent layout that prioritises readability over space efficiency. The segment interval defaults to 4 weeks and is configurable at plan and swimlane level.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>The plan and swimlanes</h3>
+  <p>A plan is a timeline element placed on a workspace. It contains one or more swimlanes, each representing a row of tasks arranged along the timeline. Multiple plans can be placed on the same workspace — each showing a different slice of the project's task database, covering a different time range, a different set of teams, or a different level of detail. Plans can be freely repositioned on the whiteboard and swimlanes can be reordered within a plan by dragging.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Plan%20-%20Week%20Day%20Hour%20mode.png" alt="Plan week day hour mode" />
+  </div>
+
+  <h3>The timeline</h3>
+  <p>The timeline header runs across the top of the plan and defines the time range displayed. Clicking a segment on the timeline opens a menu that lets you change the zoom level for that portion of the plan. Four zoom levels are available:</p>
+  <ul>
+    <li><strong>Collapsed week</strong> <span class="badge-coming">Coming soon</span> — the most compact view, showing multiple weeks in a narrow column. Suited to long-running projects or overview planning such as multi-year infrastructure projects</li>
+    <li><strong>Week</strong> — the standard view, showing one column per week</li>
+    <li><strong>Day</strong> — expands a week into individual days, useful for short-duration work and daily planning</li>
+    <li><strong>Hour</strong> — expands a single day into hours, available for work that requires hour-level precision</li>
+  </ul>
+  <p>Jumping from week directly to hour is not available — you must expand to day first. The current date is marked with a line across the plan, and the current week or day is highlighted in the timeline header.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Plan%20-%20Toggle%20modes.gif" alt="Plan toggle zoom modes" />
+  </div>
+
+  <h3>Overflow columns</h3>
+  <p>Tasks that fall outside the active date range of a plan are not hidden — they appear in overflow columns at either end of the timeline. This means you can adjust a plan's date range without risk of tasks disappearing. Overflow columns give a clear visual signal that tasks exist outside the current view, and the plan can be extended to bring them back into the main timeline at any time.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Plan%20-%20Overflow%20columns.png" alt="Plan overflow columns" />
+  </div>
+
+  <h3>Swimlanes and data <span class="badge-coming">Coming soon</span></h3>
+  <div class="callout">🚧 The swimlane-data coupling described below is actively in development and not yet fully shipped. We are being explicit about the direction here because it affects how reporting works and how users should think about structuring their plans going forward.</div>
+  <p>In V3, a task's swimlane position was used as a proxy for filtering in reporting — which swimlane a task sat in determined how it appeared in insights, the weekly work plan view, and the constraint log. In V4 this changes fundamentally: the swimlane position is replaced by actual data fields on the task.</p>
+  <p>In V4, each plan will be linked to a data dimension — team, label category, or in future WBS code. A plan linked to "Team" shows one swimlane per team. A plan linked to an "Area" label category shows one swimlane per area value. The swimlane a task shell appears in reflects a real data field on the task — not just its position on the whiteboard.</p>
+  <p>This means that if you want a task to appear in a specific swimlane, the corresponding label on the task needs to be set. At the start, users may need to assign labels manually to tasks before they appear in the correct swimlane. In future, dropping a task shell into a swimlane will automatically update the corresponding data field on the task.</p>
+  <p>If a data field is updated elsewhere — in the editor, through the API, or in another workspace — and the task's label no longer matches the swimlane it sits in, a warning will appear on the task shell. The user can then resolve the conflict by either moving the shell to the correct swimlane or updating the data to match the current position. This is the same principle as the deleted state: the plan shows you that something has changed and gives you the agency to decide what to do about it.</p>
+  <p>The benefit of this approach is that reporting is no longer tied to whiteboard position. The same task can appear in multiple plans — each slicing the data in a different way — without any ambiguity about which team it belongs to or which area it covers. That information lives on the task itself and is consistent across every workspace and every view.</p>
+
+  <h3>Off-days</h3>
+  <p>Off-days are no longer visualized at the plan level. In V4 each task shell is responsible for showing its own non-working days, since a single plan can now contain tasks governed by different project calendars. Tasks that span non-working days show those days with a hatched overlay directly on the shell.</p>
+  <p><em>How calendars are created, assigned to teams and tasks, and how the hierarchy resolves when multiple calendars apply is covered in the <a href="#calendars">Calendars guide</a>.</em></p>
+
+  <hr>
+
+  <h3>Cleanup &amp; resize</h3>
+  <p>Cleanup is a user-triggered operation that sorts and repositions all task shells within a swimlane. It is available from both the plan context menu and the individual swimlane context menu. Running it from the plan applies the Structured Waterfall to all swimlanes simultaneously — useful after a bulk import or a major replanning session. Running it from a swimlane applies it to that swimlane only, leaving the rest of the plan untouched.</p>
+  <p>The V4 cleanup uses the Structured Waterfall algorithm. Rather than packing tasks as tightly as possible, it divides the swimlane timeline into segments and arranges tasks in a cascading sequence within each segment. Tasks are ordered by start date, with duration as a tiebreaker for tasks starting in the same period. The result is a layout with an immediately apparent chronological structure — a planner scanning the board can orient themselves by segment at a glance, and the cascading arrangement within each segment makes sequencing and dependency connections between tasks easy to follow.</p>
+  <p>The segment interval defaults to 4 weeks but is configurable at the plan level, with the option to override on individual swimlanes. This allows different swimlanes within the same plan to use intervals suited to their content — a milestone swimlane might use a 1 or 2 week interval, a phase swimlane a 6 month interval, and the remaining swimlanes the standard 4 week default.</p>
+  <p>When tasks overlap — which can occur with the Structured Waterfall approach — later-starting tasks are always rendered in front of earlier ones, keeping the most recent work visible.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Structured%20Waterfall.png" alt="Structured Waterfall cleanup illustration" />
+  </div>
+
+  <div class="callout">The Structured Waterfall is a new approach and we are actively gathering feedback on how it works across different project types and planning styles. If it is not producing the layout you need, we would welcome your input — it will directly shape how cleanup develops.</div>
+
+  <h2>What's different from V3</h2>
+  <p>The plan looks familiar but a significant number of things work differently underneath.</p>
+  <ul>
+    <li><strong>Dates drive position, not the other way around</strong> — in V3, a task's dates were inferred from its position relative to the plan's anchor date. In V4, task dates are stored on the task itself and the plan renders tasks where their dates say they should be. Adjusting the plan's date range automatically repositions all shells to reflect the new view</li>
+    <li><strong>Multiple plans per workspace</strong> — V3 allowed only one plan per workspace. V4 has no limit</li>
+    <li><strong>Plans can be freely repositioned</strong> — plans can be moved anywhere on the whiteboard by dragging. In V3 the plan was fixed in place</li>
+    <li><strong>Swimlanes can be reordered</strong> — swimlanes can be dragged into a different order within a plan</li>
+    <li><strong>Four zoom levels</strong> — week, day, hour, and coming soon: collapsed week. V3 supported only week and day</li>
+    <li><strong>Overflow columns</strong> — tasks outside the active date range are shown in overflow columns rather than disappearing</li>
+    <li><strong>Swimlanes linked to data, not whiteboard position</strong> — in V3, swimlane position was used as a proxy for reporting. In V4, swimlanes will be linked to data fields on the task, making reporting independent of whiteboard position <span class="badge-coming">Coming soon</span></li>
+    <li><strong>Off-days on the task, not the plan</strong> — non-working days are shown on the task shell itself, allowing tasks with different calendars to coexist in the same plan</li>
+    <li><strong>Significantly better performance</strong> — the new plan component reduces render cycles and handles large numbers of tasks substantially more efficiently than V3</li>
+    <li><strong>Structured Waterfall cleanup</strong> — the V3 compact cleanup aimed for the smallest possible swimlane height, filling gaps aggressively at the cost of readability and stable task positioning. V4 replaces this with the Structured Waterfall: tasks are arranged in cascading segments with a configurable interval, defaulting to 4 weeks, adjustable per swimlane. The result is a more readable, chronologically coherent layout that stays stable as tasks are added or removed</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — A full phase plan and a 6-week look-ahead in the same workspace</div><p>A superintendent runs a full phase plan for the entire building alongside a 6-week look-ahead in the same workspace. The phase plan shows the complete picture — all trades, all areas, from project start to handover. The look-ahead sits below it, covering only the active 6-week window in more detail. Both plans draw from the same project task database, so there is nothing to sync between them. Tasks that fall just outside the look-ahead's active window appear in overflow columns at either end — visible but compact, giving the superintendent a sense of what is approaching or just passed without cluttering the main view. As each week passes, the superintendent shifts the look-ahead window forward by one week — trimming the past from one end and extending the future from the other — like advancing a scroll across the project timeline.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Hour-level planning for city-centre deliveries</div><p>Hour mode is a genuinely new capability in V4 and opens up use cases that were not previously possible in Hoylu. We are actively gathering feedback from teams using it to better understand and support these workflows.</p><p>On a city-centre construction site with no on-site storage, deliveries must be coordinated precisely — each supplier has a 30-minute window to arrive, unload, and clear the gate. A logistics coordinator opens the current day in hour mode and places delivery tasks against their assigned time slots, each showing the supplier, material, and gate. This plan can be combined with a site plan on the same whiteboard, with small task shells placed at the gate locations to show where each delivery arrives — giving the team a spatial and temporal picture of the day's logistics in one view.</p></div>
+  <div class="example"><div class="example-title">Example 3 — Hour-level planning for fixed time windows</div><p>Some work only becomes possible during a narrow, pre-agreed window — and every hour counts. A road closure for infrastructure maintenance might give a crew four hours overnight to complete their work before traffic resumes. A machine changeover in a manufacturing facility might represent significant lost revenue for every hour the line stands still. In both cases, the plan isn't measured in weeks or days — it is measured in hours, and sequencing within that window is everything. Hour mode lets teams plan and track this kind of work with the same visual discipline they bring to longer-horizon planning.</p></div>
+  <div class="callout">Hour mode is new territory for Hoylu. If your team is using it or sees potential in it, we'd welcome the feedback — it will directly shape how this capability develops.</div>
+  <div class="example"><div class="example-title">Example 4 — Restoring structure to a cluttered plan</div><p>A project manager is looking at a plan that has grown harder to read over the course of several weeks — tasks have been added, removed, and shifted around until the swimlane layout no longer has any clear structure. Rather than rearranging shells manually, the project manager runs cleanup from the plan context menu. The Structured Waterfall reorganises all swimlanes simultaneously into 4-week segments, with tasks cascading in chronological order within each segment. The plan is immediately legible again: the current window is clear, the next period is visible ahead of it, and dependency connections between tasks are easy to trace. For the milestone swimlane — where tasks are short and numerous — the project manager adjusts the segment interval to 2 weeks at the swimlane level, giving milestones a tighter grouping that suits their duration. The rest of the plan stays on the 4-week default.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Why does cleanup look different from V3?</div><div class="faq-a">The V3 cleanup algorithm packed tasks as tightly as possible to minimise swimlane height. This kept plans compact but made them difficult to read — there was no predictable structure to where tasks ended up, and adding or removing tasks could reshuffle the entire layout. V4 replaces this with the Structured Waterfall, which organises tasks into chronological segments with a configurable interval. The layout takes up more vertical space in some cases, but the structure is immediately legible and stays stable as the plan evolves.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I have more than one plan in my workspace?</div><div class="faq-a">Yes. V4 supports multiple plans in the same workspace, each covering a different time range, data grouping, or level of detail.</div></div>
+  <div class="faq-item"><div class="faq-q">What happened to swimlane-based filtering in reports?</div><div class="faq-a">In V3, which swimlane a task was in determined how it appeared in reports and the weekly work plan view. In V4 that role moves to data fields on the task — team assignment and label categories. This is a deliberate change that makes reporting more reliable and independent of whiteboard position, but the full implementation is still in progress.</div></div>
+  <div class="faq-item"><div class="faq-q">What does it mean if I see tasks in the overflow columns?</div><div class="faq-a">Overflow columns show tasks whose dates fall outside the plan's active date range. The tasks are not lost — they are still fully active in the project database. You can extend the plan's date range to bring them back into the main timeline.</div></div>
+
+  <div class="section-nav">
+    <a href="#task-dependencies"><span class="nav-dir">← Previous</span><span class="nav-title">Task Dependencies &amp; Connections</span></a>
+    <a class="next" href="#project-insights"><span class="nav-dir">Next →</span><span class="nav-title">Project Insights</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 6. PROJECT INSIGHTS -->
+<section class="doc-section" id="project-insights">
+  <div class="section-eyebrow">Guide 6</div>
+  <h1>Project Insights</h1>
+
+  <p class="intro-para">Project Insights is a reporting panel that gives teams a live view of planning data across a project. It draws directly from the central task database, which means any change made to a task — from any workspace, the mobile app, or the API — is reflected in the charts and views immediately, without any manual sync step.</p>
+
+  <h2>The problem it solves</h2>
+  <p>Reporting in V3 was split across two separate components with different capabilities. Workspace insights offered charts, a task list, a weekly work plan view, and a constraint log — but only for the tasks within that specific workspace. Project-level insights existed but were more limited, offering only charts and a task list, and crucially they were never live. Project insights showed the last synced state of the data — meaning a project manager viewing the charts could be looking at information that was hours or days out of date, depending on when someone had last triggered a sync. Getting a current picture of the project required opening individual workspaces and checking insights there.</p>
+  <p>The sync mechanism itself was the same batch operation now used to migrate V3 workspaces to V4 — it read workspace documents and pushed their task data into a separate reporting database. This was always a workaround for the underlying architecture: because task data lived inside workspace documents, there was no way to report on it in real time without first extracting it.</p>
+  <p>The charts and task list were also combined into a single view, where you had to choose which chart to display and configure the date range to match. Switching between chart types meant updating filters manually to make the numbers meaningful. Filters ran across the top of the panel, leaving limited space — not enough room for label category filtering.</p>
+  <p>In V4, that workaround is no longer needed. Task data lives in the project database from the moment a task is created or updated. Insights draws directly from that database, so the data is always current.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">PPC (Percent Plan Complete)</span> — The percentage of tasks that were committed for a given week and completed as planned. The primary metric for measuring plan reliability in the Last Planner System methodology.</div>
+    <div class="concept-item"><span class="term">KPI section</span> — The summary area at the top of the chart view, showing headline tiles and three overview charts: Task PPC, Task Status distribution, and Variance reason distribution.</div>
+    <div class="concept-item"><span class="term">Weekly Work Plan (WWP)</span> — A view showing tasks for a selected period with their completion status. The source data for PPC calculations.</div>
+    <div class="concept-item"><span class="term">Constraint Log</span> — A view listing all constraints in the project, showing which are resolved, outstanding, or past due.</div>
+    <div class="concept-item"><span class="term">Live data</span> — In V4, Insights reflects the current state of all tasks in real time. There is no sync step required. Any change to a task is immediately visible in all views.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>One component, two contexts</h3>
+  <p>Insights is a single shared component that appears in two contexts. At the project level it gives a view across all workspaces and all tasks in the project, with the option to filter down to a specific workspace. Inside a workspace, the same component appears with the workspace filter pre-applied — you see only the tasks relevant to that workspace, and the filter cannot be removed. The views and charts are identical in both contexts; only the scope changes.</p>
+
+  <h3>Filters</h3>
+  <p>Filters appear in a panel on the left side of the Insights panel. You can filter by workspace, team, assignee, status, and label category. The filter panel applies to all four views — charts, task list, weekly work plan, and constraint log — and filters are preserved when switching between views, so you don't need to reconfigure them each time.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20Panel%20-%20Charts.png" alt="Insights panel charts view" />
+  </div>
+
+  <h3>Chart view</h3>
+  <p>The chart view is organised into two areas. At the top, a KPI section shows summary tiles and three overview charts side by side: Task PPC, Task Status distribution, and Variance reason distribution. The summary tiles show headline numbers including total tasks, milestones, constraints, PPC, uncommitted tasks, and tasks past due. These give a quick health check of the project at a glance.</p>
+  <p>Below the KPI section, a scrollable area shows additional charts at full width. The PPC trend chart shows how plan reliability has changed over time — it can be displayed as a line chart showing PPC by week, or as a bar chart breaking down PPC by team, with both views available side by side. Each chart has its own independent date range, so the PPC trend can look back over completed weeks while the status chart looks forward over upcoming work — without requiring you to change a shared filter that would affect all views at once.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20Panel%20-%20Side%20by%20Side%20charts.png" alt="Insights side by side charts" />
+  </div>
+
+  <h3>Task list</h3>
+  <p>The task list shows all tasks matching the current filters in a tabular format. Columns include type, title, week, crew size, swimlane, status, label, and assignee. CSV and PDF export are currently in development and coming soon.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20Panel%20-%20Task%20List.png" alt="Insights task list" />
+  </div>
+
+  <h3>Weekly Work Plan view</h3>
+  <p>The Weekly Work Plan view shows tasks for a selected period with their completion status. It is the primary view for tracking plan reliability — the data that drives PPC. At project level this view is new in V4; it was previously only available within individual workspaces.</p>
+  <p>The grouping options have been significantly expanded. In V3 you could group by team or by swimlane. In V4 you can group by team, by status, or by any label category — for example grouping by an "Area" label category to see work broken down by zone or location. Grouping by label category replaces grouping by swimlane, reflecting the broader shift away from whiteboard position as a data proxy described in the <a href="#plan-visualization">Plan Visualization guide</a>.</p>
+  <p>The view also supports sorting by multiple columns — start date, due date, status, team, or title. In V3 the WWP always sorted by start date with no alternative.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20Panel%20-%20Weekly%20work%20Plan.png" alt="Insights weekly work plan" />
+  </div>
+
+  <h3>Constraint Log</h3>
+  <p>The Constraint Log lists all constraints in the project — external dependencies and fixed dates that affect the plan. It shows which constraints are resolved, which are outstanding, and which are past due. At project level this view is new in V4; it was previously only available within individual workspaces.</p>
+
+  <h3>Updated PPC calculation</h3>
+  <p>The way PPC is calculated has changed in V4. In V3, a task that spanned multiple weeks contributed to the PPC score for each of those weeks — completing a five-week task improved PPC across five separate week buckets. In V4, a task contributes to PPC only in the week it is completed. This gives a more accurate picture of week-by-week plan reliability. Additionally, future tasks are excluded from PPC calculations — if a selected date range extends into the future, only completed weeks contribute to the score. A date range set entirely in the future will show PPC as not applicable.</p>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>Live data</strong> — V3 project insights showed the last synced state, which could be hours or days out of date. V4 insights reflect the current state of all tasks in real time</li>
+    <li><strong>One unified component</strong> — V3 had two separate reporting components for workspace and project level, with different capabilities. V4 uses one shared component in both contexts</li>
+    <li><strong>WWP and Constraint Log at project level</strong> — both views were previously only available inside individual workspaces. In V4 they are available at the project level</li>
+    <li><strong>Separate date ranges per chart</strong> — in V3, a single date filter applied to all charts, making it awkward to view PPC history and upcoming task status at the same time. Each chart now has its own independent date range</li>
+    <li><strong>Redesigned chart layout</strong> — the chart view now shows a KPI section with summary tiles at the top, followed by scrollable full-width charts. Charts and the task list are separate views rather than combined in one panel</li>
+    <li><strong>Filters moved to the left panel</strong> — creates room for label category filtering which was not previously possible. Filters persist across all four views when switching between them</li>
+    <li><strong>Expanded WWP grouping and sorting</strong> — in V3, the WWP could only group by team or swimlane and always sorted by start date. In V4, grouping options include team, status, and any label category. Sorting is flexible across start date, due date, status, team, and title</li>
+    <li><strong>Updated PPC calculation</strong> — tasks now contribute to PPC only in the week they are completed, not across all weeks they span</li>
+    <li><strong>Export options</strong> — CSV and PDF export from the task list are coming soon</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — Getting the project-wide weekly picture in seconds</div><p>On a large project, getting the current week's WWP used to mean opening each workspace individually, waiting for it to load, navigating to the right plan, opening the WWP panel, and applying the correct filters — around two minutes per workspace. In V4, a project manager opens Project Insights from the project dashboard and the current week's tasks are already there, already live, across all workspaces at once. For a team whose tasks are spread across multiple workspaces, that's a single view that would have previously required opening every workspace separately.</p></div>
+  <div class="example"><div class="example-title">Example 2 — A clearer picture without constant filter changes</div><p>The chart view shows multiple charts visible at the same time in a scrollable layout — meaning a lean lead can see the PPC score, the variance reason distribution, and the total task count side by side, giving immediate context. A high number of variances reads differently when you can see it alongside how many tasks were committed that week. Each chart also has its own independent date range: the PPC trend is set to look back over completed weeks only, while the status chart looks forward over upcoming work — both visible at once, with no filter changes required between them.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Why is the data in V4 Insights always up to date when V3 wasn't?</div><div class="faq-a">In V3, task data was stored inside workspace documents. Showing it in project-level reports required a separate sync operation to extract and push that data into a reporting database — and that sync had to be triggered manually. In V4, task data lives in the central project database from the moment it is created or changed, so Insights reads directly from that database with no sync step needed.</div></div>
+  <div class="faq-item"><div class="faq-q">What is PPC and why does it matter?</div><div class="faq-a">PPC stands for Percent Plan Complete. It measures what percentage of tasks that were committed for a given week were actually completed as planned. It is the core metric of the Last Planner System — a widely used construction planning methodology — and gives teams a reliable signal of how well their planning commitments are being met over time.</div></div>
+  <div class="faq-item"><div class="faq-q">Why does my PPC look different from V3?</div><div class="faq-a">The calculation has changed. In V3, a multi-week task contributed to PPC across every week it spanned. In V4, a task contributes only in the week it is completed. This gives a more accurate week-by-week view of plan reliability but will produce different numbers for the same historical data.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I see insights for one workspace only?</div><div class="faq-a">Yes. At the project level, you can filter by workspace to scope all views down to a single workspace. Inside a workspace, the workspace filter is pre-applied automatically.</div></div>
+
+  <div class="section-nav">
+    <a href="#plan-visualization"><span class="nav-dir">← Previous</span><span class="nav-title">Plan Visualization</span></a>
+    <a class="next" href="#bulk-import"><span class="nav-dir">Next →</span><span class="nav-title">Bulk Import &amp; Workspace Sync</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 7. BULK IMPORT -->
+<section class="doc-section" id="bulk-import">
+  <div class="section-eyebrow">Guide 7</div>
+  <h1>Bulk Import &amp; Workspace Sync</h1>
+
+  <p class="intro-para">A properly configured V4 workspace draws entirely from the project database — tasks, milestones, and constraints are all live, and there is no workspace-local task data at all. Getting to that state requires two things: making sure existing data has been uploaded to the project database, and making sure the workspace is populated with the task shells you need.</p>
+
+  <p>For teams starting fresh in V4, this happens naturally — create tasks directly on the workspace and they go straight into the project database. For teams migrating from V3, there is a process to upload existing workspace data to the project and then bring it back onto the workspace as live task shells.</p>
+  <p>This canvas covers the tools Hoylu provides for both: upgrading V3 workspace data to the project database, and the options available for importing project tasks onto a workspace — whether the tasks were created natively in V4 or migrated from V3.</p>
+
+  <h2>The problem it solves</h2>
+  <p>As soon as a project has more than one workspace, data consistency becomes a challenge. Teams, labels, and variance reasons are defined per workspace in V3 — which means the "Electrician" team in workspace 1 and the "Electrician" team in workspace 2 may look the same but are entirely separate records. When task data from both workspaces is uploaded to the project database, the system needs to know whether these are the same team or two different ones. If they are the same, tasks from both workspaces should roll up into the same team in reporting. If they are different, they should stay separate.</p>
+  <p>The same problem applies to labels and variance reasons. Without a way to resolve these conflicts explicitly, cross-workspace reporting would silently produce misleading results — showing the same work under multiple teams or labels rather than aggregating it correctly.</p>
+  <p>The sync wizard makes this explicit. Before task data is uploaded, shared elements are compared and any conflicts are surfaced for the user to resolve. Only after that decision is made does the task data upload proceed — ensuring the project database has a clean, consistent foundation for reporting.</p>
+  <p>The import and create plan operations address the inverse problem: once data is in the project database, planners need a way to pull relevant subsets of it back onto a workspace without loading everything at once.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Sync</span> — The process of uploading workspace-level data (teams, labels, variance reasons, tasks, and connections) to the project database. Runs in three phases with explicit conflict resolution for shared elements.</div>
+    <div class="concept-item"><span class="term">Conflict</span> — A mismatch between a workspace record and a project record with the same name but different properties — for example, a team with a different color, or a label in a different category. Resolved by choosing which version to keep, or keeping both with a unique name for one of them.</div>
+    <div class="concept-item"><span class="term">Import</span> — Selecting tasks from the project database and placing their shells on the current workspace, filtered by team, label, date range, or other criteria.</div>
+    <div class="concept-item"><span class="term">Create plan from project tasks</span> — A one-step operation that generates a new plan with task shells placed automatically based on a chosen date range and swimlane structure.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>Sync local data with project</h3>
+  <p>The sync wizard runs in three phases, each requiring confirmation before proceeding.</p>
+  <p><strong>Phase 1 — Shared elements.</strong> Teams, label categories, labels, and variance reasons are compared between the workspace and the project database. Where there is a clean match, the data is merged automatically. Where a conflict is detected — for example, a team with the same name but a different color, or a label assigned to a different category — a conflict resolution screen is shown. For each conflict, you can choose to keep the workspace version, keep the project version, or keep both (in which case you must provide a unique name for one of them). Calendar data is also converted and uploaded in this phase.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Conflict%20resolution.png" alt="Conflict resolution illustration" />
+  </div>
+
+  <p><strong>Phase 2 — Task data.</strong> Task records are uploaded to the project database with their dates, status, team assignments, labels, and other fields. Each task is registered as a project-level record. The sync does not automatically replace the classic tasks on the workspace with live task shells — after syncing, you bring live tasks onto the workspace by importing them or using the Create plan from project tasks option.</p>
+  <p><strong>Phase 3 — Task relations.</strong> Dependency connections between tasks are uploaded as project-level connection records.</p>
+  <p>Conflict resolution can appear on any sync run — not just the first. If data has drifted between workspace and project since a previous sync, new conflicts will be shown.</p>
+  <p>The sync menu item may be hidden automatically when there is nothing left to sync. <em>(Feasibility to be confirmed)</em></p>
+
+  <h3>Import live elements from project</h3>
+  <p>The import dialog lets you bring task shells from the project database onto the current workspace. You can filter by team, label category, status, and date range to narrow down which tasks to import. Selected tasks are placed on the workspace as shells — not copies, but references to the same underlying project records. Milestones and constraints can be imported alongside tasks.</p>
+  <p>This is the day-to-day tool for curating workspace content — adding tasks for a specific team, pulling in an upcoming date range, or creating a focused view for a particular planning session.</p>
+
+  <h3>Create plan from project tasks</h3>
+  <p>The create plan option generates a new plan on the workspace in one step. You choose an optional date range and a swimlane structure — for example by label category or by team — and the plan is created with task shells placed automatically based on their dates and the grouping you selected. This is a faster alternative to importing tasks manually and then creating and configuring a plan separately.</p>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>Workspace data can now be uploaded to the project</strong> — in V3, teams, labels, and variance reasons were workspace-local and could not be shared or aligned across workspaces. The sync wizard promotes these to the project level with explicit conflict resolution</li>
+    <li><strong>Cross-workspace consistency is now explicit</strong> — when the same team or label exists in multiple workspaces under slightly different names or colors, the conflict is surfaced and resolved before task data is uploaded. This ensures reporting is accurate rather than silently duplicating records</li>
+    <li><strong>Selective import replaces manual duplication</strong> — in V3, getting tasks from one workspace into another required duplicating them manually. The import dialog lets you pull any subset of project tasks into a workspace as shells</li>
+    <li><strong>Create plan from project tasks is new</strong> — there was no equivalent in V3. A complete plan with task shells can be generated automatically from existing project data in one step</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — Setting up a focused 6-week look-ahead from existing project data</div><p>A superintendent has just finished migrating three V3 workspaces to V4. All task data is now in the project database. Rather than manually recreating a look-ahead workspace, they use "Create plan from project tasks" — selecting a 6-week date range and choosing to organise by team. The plan is generated in one step with swimlanes for each trade and all relevant tasks placed automatically at their correct dates. What would have taken twenty minutes of manual importing and configuring takes about thirty seconds.</p></div>
+  <div class="example"><div class="example-title">Example 2 — A temporary workspace for a focused planning session</div><p>A lean lead is running a pull planning session for a single trade covering the next six weeks. Rather than opening the full phase plan with hundreds of tasks from all trades, they create a new workspace, open the import dialog, and filter by team and date range — pulling in only the concrete crew's tasks for the relevant period. The session stays focused, the workspace stays clean, and when the session is done the workspace can be discarded. The tasks themselves remain in the project database, unaffected.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Do I need to sync every workspace separately?</div><div class="faq-a">Yes. The sync runs per workspace — each workspace goes through the wizard individually since each may have different data and different conflicts to resolve.</div></div>
+  <div class="faq-item"><div class="faq-q">What happens if I sync the same workspace twice?</div><div class="faq-a">The sync can be run again at any time. Any data already in sync passes through without action. If data has drifted since the last sync, new conflicts will be shown for resolution.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between Import and Create plan from project tasks?</div><div class="faq-a">Both bring task shells onto the workspace. Import gives full control over which tasks to select and places them freely. Create plan from project tasks is faster and more structured — it generates a ready-to-use plan layout automatically based on a date range and optionally by team or label category.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I import milestones and constraints as well as tasks?</div><div class="faq-a">Yes. Milestones and constraints can be imported alongside tasks through the import dialog.</div></div>
+  <div class="faq-item"><div class="faq-q">Will I always see the sync option in the menu?</div><div class="faq-a">The intent is to hide it automatically when there is nothing left to sync. Whether this is feasible as a lightweight check is still being confirmed.</div></div>
+
+  <div class="section-nav">
+    <a href="#project-insights"><span class="nav-dir">← Previous</span><span class="nav-title">Project Insights</span></a>
+    <a class="next" href="#project-control-center"><span class="nav-dir">Next →</span><span class="nav-title">Project Control Center &amp; Labels</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 8. PROJECT CONTROL CENTER -->
+<section class="doc-section" id="project-control-center">
+  <div class="section-eyebrow">Guide 8</div>
+  <h1>Project Control Center &amp; Labels</h1>
+
+  <p class="intro-para">The Project Control Center is a dedicated settings panel for project-level configuration in V4. It sits alongside the existing workspace Control Center and contains the settings that apply across the entire project — labels, teams, variance reasons, and calendars. Changes made in the Project Control Center are immediately available in every workspace that belongs to the project.</p>
+
+  <h2>The problem it solves</h2>
+  <p>The V3 Control Center was well-regarded — it covered workspace settings in a clear, consistent panel and users navigated it comfortably. The challenge in V4 was not that the CC was broken, but that the introduction of the central task database changed the nature of some settings. Teams, labels, and variance reasons that were previously workspace-local now need to apply across the whole project. Keeping them in the workspace CC would have obscured that distinction — a change to a team in one workspace would affect all workspaces, with no visual indication that the scope had changed.</p>
+  <p>The solution was to create a separate Project Control Center with its own visual identity — using the project's name, icon, and color — to make the scope immediately clear. The workspace CC remains unchanged for workspace-specific settings. The Project CC sits alongside it for anything that belongs to the project.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Project Control Center</span> — A dedicated settings panel for project-level configuration. Displays the project's visual identity and contains settings that apply across all workspaces in the project.</div>
+    <div class="concept-item"><span class="term">Project label</span> — A label stored in the project database, available for assignment on any workspace element across all workspaces — including notes and shapes. Distinct from a workspace label, which is local to a single workspace and can no longer be assigned to new elements once V4 has been enabled for a project.</div>
+    <div class="concept-item"><span class="term">Label category</span> — A named grouping of related labels. Categories drive grouping in the Weekly Work Plan, reporting filters, and future swimlane assignment in plans.</div>
+    <div class="concept-item"><span class="term">Project team</span> — A team defined at the project level, assignable to live tasks. Distinct from a workspace team, which applies only to classic tasks.</div>
+    <div class="concept-item"><span class="term">Variance reason</span> — A project-level explanation for why a committed task was not completed as planned. Defined in the Project CC and used in the task editor and in <a href="#project-insights">Project Insights</a> reporting.</div>
+    <div class="concept-item"><span class="term">Workspace label upgrade</span> — The process of converting workspace-only labels to project labels, triggered via the "upgrade workspace labels" button. Runs a label-only sync to the project database.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>Opening the Project Control Center</h3>
+  <p>The Project Control Center opens as a separate panel alongside the workspace CC. It displays the project's name, icon, and color gradient at the top — the same visual identity used in the permissions panel and the project dashboard — making it immediately clear which project's settings you are editing.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Project%20Control%20Center.png" alt="Project Control Center" />
+  </div>
+
+  <h3>Labels</h3>
+  <p>The Labels section in the Project CC is where project-level labels and label categories are managed. Labels created here are available for assignment across all workspaces in the project — on live tasks, milestones, constraints, and also on workspace elements like notes and shapes. Unlike teams, variance reasons, and calendars which only apply to live tasks, a project label can be assigned to any workspace element regardless of whether it is connected to the project database.</p>
+  <p>Labels are organised into categories. Each category groups a set of related labels — for example an "Area" category for different site zones, or a "Phase" category for project phases. Label categories drive grouping in the Weekly Work Plan view, reporting filters, and will eventually drive swimlane assignment in plans.</p>
+
+  <h3>Workspace labels during migration</h3>
+  <p>During migration from V3 to V4, a workspace may still have workspace-level labels that have not yet been promoted to project labels. These appear semi-transparent in the label assignment dialog and on elements — still visible but no longer assignable to new elements. An <strong>"upgrade workspace labels"</strong> button appears in both the label assignment dialog and the workspace CC, triggering a label-only sync that converts matching workspace labels to project labels. Once workspace and project labels are fully in sync, the workspace label section is hidden.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Labels%20-%20Upgrade%20workspace%20labels.png" alt="Upgrade workspace labels" />
+  </div>
+
+  <h3>Teams</h3>
+  <p>The Teams section in the Project CC is where project-level teams are defined — the teams that can be assigned to live tasks. Each team has a name, a color, and optionally a calendar. Teams defined here appear in the task editor, in the import dialog, and in project-level reporting. The workspace CC retains its own teams section for classic tasks.</p>
+
+  <h3>Variance Reasons</h3>
+  <p>Variance reasons are the standardised explanations for why a committed task was not completed as planned. The Project CC is where the project's variance reason list is defined — the same list that appears in the task editor's General page when a task is marked incomplete, and that drives the Variance Reason distribution chart in Project Insights. The workspace CC retains its own variance reasons section for classic tasks.</p>
+
+  <h3>Calendars</h3>
+  <p>The Calendars section is only available in the Project CC — there is no workspace-level equivalent. This is where project calendars are created, named, and configured with working days and exceptions. The full calendar model is described in the <a href="#calendars">Calendars guide</a>.</p>
+
+  <h3>User Assignments <span class="badge-coming">Coming soon</span></h3>
+  <p>User assignment management is currently handled at the workspace level. A project-level user assignment section in the Project CC is planned for a future release.</p>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>Project settings now have their own panel</strong> — in V3, all settings lived in one workspace CC. V4 introduces a separate Project CC with its own visual identity, making the scope of each setting immediately clear</li>
+    <li><strong>Settings defined once, applied everywhere</strong> — teams, labels, variance reasons, and calendars defined in the Project CC are available across all workspaces in the project. In V3, these were configured per workspace</li>
+    <li><strong>Label categories are now a first-class concept</strong> — labels can be organised into named categories that drive reporting, grouping in the WWP, and future swimlane assignment. This was not possible in V3</li>
+    <li><strong>Calendars are project-level only</strong> — the workspace-level calendar settings from V3 (in Timeline Settings) have been replaced by project-level calendars managed entirely in the Project CC</li>
+    <li><strong>Workspace labels are being phased out</strong> — workspace-only labels appear semi-transparent and can no longer be assigned to new elements. An upgrade path converts them to project labels</li>
+    <li><strong>User Assignments at project level</strong> — coming soon. Currently still managed at workspace level</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — Configure once, available everywhere</div><p>When a project admin at a GC sets up a new project, they define their teams, variance reasons, and labels once in the Project Control Center. Every workspace added to the project — whether created on day one or six months later — automatically has access to the same configuration. If a new trade is brought on mid-project, the admin adds the team once and it appears in the task editor and reporting across all workspaces immediately. No per-workspace updates needed.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Seeding a new project from an organisational template</div><p>A best practice for organisations running multiple projects is to maintain a template workspace containing the standard set of teams, labels, and variance reasons used across all their projects. When a new project starts, the template workspace is added to the project and synced once — seeding the project database with those values and making them available across all workspaces straight away. The template can be otherwise empty, or contain standard whiteboard content like a site plan layout or a 7P checklist. Calendars are the one exception: because they exist only at the project level, they need to be configured directly in the Project Control Center after the initial sync.</p></div>
+  <div class="example"><div class="example-title">Example 3 — Using label categories to slice the plan by area</div><p>A lean lead sets up an "Area" label category in the Project Control Center with labels for each building zone — Structure, MEP, Finishes, Exterior. Because these are project-level labels, they are immediately available for assignment in every workspace. In the Weekly Work Plan, tasks can be grouped by area label, giving the superintendent a view of the week's work organised by where it happens — not just which trade is doing it. The same labels drive filtering in Project Insights, so the PM can pull a PPC trend for a specific zone across the full project duration.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">What is the difference between the workspace CC and the Project CC?</div><div class="faq-a">The workspace CC contains settings specific to a single workspace — page layout, toolbar configuration, connection styles. The Project CC contains settings that apply across the entire project and all its workspaces — labels, teams, variance reasons, and calendars. If a change should affect all workspaces, it belongs in the Project CC.</div></div>
+  <div class="faq-item"><div class="faq-q">Why do some of my labels appear faded?</div><div class="faq-a">Labels that appear semi-transparent are workspace-only labels that have not yet been promoted to project labels. They are still visible on existing elements but can no longer be assigned to new ones. Use the "upgrade workspace labels" button in the label assignment dialog to convert them.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I still use the teams I set up in V3?</div><div class="faq-a">Yes. Workspace teams continue to work for classic tasks. For live tasks, you will need to set up teams in the Project CC. After a workspace sync, workspace and project teams are initially aligned but can drift independently if changes are made to either.</div></div>
+  <div class="faq-item"><div class="faq-q">What happened to the Timeline Settings from V3?</div><div class="faq-a">The calendar settings that were in Timeline Settings — default work days and day-specific exceptions — have been replaced by the Calendars section in the Project CC. See the <a href="#calendars">Calendars guide</a> for a full description.</div></div>
+
+  <div class="section-nav">
+    <a href="#bulk-import"><span class="nav-dir">← Previous</span><span class="nav-title">Bulk Import &amp; Workspace Sync</span></a>
+    <a class="next" href="#calendars"><span class="nav-dir">Next →</span><span class="nav-title">Calendars</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 9. CALENDARS -->
+<section class="doc-section" id="calendars">
+  <div class="section-eyebrow">Guide 9</div>
+  <h1>Calendars</h1>
+
+  <p class="intro-para">Calendars define which days are working days for the purpose of calculating task dates and durations. In V4, calendars are project-level objects stored in the central task database. Multiple calendars can exist within the same project, and each task can be assigned its own calendar — so different tasks in the same plan can follow different working day rules simultaneously.</p>
+
+  <h2>The problem it solves</h2>
+  <p>In V3, calendar settings were part of the plan configuration. A workspace had one set of default working days — defined in the Timeline Settings — and individual days on the plan timeline could be manually overridden to mark working days as holidays or non-working days as working. All tasks in the workspace shared these settings.</p>
+  <p>The only per-task calendar control was a toggle on each task: "skip weekends and holidays." When on — the default — a task respected the workspace's non-working days in its date calculations. When off, the task ignored all non-working days and ran across all seven days. There was no way to assign genuinely different working patterns to different tasks or teams within the same workspace — a concrete problem for projects involving trades with different working week structures, or teams operating across different public holiday calendars.</p>
+  <p>If "skip weekends and holidays" was on and a task started on a non-working day, a warning appeared on the task. Resolving that warning required either adjusting the task's start date or toggling the setting — there was no finer control available.</p>
+  <p>The other limitation was that the single workspace calendar also drove the plan visualization — off-days were shown as shaded columns on the plan itself, which worked when all tasks shared the same calendar but became misleading as soon as tasks needed different working day rules.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Calendar</span> — A project-level object that defines working days and exceptions. Used to calculate task dates and durations and to determine how off-days are visualized on task shells.</div>
+    <div class="concept-item"><span class="term">Default working days</span> — The day-of-week pattern for a calendar, defined as a set of enabled days (e.g. Monday through Friday). Applied to all dates unless overridden by an exception.</div>
+    <div class="concept-item"><span class="term">Calendar exception</span> — A date-specific override within a calendar. A working day can be marked as a day off (e.g. a public holiday), or a non-working day can be marked as working (e.g. a scheduled Saturday shift).</div>
+    <div class="concept-item"><span class="term">Calendar hierarchy</span> — The order in which calendars are resolved for a task: task calendar → team calendar → default calendar → project fallback calendar. The first level with a calendar defined wins.</div>
+    <div class="concept-item"><span class="term">Project fallback calendar</span> — A Monday–Friday, five-day working week calendar that is always present in every project. It is not visible in the calendar list and cannot be edited. It applies to any task that has no calendar defined at any other level. If a project requires a different default pattern, a new calendar must be created and set as the project default.</div>
+    <div class="concept-item"><span class="term">Team calendar</span> — A calendar assigned to a team in the <a href="#project-control-center">Project Control Center</a>. Applies to all tasks belonging to that team unless a task has its own calendar.</div>
+  </div>
+
+  <h2>How it works</h2>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Project%20Control%20Center%20-%20Calendar.png" alt="Project Control Center calendar section" />
+  </div>
+
+  <h3>The calendar hierarchy</h3>
+  <p>In V4, each task resolves its working day rules through a four-level hierarchy. The first level that has a calendar defined wins:</p>
+  <ol>
+    <li><strong>Task calendar</strong> — a calendar assigned directly to an individual task. Overrides everything else</li>
+    <li><strong>Team calendar</strong> — a calendar assigned to the team the task belongs to. Applies to all tasks for that team unless a task has its own calendar</li>
+    <li><strong>Default calendar</strong> — a project-level calendar set as the default. Applies to any task or team without a more specific calendar</li>
+    <li><strong>Project fallback calendar</strong> — a Monday–Friday, five-day working week calendar that is always present in every project. It is not visible in the calendar list and cannot be edited. It applies when nothing else is set. If a project requires a different default pattern, a new calendar must be created and set as the project default</li>
+  </ol>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Calendar%20-%20Default.png" alt="Calendar default setting" />
+  </div>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Calendar%20-%20Make%20Default.png" alt="Make calendar default" />
+  </div>
+
+  <h3>Creating and managing calendars</h3>
+  <p>Calendars are created and managed in the Project Control Center. Each calendar has a name, a set of default working days defined by day of week, and a list of date-specific exceptions — days that override the default pattern in either direction. A working day can be marked as a day off, and a non-working day can be marked as a working day. Calendars created in the Control Center are available for assignment across the entire project.</p>
+
+  <h3>Assigning calendars</h3>
+  <p>A calendar can be assigned at three levels:</p>
+  <ul>
+    <li><strong>Project default</strong> — in the Project Control Center, setting a calendar as the default applies it to all tasks and teams that don't have a more specific assignment</li>
+    <li><strong>Team</strong> — in the team settings within the Control Center, a calendar can be selected for a specific team. Changing a team's calendar updates the working day rules for all tasks assigned to that team that don't have their own task-level calendar override</li>
+    <li><strong>Individual task</strong> — in the task editor on the General page, a calendar can be assigned directly to a task using the calendar picker</li>
+  </ul>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Team%20Editor%20-%20Set%20Calendar.png" alt="Team editor set calendar" />
+  </div>
+
+  <h3>How off-days are visualized</h3>
+  <p>Off-days are no longer shown as shaded columns on the plan. Instead, each task shell is responsible for visualizing its own non-working days — days within a task's duration that are non-working are shown with a hatched overlay directly on the shell. This is what makes it possible for tasks with different calendars to coexist in the same plan without visual conflicts. A full description of this visualization is covered in the <a href="#task-visualization">Task Visualization guide</a>.</p>
+
+  <div class="doc-image">
+    <img src="https://github.com/hoylu/Hoylu-Documentation/blob/main/images/Task%20Shell%20-%20Different%20Calendars.png?raw=true" alt="Task shells with different calendars" />
+  </div>
+
+  <h3>Migrating calendars from V3</h3>
+  <p>When a V3 workspace is synced to V4, calendar data is preserved and converted automatically. The sync creates one calendar per workspace based on that workspace's default working days and any day-specific exceptions from the plan timeline. A single seven-day calendar — with all days marked as working and no exceptions — is also created once per project and shared across all workspaces that need it.</p>
+  <p>How tasks are assigned during sync depends on their V3 setting:</p>
+  <ul>
+    <li>Tasks with "skip weekends and holidays" set to <strong>on</strong> are assigned the workspace calendar, including any day-specific exceptions from the original plan timeline</li>
+    <li>Tasks with "skip weekends and holidays" set to <strong>off</strong> are assigned the seven-day calendar, so they continue running across all days without restriction</li>
+  </ul>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>Project-level calendars, not workspace-level</strong> — in V3, calendar settings were part of the plan configuration and applied to everything in the workspace. In V4, calendars are project-level objects that can be defined once and shared across all workspaces</li>
+    <li><strong>Multiple calendars per project</strong> — different tasks and teams can follow different working day rules simultaneously within the same plan. This was not possible in V3</li>
+    <li><strong>Calendar hierarchy replaces the per-task toggle</strong> — the "skip weekends and holidays" toggle on each task is replaced by the calendar hierarchy. Assigning a seven-day calendar to a task achieves the same effect as the old toggle-off, while team and project calendars provide structured control that the toggle never offered</li>
+    <li><strong>Off-days visualized on the task shell, not the plan</strong> — in V3, non-working days were shown as shaded columns on the plan timeline, driven by the single workspace calendar. In V4, each task shell shows its own off-days based on its assigned calendar</li>
+    <li><strong>Calendar data preserved on V3 migration</strong> — the workspace sync converts V3 calendar settings into proper V4 calendar objects and assigns them to tasks based on their original "skip weekends and holidays" setting</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — Mixed working weeks in a single plan</div><p>A project has two active trades working simultaneously — a concrete crew on a six-day week including Saturdays, and a finishing trade on a standard five-day week. In V4, each team is assigned its own calendar in the Project Control Center. Both teams' tasks sit in the same plan, but date calculations and off-day visualisation are handled independently — the concrete crew's tasks don't show Saturdays as non-working days, while the finishing trade's tasks do. No workarounds, no toggling per task.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Switching to a six-day week for a single task</div><p>A trade is running behind on a task with a fixed end date that cannot move. Rather than replanning around it, the superintendent and foreman agree to work the coming Saturday to make up the time. A six-day calendar is assigned directly to that task in the task editor — overriding the team's default five-day calendar for that task only. The task's duration is recalculated accordingly and the Saturday shift is reflected in the plan. The rest of the team's tasks are unaffected.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">What happens to my existing calendar settings when I migrate from V3?</div><div class="faq-a">The sync process converts your workspace calendar settings into V4 calendar objects automatically. Tasks that had "skip weekends and holidays" turned on are assigned a calendar matching your V3 working day pattern, including any day-specific exceptions. Tasks that had it turned off are assigned a seven-day calendar so they continue running across all days.</div></div>
+  <div class="faq-item"><div class="faq-q">Can different teams in the same project have different working weeks?</div><div class="faq-a">Yes. Each team can be assigned its own calendar in the Project Control Center. Tasks assigned to that team will use its calendar for date calculations and off-day visualization, even when they appear alongside tasks from other teams in the same plan.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I still mark individual public holidays?</div><div class="faq-a">Yes. Calendar exceptions let you mark specific dates as non-working within any calendar — for example, to add a public holiday that falls on a normally working day. Exceptions can also work in reverse, marking a non-working day as working for a specific date.</div></div>
+  <div class="faq-item"><div class="faq-q">Why do some tasks show hatched days on the plan and others don't?</div><div class="faq-a">The hatched overlay on a task shell indicates non-working days within that task's duration, based on its assigned calendar. Tasks with a seven-day calendar will show no hatching. Tasks with a five-day working week calendar will show hatching on weekends. If different tasks have different calendars, their hatching patterns will differ accordingly.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the project fallback calendar?</div><div class="faq-a">Every project has a built-in Monday–Friday calendar that applies automatically to any task that has no other calendar assigned. It is not visible in the calendar list and cannot be edited. If your project requires a different default — for example, a six-day working week — create a new calendar and set it as the project default in the Project Control Center.</div></div>
+
+  <div class="section-nav">
+    <a href="#project-control-center"><span class="nav-dir">← Previous</span><span class="nav-title">Project Control Center &amp; Labels</span></a>
+    <a class="next" href="#permissions"><span class="nav-dir">Next →</span><span class="nav-title">Permissions</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 10. PERMISSIONS -->
+<section class="doc-section" id="permissions">
+  <div class="section-eyebrow">Guide 10</div>
+  <h1>Permissions</h1>
+
+  <p class="intro-para">Project permissions control who can access a Hoylu project and what they can do within it. In V4, access is managed at the project level — not per workspace. Every user in a project has a project role that acts as a ceiling for what they can do in any workspace within that project. Workspace-level access can be adjusted within that ceiling, but never above it.</p>
+
+  <h2>The problem it solves</h2>
+  <p>In V3, managing permissions at the workspace level was a natural fit — data lived in workspaces, so controlling access per workspace controlled what users could affect.</p>
+  <p>V4 changes the underlying reality. Task data now lives at the project level. A task shell in one workspace is the same record as a shell in any other workspace — editing it anywhere affects it everywhere, including workspaces the editor may not explicitly have access to. Workspace-level permissions alone can no longer contain the scope of what a user can change.</p>
+  <p>There is also a practical UX problem. In a V4 workspace, live tasks and workspace-only elements like notes sit side by side in the same workspace. Without a consistent project-level permission model, the rules for what a user can edit become incoherent — why can you edit a note but not the task next to it? The answer V4 takes is to make project access the single controlling factor: if you have project write access, you can edit elements in a project workspace. If you are a project viewer, you cannot edit anything — live tasks or workspace-only elements. A workspace can still be locked down for presentation or reference purposes, but that is a deliberate workspace-level configuration applied on top of the project permission model, not a separate permission system.</p>
+  <p>This required building a clear, consistent project-level permission model — one where every user's access level is defined at the project and applied consistently across all workspaces within it.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Project role</span> — The access level a user holds across the entire project. One of: Project Admin, Project Contributor, or Project Viewer. Acts as a ceiling for workspace access.</div>
+    <div class="concept-item"><span class="term">Project Admin</span> — The highest project role. Can manage project membership, add and remove workspaces, and automatically has Admin access on every project workspace.</div>
+    <div class="concept-item"><span class="term">Project Contributor</span> — A project member who can work within workspaces but cannot manage project membership. Workspace access can be set to Admin, Editor, or Viewer.</div>
+    <div class="concept-item"><span class="term">Project Viewer</span> — A project member with read-only access. Can only be granted Viewer access on workspaces.</div>
+    <div class="concept-item"><span class="term">Workspace Admin</span> — A workspace-level role that allows configuration of workspace settings, tools, and layout. User management has moved to the project level — Workspace Admins can no longer invite or remove users.</div>
+    <div class="concept-item"><span class="term">Public sharing</span> — A workspace setting that controls whether non-project members can access a workspace via a direct link. When enabled, users who open the link are automatically added to the project with a chosen role.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>Project roles</h3>
+  <p>Every user in a project has one of three project roles. These roles act as a ceiling — workspace access can be set below this level but never above it.</p>
+  <p><strong>Project Admin</strong> — can add and remove users and workspaces from the project, and automatically has Admin access on every workspace in the project.</p>
+  <p><strong>Project Contributor</strong> — cannot manage project membership or workspaces, but can be granted Admin, Editor, or Viewer access on individual workspaces.</p>
+  <p><strong>Project Viewer</strong> — cannot manage project membership or workspaces, and can only be granted Viewer access on individual workspaces. Editor or Admin workspace access is not available to Project Viewers.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Permissions.png" alt="Permissions illustration" />
+  </div>
+
+  <h3>Workspace access</h3>
+  <p>Within a project, each workspace can have its own access level set for individual users — but always within the bounds of their project role. A Project Contributor can be given Admin, Editor, or Viewer access on a specific workspace. A Project Viewer can only ever have Viewer access, regardless of what workspace settings say.</p>
+  <p>Workspace Admins retain the same capabilities as before — configuring plan settings, showing and hiding tools, locking elements, and managing how a workspace is set up. What has changed is that Workspace Admins can no longer invite or remove users. User management is now exclusively a project-level action, and only a Project Admin can grant Workspace Admin access — and only to users who are at least Project Contributors.</p>
+
+  <h3>The sharing dialog</h3>
+  <p>The workspace sharing dialog has been updated to reflect the project-centric model. It displays the project name and color at the top, shows all project members alongside their project role, and supports sorting and searching to make it easier to find the right person in larger teams. Adding users is now handled entirely through the project rather than per workspace.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Permissions%20-%20Overview.png" alt="Permissions overview dialog" />
+  </div>
+
+  <h3>Public sharing</h3>
+  <p>Each workspace has a Public Sharing &amp; Default Access setting that controls whether non-project members can access the workspace via a direct link. When enabled, any user who opens the workspace via a link is automatically added to the project with a selected role — either Viewer or Contributor. When disabled, only users already explicitly added to the project can open the workspace, even with a direct link.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Permissions%20-%20Public%20sharing.png" alt="Public sharing setting" />
+  </div>
+
+  <p>When a non-member opens a public sharing-enabled workspace, they are shown a prompt informing them that they will be added to the project and become visible to other project members. They can choose to continue or cancel.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Permissions%20-%20Join%20project%20confirmation.png" alt="Join project confirmation prompt" />
+  </div>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>Access is now managed at the project level</strong> — in V3, permissions were primarily workspace-level. In V4, every user must be a project member with a project role before they can access any workspace in that project</li>
+    <li><strong>Three project roles replace Admin and Basic</strong> — the previous Admin/Basic distinction has been replaced with Project Admin, Project Contributor, and Project Viewer. Each role has a concrete definition of what it allows across all workspaces</li>
+    <li><strong>Project roles act as a ceiling</strong> — workspace access can be configured below a user's project role but never above it. A Project Viewer cannot be granted edit access on any workspace</li>
+    <li><strong>Editing anything requires project write access</strong> — in V4, project access is the single controlling factor for editing. A Project Viewer cannot edit any element in a project workspace — live tasks or workspace-only elements like notes</li>
+    <li><strong>Workspace Admins can no longer manage users</strong> — user management has moved entirely to the project level. Only a Project Admin can add or remove users and grant workspace access</li>
+    <li><strong>The security gap is closed</strong> — in V3, sharing a workspace link could give non-project members access. In V4, non-project members cannot open any workspace even with a direct link unless public sharing is explicitly enabled</li>
+    <li><strong>Public sharing replaces Link Sharing</strong> — the previous Link Sharing setting has been replaced by Public Sharing &amp; Default Access, which includes a transparent opt-in prompt for new members</li>
+    <li><strong>The sharing dialog shows project context</strong> — the redesigned dialog shows project name, color, and all project members alongside their roles, replacing the previous per-workspace user list</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+
+  <p>These are examples of how teams use the new permission model in practice. Each one is independent — you can adopt any of them without the others.</p>
+
+  <div class="example"><div class="example-title">Example 1 — Onboarding a team without manual invitations</div><p>A project admin sets up a new workspace at the start of a project and enables public sharing with the "non-members are added to the project" option set to Contributor. They share the workspace link in an email to all trade partners. As each person opens the link, they are prompted to confirm they are joining the project and are automatically added as Contributors — no manual invitation process, no back and forth. Once the full team is in, the admin disables public sharing. From that point, the project is closed and only explicitly added members can access it.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Giving an owner visibility without operational access</div><p>A GC project admin sets up three workspaces: a high-level milestone workspace, a phase planning workspace, and a weekly work plan workspace. The owner's representative is added to the project as a Project Viewer and given access only to the milestone workspace. They can open it at any time and see live project status — without being able to access the operational planning workspaces, edit anything, or get drawn into day-to-day detail. The GC retains full control over what the owner sees.</p></div>
+  <div class="example"><div class="example-title">Example 3 — A workspace locked for a governance session</div><p>A programme manager prepares a milestone workspace for a monthly steering committee meeting. Before the session, they lock the workspace so that no participant can accidentally move or edit anything during the presentation. Project Viewers in the room can follow along on their own devices, while the PM walks through the live data. After the session, the lock is removed and the team resumes normal planning.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">What happened to my existing access?</div><div class="faq-a">Access has been automatically migrated. Users with write or admin access to project workspaces have been assigned the Contributor role. Users with read-only access have been assigned the Viewer role. No action is needed — the experience inside workspaces remains the same.</div></div>
+  <div class="faq-item"><div class="faq-q">Can a Workspace Admin still manage users?</div><div class="faq-a">No. User management has moved entirely to the project level. Workspace Admins retain all their other capabilities — plan settings, tool visibility, element locking — but adding or removing users now requires Project Admin access.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between a Project Viewer and a Workspace Viewer?</div><div class="faq-a">A Project Viewer is a project-level role that limits a user to read-only access across all workspaces in the project. A Workspace Viewer is the access level set for a specific workspace. A Project Contributor can be set as a Workspace Viewer on one workspace and a Workspace Editor on another. A Project Viewer can only ever be a Workspace Viewer — the project role acts as a ceiling.</div></div>
+  <div class="faq-item"><div class="faq-q">What happens if someone with a shared link is not a project member?</div><div class="faq-a">If public sharing is disabled on the workspace, they cannot open it — even with a direct link. If public sharing is enabled, they will be shown a prompt informing them that opening the workspace will add them to the project. They can choose to continue or cancel.</div></div>
+  <div class="faq-item"><div class="faq-q">What replaced Link Sharing?</div><div class="faq-a">The Public Sharing &amp; Default Access setting replaces Link Sharing. Workspaces that previously had Link Sharing enabled have been automatically migrated — Link Sharing set to "read" maps to Public Sharing as Viewers, and "edit" maps to Public Sharing as Contributors.</div></div>
+
+  <div class="section-nav">
+    <a href="#calendars"><span class="nav-dir">← Previous</span><span class="nav-title">Calendars</span></a>
+    <a class="next" href="#public-api"><span class="nav-dir">Next →</span><span class="nav-title">Public API &amp; Third-Party Integrations</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 11. PUBLIC API -->
+<section class="doc-section" id="public-api">
+  <div class="section-eyebrow">Guide 11</div>
+  <h1>Public API &amp; Third-Party Integrations</h1>
+
+  <p class="intro-para">The Hoylu Public API gives external systems programmatic read and write access to project data in V4. It is built on the same central task database that powers workspaces, insights, and the mobile app — meaning data read or written through the API is always in sync with what users see in the product. Access is controlled through service tokens, which are created and managed within Hoylu and tied to a specific user's project permissions.</p>
+
+  <h2>The problem it solves</h2>
+  <p>Construction projects generate planning data that needs to flow in multiple directions. Schedulers work in dedicated planning tools. Project managers want live dashboards in reporting platforms. Site teams use specialist tools for safety, procurement, and logistics. In V3, there was no way for any of these systems to read or write Hoylu task data programmatically — the only way to get data in or out was through the product interface or manual exports.</p>
+  <p>The Public API changes this. It makes task, milestone, and constraint data available to any system that can make an HTTP request. A reporting tool can pull live task status to build a dashboard without anyone in Hoylu having to export anything. A scheduling tool can push updates back into the project without users having to re-enter data. Integrations that previously required manual synchronisation can now be automated.</p>
+  <p>Because the API reads from and writes to the central task database, every change made through the API is immediately visible in workspaces, in Insights, and in the mobile app — the same as any change made by a user.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20API.png" alt="API integration illustration" />
+  </div>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Service token</span> — A credential that grants an external system access to the Hoylu API on behalf of a specific user. Inherits that user's project permissions. Can be read-only or read-write. Valid for up to one year and can be revoked at any time.</div>
+    <div class="concept-item"><span class="term">Read token</span> — A service token that allows an external system to query task, milestone, and constraint data. Cannot create or modify records.</div>
+    <div class="concept-item"><span class="term">Write token</span> — A service token that allows an external system to create and update task, milestone, and constraint records. Requires the creating user to have Contributor or higher access.</div>
+    <div class="concept-item"><span class="term">Rate limit</span> — A cap on the number of API requests that can be made within a given time window. Ensures consistent performance across all users and integrations.</div>
+  </div>
+
+  <h2>How it works</h2>
+  <h3>Service tokens</h3>
+  <p>Access to the API is granted through service tokens — long-lived credentials that can be created by any user with project access. A service token inherits the permissions of the user who created it: if that user has read-only access to a project, the token can only read from that project. If the user has write access, the token can also create and update records.</p>
+  <p>Tokens can be created, listed, and revoked through the token management interface. Revoking a token immediately removes its access — it cannot be undone. Each token is scoped to the creating user's permissions, which means access can be managed through the existing project permission model without any additional configuration.</p>
+  <p>Tokens have a maximum validity of one year. Organisation admins can view and revoke all tokens created within their organisation, giving IT teams oversight of third-party integrations.</p>
+
+  <h3>Read access</h3>
+  <p>A read token can retrieve tasks, milestones, and constraints from any project the creating user has access to. Data can be filtered by team, status, label, date range, and other fields — so a reporting integration can pull only the data it needs rather than downloading the full project. A filter by last-modified date is also available, allowing integrations to fetch only records that have changed since their last sync rather than re-downloading everything on every request.</p>
+
+  <h3>Write access</h3>
+  <p>A write token can create new tasks, milestones, and constraints, and update existing ones. This enables integrations where external planning or scheduling tools push data into Hoylu — for example, updating task dates or status after a schedule has been revised in an external tool. Write access requires the creating user to have Contributor or higher project access. All changes made through a write token are attributed to the creating user and appear in the task history like any other edit.</p>
+
+  <h3>Rate limiting</h3>
+  <p>API requests are rate-limited to ensure consistent performance for all users. The limits are set at levels that support regular integration workloads — polling for updates, pushing schedule changes, populating dashboards — without affecting the product experience.</p>
+
+  <h3>What can be integrated</h3>
+  <p>The API is the integration layer for any tool that works with project schedules and task data. Typical use cases include connecting Hoylu to BI and reporting platforms like Power BI, pushing data from master schedule tools, pulling live task status into safety or procurement workflows, and building custom dashboards or visualisations on top of project data.</p>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>V3 had no public API</strong> — there was no way to read or write Hoylu task data programmatically in V3. All data access required using the product interface or manual export</li>
+    <li><strong>Live data, no export required</strong> — because the API reads from the central task database, data is always current. There is no batch export or sync step needed to get an up-to-date picture of project data</li>
+    <li><strong>Both read and write are supported</strong> — the API supports not just reading data out but pushing updates in, enabling two-way integrations with external planning and reporting tools</li>
+    <li><strong>Permission-based access model</strong> — service tokens inherit the creating user's project permissions, meaning no separate permission model is needed for integrations. Revoking a user's project access automatically invalidates their tokens</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — A live Power BI dashboard fed directly from Hoylu</div><p>A VDC director at a GC wants to give senior leadership a programme-level view of PPC trends and milestone health without them having to open Hoylu. They create a read token, connect it to Power BI, and build a dashboard that pulls task status, PPC data, and milestone dates directly from the project database. The dashboard updates automatically whenever data changes in Hoylu — no exports, no manual refreshes, no one having to prepare a report before the Monday morning meeting.</p></div>
+  <div class="example"><div class="example-title">Example 2 — A custom BIM integration that links issues to Hoylu tasks</div><p>A customer builds a lightweight integration between their BIM coordination tool and Hoylu. When an issue is raised in the BIM platform — a clash, an RFI, an unresolved design question — the integration looks up the relevant Hoylu task by ID and uses the API to add a link to the BIM issue directly on that task. Foremen and planners opening the task in Hoylu can navigate straight to the issue in the BIM tool from the Connections page, without having to search for it separately. The connection between the planning record and the coordination issue is maintained automatically as long as the integration runs.</p></div>
+  <div class="example"><div class="example-title">Example 3 — An AI assistant that works with your project data</div><p>The Hoylu API makes it possible to connect project data to AI tools and assistants. A team could build an integration that allows an AI assistant to both read from and write to live project data through natural language. On the read side, the assistant could answer questions like "which tasks are overdue this week?" or "which trades have the most incomplete commitments?" or "draft a status update based on today's PPC" — all without opening Hoylu. On the write side, the same assistant could take action: a foreman arriving on site in the morning asks the assistant for all of their tasks for today, gets a spoken summary, and at the end of the shift simply tells it "mark all of today's tasks as complete" — the assistant updates the task status in Hoylu via the API. The plan stays current without the foreman ever opening the app.</p></div>
+  <div class="callout">This kind of AI integration is at the frontier of how teams are beginning to use the API. The building blocks are there — what gets built on top of them will be shaped by how teams actually want to work.</div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Who can create a service token?</div><div class="faq-a">Any user with access to a Hoylu project can create a service token for that project. The token inherits the user's permissions — a user with read-only access can create read tokens; a user with Contributor access can create write tokens.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I revoke a token if an integration is compromised?</div><div class="faq-a">Tokens can be revoked immediately through the token management interface. Revocation takes effect straight away — the token cannot be used for any further requests. Organisation admins can view and revoke all tokens across the organisation.</div></div>
+  <div class="faq-item"><div class="faq-q">Can the API access data from V3 workspaces?</div><div class="faq-a">No. The API reads from and writes to the central task database, which only contains data from V4 projects. V3 workspaces that have not been synced to a V4 project are not accessible through the API.</div></div>
+  <div class="faq-item"><div class="faq-q">Is the API documented?</div><div class="faq-a">The API is available via a Swagger specification. Contact your Hoylu account team for access details and integration support.</div></div>
+  <div class="faq-item"><div class="faq-q">What reporting tools can connect to the Hoylu API?</div><div class="faq-a">Any tool that supports REST API connections can integrate with Hoylu. Power BI, custom dashboards, and data pipeline tools are among the most common use cases. The API returns standard JSON, making it compatible with most modern integration platforms.</div></div>
+
+  <div class="section-nav">
+    <a href="#permissions"><span class="nav-dir">← Previous</span><span class="nav-title">Permissions</span></a>
+    <a class="next" href="#intro"><span class="nav-dir">↑ Back to top</span><span class="nav-title">Introduction</span></a>
+  </div>
+</section>
+
+</div><!-- end content-area -->
+</main><!-- end main -->
+
+<script>
+// Active nav highlighting on scroll
+const sections = document.querySelectorAll('.doc-section');
+const navLinks = document.querySelectorAll('#sidebar nav a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const id = entry.target.getAttribute('id');
+      const active = document.querySelector(`#sidebar nav a[href="#${id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
