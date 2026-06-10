@@ -488,6 +488,7 @@ nav .nav-num {
     <a href="#calendars"><span class="nav-num">9</span> Calendars</a>
     <a href="#permissions"><span class="nav-num">10</span> Permissions</a>
     <a href="#public-api"><span class="nav-num">11</span> Public API</a>
+    <a href="#xer-import"><span class="nav-num">12</span> XER Import &amp; P6 Integration</a>
   </nav>
 </aside>
 
@@ -520,9 +521,9 @@ nav .nav-num {
   <h2>Key concepts</h2>
   <div class="concept-list">
     <div class="concept-item"><span class="term">Project</span> — The top-level container in V4. Owns the task database, shared settings (teams, labels, calendars, variance reasons), and all workspaces that belong to it.</div>
-    <div class="concept-item"><span class="term">Workspace</span> — A canvas within a project containing a curated set of task shells. Multiple workspaces can exist within the same project, each showing a different view of the same underlying task data.</div>
+    <div class="concept-item"><span class="term">Workspace</span> — A planning view within a project containing a curated set of task shells. Multiple workspaces can exist within the same project, each showing a different view of the same underlying task data.</div>
     <div class="concept-item"><span class="term">Task</span> — A project-level record with a unique identity. Holds all task data — title, dates, duration, team, status, progress, dependencies, and history. Belongs to the project, not to any individual workspace. Tasks in V4 are live — any change is immediately reflected everywhere the task appears.</div>
-    <div class="concept-item"><span class="term">Task shell</span> — The visual representation of a task record on a workspace canvas. The same task can have shells in multiple workspaces simultaneously. Interacting with a shell — editing, updating status, changing dates — always writes to the underlying task record.</div>
+    <div class="concept-item"><span class="term">Task shell</span> — The visual representation of a task record on a workspace. The same task can have shells in multiple workspaces simultaneously. Interacting with a shell — editing, updating status, changing dates — always writes to the underlying task record.</div>
   </div>
 
   <hr>
@@ -546,15 +547,16 @@ nav .nav-num {
 
   <p><strong>A redesigned task visualization.</strong> Tasks on a plan now render as a single continuous element across their full duration — the title appears once and stays readable at any zoom level, instead of being truncated and repeated across weekly segments. The new shell adapts freely to different contexts: resize it on the whiteboard, collapse it to a small square on a floorplan, or read it in a dense overview without losing status or team information. Rendering performance is dramatically improved. <em>A programme plan with phases spanning twelve weeks is now as fast and readable as a single-week task — and tasks stay legible even when zoomed out to see the full project.</em></p>
   <p><strong>Multiple plans per workspace.</strong> In V3, one workspace meant one plan. In V4, you can have as many plans as you need, each covering a different time range, team, or level of detail — all drawing from the same project task database. <em>A superintendent can run a full phase plan and a 6-week look-ahead side by side in the same workspace, both reflecting the same live task data.</em></p>
-  <p><strong>A structured task editor.</strong> The task editor has moved from a single scrolling panel to a multi-page design, with dedicated pages for general details, progress, connections, and history. Dependencies and task history — previously only visible on the canvas — are now accessible from the editor in any context. <em>A foreman checking their tasks in a list view can see upstream dependencies and the full change history for a task without ever opening the plan.</em></p>
+  <p><strong>A structured task editor.</strong> The task editor has moved from a single scrolling panel to a multi-page design, with dedicated pages for general details, progress, connections, and history. Dependencies and task history — previously only visible on the workspace — are now accessible from the editor in any context. <em>A foreman checking their tasks in a list view can see upstream dependencies and the full change history for a task without ever opening the plan.</em></p>
   <p><strong>Hourly planning.</strong> Plans in V4 support a new hour-level zoom, making it possible to plan and coordinate work at a finer granularity than a full day. This is particularly useful for sequencing trades on congested sites where multiple teams are working in the same area across a single day. <em>A site manager coordinating concrete pours, formwork removal, and MEP rough-in on the same floor can lay out each activity by the hour and spot conflicts before crews arrive on site.</em></p>
   <p><strong>Project-level calendars.</strong> Each project can now have multiple calendars. Teams and individual tasks can be assigned their own calendar, so different trades with different working weeks can coexist in the same plan without interference. <em>A concrete crew on a six-day week and a finishing trade on a five-day week can sit in the same plan with correct date calculations and off-day visualisation for each.</em></p>
   <p><strong>A public API.</strong> For the first time, Hoylu exposes a read and write API for project task data. External tools — reporting platforms, scheduling software, BIM integrations — can connect directly to live project data using service tokens, without any manual export or sync step. <em>A Power BI dashboard can pull live PPC and milestone data from Hoylu automatically, giving executives an always-current programme view without anyone having to prepare a report.</em></p>
   <p><strong>Project-level settings.</strong> Teams, label categories, variance reasons, and calendars are now defined once at the project level and apply across all workspaces. A new Project Control Center sits alongside the workspace Control Center, with the project's own visual identity, so the scope of every setting is immediately clear. <em>Adding a new trade team mid-project means one update in the Project Control Center — it appears in every workspace instantly, with no per-workspace configuration needed.</em></p>
+  <p><strong>P6 master schedule integration.</strong> <span class="badge-coming">In development</span> The XER import is being rebuilt on the V4 data model. The full XER file — activities, calendars, WBS hierarchy, activity codes, and UDFs — is imported into the project database, and planners then bring relevant subsets onto a workspace as needed. A dedicated Activity Report in Insights and write-back of actuals to P6 are also part of this workstream. See the <a href="#xer-import">XER Import &amp; P6 Integration guide</a> for full details.</p>
 
   <h2>What this means for your team</h2>
-  <p>V4 delivers meaningful improvements across nearly every area of Hoylu, and teams should upgrade now to benefit from them. Like any ambitious product release, there are specific areas still in progress — master schedule alignment with XER import and the mobile app are the most notable examples, and a handful of interaction models are still being finalized. These are known gaps that are actively being worked on. Hoylu has always been a product that evolves quickly in response to how teams actually use it, and V4 is no exception — it is a strong foundation that will keep getting better.</p>
-  <p>Teams who are actively running multiple workspaces on a single project will see an immediate benefit — cross-workspace reporting, shared settings, and tasks that update live across all views are available from day one. Teams managing large plans with many long-running tasks will notice the performance and readability improvements straight away. And teams with an interest in connecting Hoylu to external reporting or coordination tools now have a clear path via the API that didn't exist before. None of these require master schedule alignment or the mobile app to be in place — they are valuable independently of the known gaps.</p>
+  <p>V4 delivers meaningful improvements across nearly every area of Hoylu, and teams should upgrade now to benefit from them. Like any ambitious product release, there are specific areas still in progress — the <a href="#xer-import">XER Import &amp; P6 Integration</a> and the mobile app are the most notable examples, and a handful of interaction models are still being finalized. These are known gaps that are actively being worked on. Hoylu has always been a product that evolves quickly in response to how teams actually use it, and V4 is no exception — it is a strong foundation that will keep getting better.</p>
+  <p>Teams who are actively running multiple workspaces on a single project will see an immediate benefit — cross-workspace reporting, shared settings, and tasks that update live across all views are available from day one. Teams managing large plans with many long-running tasks will notice the performance and readability improvements straight away. And teams with an interest in connecting Hoylu to external reporting or coordination tools now have a clear path via the API that didn't exist before. None of these require the P6 integration or the mobile app to be in place — they are valuable independently of the known gaps.</p>
 
   <hr>
 
@@ -585,6 +587,7 @@ nav .nav-num {
     <a class="index-card" href="#calendars"><span class="num">9</span>Calendars</a>
     <a class="index-card" href="#permissions"><span class="num">10</span>Permissions</a>
     <a class="index-card" href="#public-api"><span class="num">11</span>Public API &amp; Third-Party Integrations</a>
+    <a class="index-card" href="#xer-import"><span class="num">12</span>XER Import &amp; P6 Integration <span class="badge-coming">In development</span></a>
   </div>
 
   <div class="section-nav">
@@ -635,7 +638,10 @@ nav .nav-num {
 
   <div class="callout">✏️ <strong>To be written:</strong> V3 to V4 upgrade guide — covering the workspace sync process, decisions required, and recommended migration sequence.</div>
 
-  <h3>Getting tasks from the database onto a workspace</h3>
+  <h3>Converting notes to live tasks <span class="badge-coming">Coming soon</span></h3>
+  <p>Whiteboard notes and text elements can be converted directly into live tasks, milestones, or constraints via the context menu — without losing their position on the workspace. The element becomes a task shell in place, and the new record is immediately registered in the project database. Bulk conversion is supported: select multiple notes and convert them all in one step. In V4, converting a note to a constraint is also available — this was not possible with classic tasks in V3.</p>
+
+  <h3>Getting tasks from the database into a workspace</h3>
   <p>Once tasks exist in the project database, you can bring any selection of them onto a workspace at any time using the import dialog. Filter by team, label category, date range, or a combination to pull in only what's relevant for a particular planning session. Each task appears as a shell on the workspace — connected to the same underlying record as any other workspace showing that task. This makes it easy to set up focused views for specific teams or phases, run a short planning session in a temporary workspace, or build a look-ahead from a subset of the full project without duplicating any data.</p>
 
   <h3>Mobile app <span class="badge-coming">In development</span></h3>
@@ -661,7 +667,7 @@ nav .nav-num {
   <div class="faq-item"><div class="faq-q">Is upgrading to V4 mandatory?</div><div class="faq-a">Not immediately. V3 continues to work after V4 launches, and there is no forced migration. The upgrade is a deliberate step that teams take when they are ready.</div></div>
   <div class="faq-item"><div class="faq-q">Do all workspaces need to be part of a project to use V4 features?</div><div class="faq-a">Yes. The central task database and all V4 planning capabilities require a workspace to be part of a Hoylu project. Workspaces that are not part of a project continue to work exactly as they did in V3 and are not affected by the changes described in this guide. The goal over time is for all active workspaces to move into projects, but there is no forced migration and non-project workspaces remain fully supported.</div></div>
   <div class="faq-item"><div class="faq-q">Can I still use V3 after V4 launches?</div><div class="faq-a">Yes, V3 continues to work and there is no forced migration. That said, our focus going forward is V4 — it delivers meaningful improvements for projects of all sizes, not just large or complex ones. The long-term goal is to phase out V3, and while there is no set timeline for that, teams are encouraged to move to V4 when they are ready. The upgrade process is designed to be manageable, and the benefits are available from day one.</div></div>
-  <div class="faq-item"><div class="faq-q">Can I use V3 and V4 at the same time, on the same project?</div><div class="faq-a">The two versions use different data models and do not share a live connection. You can sync existing V3 workspaces into V4 as part of a migration, but after that the V4 version of the data lives in the project database and is no longer linked back to the V3 workspace. Running both in parallel as an ongoing workflow — where changes in V3 automatically reflect in V4 or the other way around — is not supported. The recommended approach is to migrate a project to V4 when your team is ready to make the switch fully.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I use V3 and V4 at the same time, on the same project?</div><div class="faq-a">The two versions use different data models and do not share a live connection. You can sync existing V3 workspaces into V4 as part of a migration, but after that the V4 version of the data lives in the project database and is no longer linked back to the V3 workspace. Running both in parallel as an ongoing workflow — where changes in V3 automatically reflect in V4 or the other way around — is not supported. The recommended approach is to migrate a project to V4 when your team is ready to make the switch fully. See the V3 to V4 upgrade guide for the recommended migration process (to be written).</div></div>
 
   <div class="section-nav">
     <a href="#intro"><span class="nav-dir">← Previous</span><span class="nav-title">Introduction</span></a>
@@ -770,6 +776,20 @@ nav .nav-num {
     <tr><td>Plus</td><td>Opens the import dialog to add tasks to the workspace</td></tr>
   </table>
   <div class="callout"><strong>Note:</strong> The plus and minus keys are being remapped from zoom in/out. Zooming remains available via scroll wheel, pinch, Ctrl+scroll, and toolbar controls.</div>
+
+  <h3>Focus mode <span class="badge-coming">Coming soon</span></h3>
+  <div class="coming-soon">🚧 Focus mode support for live tasks is currently in development.</div>
+  <p>Focus mode allows you to filter the workspace to highlight only elements that match a set of criteria — tasks, milestones, and constraints that don't match are greyed out, making it easier to concentrate on a specific team's work, a status, or a label. Keyboard navigation with F and Shift+F moves between matching elements.</p>
+  <p>In V4, live task shells are included in all Focus filters alongside classic workspace elements. The available filters are: Type, Team, Assignee, Status, Label, and Label Category. A new <strong>Last Update</strong> filter is also introduced in V4, allowing you to surface tasks that have been changed within a selected time window — this filter did not exist in V3.</p>
+  <p>Where a team name matches between a project team and a workspace team, both live tasks and classic tasks appear under the same entry in the filter list.</p>
+  <p>In this first phase, navigation with F / Shift+F works only for task shells that are currently visible on the workspace. Support for navigating to non-visible elements is planned for a later phase.</p>
+
+  <h3>Multi-instance indicator <span class="badge-coming">Coming soon</span></h3>
+  <p>When the same task has more than one shell on the current workspace, a small badge appears automatically on each shell showing the number of other instances.</p>
+  <p>Clicking the badge opens a panel listing the other shells of that task on this workspace, each with a navigation pin. Clicking a pin zooms the workspace to that shell.</p>
+  <p><strong>Tab / Shift+Tab</strong> cycles between shells of the same task. This works for shells currently visible on the workspace.</p>
+  <p><strong>Make unique</strong> — available from the context menu when a shell has other instances on the same workspace — creates a new independent live task from that shell. The shell is disconnected from the shared task record and becomes its own standalone task in the project database. The badge on any remaining shared shells updates immediately to reflect the reduced count.</p>
+  <p><strong>Duplication shortcuts</strong>: Ctrl+D creates a full Nexus duplicate — a new independent task with a new shell. Ctrl+Shift+D creates a shell-only clone — a new shell pointing to the same underlying task record, which is what triggers the multi-instance indicator.</p>
 
   <h2>What's different from V3</h2>
   <p>The visual element on the workspace was the task in V3 — the representation and the data were inseparable. The V4 task shell is a purpose-built visual component that is independent of the data it represents, which makes a number of improvements possible.</p>
@@ -904,7 +924,7 @@ nav .nav-num {
   <div class="concept-list">
     <div class="concept-item"><span class="term">Dependency</span> — A typed relationship between two project elements defining the order in which work should happen. Stored in the project database and visible across all workspaces. Types: FS, SS, FF, SF.</div>
     <div class="concept-item"><span class="term">Lag</span> — A duration offset applied to a dependency. A positive lag adds a gap between the predecessor and successor; a negative lag (lead) allows overlap.</div>
-    <div class="concept-item"><span class="term">Upstream / Downstream</span> — The direction of a dependency relationship. The predecessor is upstream; the successor is downstream. The dotted line direction indicator points downstream.</div>
+    <div class="concept-item"><span class="term">Upstream / Downstream</span> — The direction of a dependency relationship. The predecessor is upstream; the successor is downstream.</div>
     <div class="concept-item"><span class="term">Dependency warning</span> — A flag raised when a task's dates conflict with its dependency relationships. Validated server-side and shown in red on the connection and on the Connections page in the task editor.</div>
     <div class="concept-item"><span class="term">Link</span> — An external reference attached to a task, such as a URL to a document or resource. Managed in the task editor and visible across all workspaces.</div>
     <div class="concept-item"><span class="term">Workspace connection</span> — A visual line between non-project elements on the whiteboard. Stored at the workspace level only, retains full styling options, and is not synced to the project database.</div>
@@ -925,7 +945,7 @@ nav .nav-num {
   <p>Dependencies can also include a <strong>lag</strong> value — a positive or negative duration that offsets the relationship. A positive lag adds a gap between the two tasks; a negative lag (lead) allows overlap.</p>
 
   <h3>Visual language</h3>
-  <p>In V4, the visual appearance of a connection communicates its state automatically — there are no manual styling options for project-level dependencies. A dotted line with a small dot indicates direction: the dot acts as an arrowhead pointing downstream toward the successor. Connections that are causing a schedule warning are shown in red, making it immediately clear which relationships are in conflict without having to inspect each task individually.</p>
+  <p>In V4, the visual appearance of a connection communicates its state automatically — there are no manual styling options for project-level dependencies. Connections that are causing a schedule warning are shown in red, making it immediately clear which relationships are in conflict without having to inspect each task individually.</p>
   <p>The goal is for all connection styles to carry semantic meaning — visual properties will be added over time to represent new relationship types as they are introduced.</p>
 
   <div class="doc-image">
@@ -959,11 +979,19 @@ nav .nav-num {
   <p>An incomplete task without a replanned replacement will display a warning on its shell, making unresolved replanning visible at a glance without disrupting the ability to mark tasks incomplete quickly in the field.</p>
   <p>The replanned connection is visually distinct from standard dependency connections, and like all project-level connections it is stored in the project database and visible across all workspaces where the connected tasks have shells.</p>
 
+  <h3>Creating linked tasks <span class="badge-coming">Coming soon</span></h3>
+  <p>V4 introduces a set of shortcuts for quickly creating a new live task in a predefined relationship to an existing one — a predecessor, a subtask, or a successor. All tasks and connections created this way are stored in the project database as live records immediately.</p>
+  <p><strong>Predecessor</strong> — a new task placed one working day before the selected task's start, linked with an FS dependency (predecessor → selected task).</p>
+  <p><strong>Subtask</strong> — a new task placed at the selected task's start date and bounded by it, linked with SS and FF dependencies to keep it within the parent's duration.</p>
+  <p><strong>Successor</strong> — a new task placed on the first working day after the selected task ends, linked with an FS dependency (selected task → successor).</p>
+  <p>Each newly created task inherits the calendar of the task it was created from, so working day placement is always consistent.</p>
+  <p>These can be triggered from the <strong>context menu</strong> (quick single-task create), the <strong>connection dot radial menu</strong>, or a <strong>multi-subtask modal</strong> that splits a task's duration into several subtasks at once — by total length, by number of working days, or by day of week. A fourth entry point allows inserting a new task <strong>inline into an existing connection</strong>, replacing it with two new connections to the inserted task.</p>
+
   <h2>What's different from V3</h2>
   <ul>
     <li><strong>Project dependencies are stored in the database, not on the whiteboard</strong> — in V3, connections were workspace-level drawing elements. In V4, dependencies between tasks are stored in the project database and appear in every workspace where the connected tasks have shells</li>
     <li><strong>No manual styling for project connections</strong> — in V3, all connections could be recolored and restyled freely. In V4, project dependency appearance is set automatically based on connection state and type. Manual styling is retained only for workspace-level line connections between non-project elements</li>
-    <li><strong>Semantic visual language</strong> — connection color and style now communicate meaning. Warning states show in red; direction is indicated by the dotted line and dot marker. Additional semantic styles will be added as new connection types are introduced</li>
+    <li><strong>Semantic visual language</strong> — connection color and style now communicate meaning. Regular dependencies are grey, warning states show in red. Additional semantic styles will be added as new connection types are introduced</li>
     <li><strong>Server-side dependency validation</strong> — warnings are validated at the project level rather than client-side, ensuring they are consistent across all workspaces and accessible regardless of which tasks are loaded on the whiteboard</li>
     <li><strong>Replanned connection coming</strong> — a dedicated connection type will link incomplete tasks to their replacements, excluded from dependency validation and enabling filtering for unresolved replanning <span class="badge-coming">Coming soon</span></li>
   </ul>
@@ -1047,6 +1075,10 @@ nav .nav-num {
   <p>This means that if you want a task to appear in a specific swimlane, the corresponding label on the task needs to be set. At the start, users may need to assign labels manually to tasks before they appear in the correct swimlane. In future, dropping a task shell into a swimlane will automatically update the corresponding data field on the task.</p>
   <p>If a data field is updated elsewhere — in the editor, through the API, or in another workspace — and the task's label no longer matches the swimlane it sits in, a warning will appear on the task shell. The user can then resolve the conflict by either moving the shell to the correct swimlane or updating the data to match the current position. This is the same principle as the deleted state: the plan shows you that something has changed and gives you the agency to decide what to do about it.</p>
   <p>The benefit of this approach is that reporting is no longer tied to whiteboard position. The same task can appear in multiple plans — each slicing the data in a different way — without any ambiguity about which team it belongs to or which area it covers. That information lives on the task itself and is consistent across every workspace and every view.</p>
+  <p>This is a meaningful shift for teams coming from V3. In V3, the plan was effectively a data store — the swimlane a task sat in was how the system knew which trade or area it belonged to. Because the plan held that information, deleting it meant losing it, which is part of why V3 plans became difficult to remove or restructure once work was underway. In V4, that information lives on the task itself as a label. The plan is a view onto it — not the source of it. A plan can be created, adjusted, or removed without affecting the underlying task data. This opens up workflows that weren't previously practical: running the same data through different plan layouts, creating a focused plan for a specific session, or building a new plan for an incoming workspace without having to restructure existing data.</p>
+
+  <h3>Plan presets <span class="badge-coming">Coming soon</span></h3>
+  <p>To make the link between label categories and plans tangible, V4 will offer plan presets in the asset panel — one for each project team and one for each label category. Dragging a preset onto the workspace creates a ready-made plan with swimlanes pre-configured from that category's labels, starting from the current week with a 4-week default range. Swimlane colors follow the label colors; swimlane order follows the label order in the category. This makes it possible to spin up a structured, data-linked plan in a single drag rather than building it swimlane by swimlane.</p>
 
   <h3>Off-days</h3>
   <p>Off-days are no longer visualized at the plan level. In V4 each task shell is responsible for showing its own non-working days, since a single plan can now contain tasks governed by different project calendars. Tasks that span non-working days show those days with a hatched overlay directly on the shell.</p>
@@ -1087,6 +1119,7 @@ nav .nav-num {
   <div class="example"><div class="example-title">Example 3 — Hour-level planning for fixed time windows</div><p>Some work only becomes possible during a narrow, pre-agreed window — and every hour counts. A road closure for infrastructure maintenance might give a crew four hours overnight to complete their work before traffic resumes. A machine changeover in a manufacturing facility might represent significant lost revenue for every hour the line stands still. In both cases, the plan isn't measured in weeks or days — it is measured in hours, and sequencing within that window is everything. Hour mode lets teams plan and track this kind of work with the same visual discipline they bring to longer-horizon planning.</p></div>
   <div class="callout">Hour mode is new territory for Hoylu. If your team is using it or sees potential in it, we'd welcome the feedback — it will directly shape how this capability develops.</div>
   <div class="example"><div class="example-title">Example 4 — Restoring structure to a cluttered plan</div><p>A project manager is looking at a plan that has grown harder to read over the course of several weeks — tasks have been added, removed, and shifted around until the swimlane layout no longer has any clear structure. Rather than rearranging shells manually, the project manager runs cleanup from the plan context menu. The Structured Waterfall reorganises all swimlanes simultaneously into 4-week segments, with tasks cascading in chronological order within each segment. The plan is immediately legible again: the current window is clear, the next period is visible ahead of it, and dependency connections between tasks are easy to trace. For the milestone swimlane — where tasks are short and numerous — the project manager adjusts the segment interval to 2 weeks at the swimlane level, giving milestones a tighter grouping that suits their duration. The rest of the plan stays on the 4-week default.</p></div>
+  <div class="example"><div class="example-title">Example 5 — Viewing the same work through two different lenses <span class="badge-coming">Coming soon</span></div><p>A project has an "Area" label category with values for each building zone, and a "Phase" label category with values for each construction phase. The task data is the same either way — every task has both an area and a phase label assigned. A lean lead drags the Area plan preset onto the workspace: a plan appears instantly, organised by zone, showing what is happening where. They then drag the Phase preset alongside it: a second plan appears, showing the same tasks grouped by phase. Both plans are live views of the same underlying task data. Dragging a task from one swimlane to another in either plan updates the corresponding label — and the other plan reflects the change immediately.</p></div>
 
   <h2>Frequently asked questions</h2>
   <div class="faq-item"><div class="faq-q">Why does cleanup look different from V3?</div><div class="faq-a">The V3 cleanup algorithm packed tasks as tightly as possible to minimise swimlane height. This kept plans compact but made them difficult to read — there was no predictable structure to where tasks ended up, and adding or removing tasks could reshuffle the entire layout. V4 replaces this with the Structured Waterfall, which organises tasks into chronological segments with a configurable interval. The layout takes up more vertical space in some cases, but the structure is immediately legible and stays stable as the plan evolves.</div></div>
@@ -1197,10 +1230,16 @@ nav .nav-num {
   <div class="section-eyebrow">Guide 7</div>
   <h1>Bulk Import &amp; Workspace Sync</h1>
 
-  <p class="intro-para">A properly configured V4 workspace draws entirely from the project database — tasks, milestones, and constraints are all live, and there is no workspace-local task data at all. Getting to that state requires two things: making sure existing data has been uploaded to the project database, and making sure the workspace is populated with the task shells you need.</p>
+  <p class="intro-para">The goal is for all workspaces to move to V4. For existing customers with V3 workspaces, Hoylu provides a migration path to upload workspace data to the project database and bring it back as live task shells. Sync is a one-time operation — once a workspace is fully migrated, it is no longer needed.</p>
 
-  <p>For teams starting fresh in V4, this happens naturally — create tasks directly on the workspace and they go straight into the project database. For teams migrating from V3, there is a process to upload existing workspace data to the project and then bring it back onto the workspace as live task shells.</p>
-  <p>This canvas covers the tools Hoylu provides for both: upgrading V3 workspace data to the project database, and the options available for importing project tasks onto a workspace — whether the tasks were created natively in V4 or migrated from V3.</p>
+  <p>For teams starting fresh, skip the sync entirely — create tasks directly on a V4 workspace and they go straight into the project database from day one.</p>
+  <p>For existing customers, the migration flow is:</p>
+  <ol>
+    <li>Upload V3 workspace data to the project database via the sync wizard</li>
+    <li>Re-import the upgraded tasks onto the workspace as live task shells</li>
+    <li>Remove the original V3 task data from the workspace to avoid running both in parallel</li>
+  </ol>
+  <p>This section covers the sync wizard in detail, along with the import and create plan tools used to populate workspaces from the project database.</p>
 
   <h2>The problem it solves</h2>
   <p>As soon as a project has more than one workspace, data consistency becomes a challenge. Teams, labels, and variance reasons are defined per workspace in V3 — which means the "Electrician" team in workspace 1 and the "Electrician" team in workspace 2 may look the same but are entirely separate records. When task data from both workspaces is uploaded to the project database, the system needs to know whether these are the same team or two different ones. If they are the same, tasks from both workspaces should roll up into the same team in reporting. If they are different, they should stay separate.</p>
@@ -1210,7 +1249,7 @@ nav .nav-num {
 
   <h2>Key concepts</h2>
   <div class="concept-list">
-    <div class="concept-item"><span class="term">Sync</span> — The process of uploading workspace-level data (teams, labels, variance reasons, tasks, and connections) to the project database. Runs in three phases with explicit conflict resolution for shared elements.</div>
+    <div class="concept-item"><span class="term">Sync</span> — The process of uploading workspace-level data (teams, labels, variance reasons, tasks, and connections) to the project database. Runs in three phases with explicit conflict resolution for shared elements. During sync, several automatic operations are also applied: V3 plan swimlanes are converted to label categories to support plan recreation in V4, lines between tasks are converted to FS dependencies, and task titles over 100 characters are split into title and description.</div>
     <div class="concept-item"><span class="term">Conflict</span> — A mismatch between a workspace record and a project record with the same name but different properties — for example, a team with a different color, or a label in a different category. Resolved by choosing which version to keep, or keeping both with a unique name for one of them.</div>
     <div class="concept-item"><span class="term">Import</span> — Selecting tasks from the project database and placing their shells on the current workspace, filtered by team, label, date range, or other criteria.</div>
     <div class="concept-item"><span class="term">Create plan from project tasks</span> — A one-step operation that generates a new plan with task shells placed automatically based on a chosen date range and swimlane structure.</div>
@@ -1219,6 +1258,11 @@ nav .nav-num {
   <h2>How it works</h2>
   <h3>Sync local data with project</h3>
   <p>The sync wizard runs in three phases, each requiring confirmation before proceeding.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Sync%20Wizard.png" alt="Sync wizard" />
+  </div>
+
   <p><strong>Phase 1 — Shared elements.</strong> Teams, label categories, labels, and variance reasons are compared between the workspace and the project database. Where there is a clean match, the data is merged automatically. Where a conflict is detected — for example, a team with the same name but a different color, or a label assigned to a different category — a conflict resolution screen is shown. For each conflict, you can choose to keep the workspace version, keep the project version, or keep both (in which case you must provide a unique name for one of them). Calendar data is also converted and uploaded in this phase.</p>
 
   <div class="doc-image">
@@ -1230,6 +1274,22 @@ nav .nav-num {
   <p>Conflict resolution can appear on any sync run — not just the first. If data has drifted between workspace and project since a previous sync, new conflicts will be shown.</p>
   <p>The sync menu item may be hidden automatically when there is nothing left to sync. <em>(Feasibility to be confirmed)</em></p>
 
+  <h3>What sync does automatically</h3>
+  <p>In addition to uploading tasks, connections, and shared elements, the sync performs several automatic operations to make the transition to V4 smoother.</p>
+  <p><strong>Swimlane label categories.</strong> For each workspace that contains a V3 plan, sync creates a new label category named "Swimlanes for WS [workspace number]" and a label for each swimlane in that plan — preserving the swimlane color and order. This gives you everything you need to recreate the same plan layout in V4. Since V3 allowed only one plan per workspace, there will be at most one swimlane label category per workspace.</p>
+  <p>To recreate the plan in V4, use either <strong>Create plan from project tasks</strong> <span class="badge-coming">Coming soon</span> or the <strong>Import</strong> dialog, and choose the option to organise swimlanes by label category — then select "Swimlanes for WS [workspace number]". The resulting plan will have the same swimlane structure as the original V3 plan, with tasks placed at their correct dates.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Create%20Plan%20from%20Project.png" alt="Create plan from project" />
+  </div>
+
+  <p><strong>Additional fixes applied during sync:</strong></p>
+  <ul>
+    <li>Lines drawn between tasks in V3 are converted to FS (Finish to Start) dependencies and uploaded as project-level connections</li>
+    <li>Task titles longer than 100 characters are automatically split — the first 100 characters are kept as the title and the remainder is moved to the task description</li>
+    <li>Broken label assignments on older workspaces are repaired during upload</li>
+  </ul>
+
   <h3>Import live elements from project</h3>
   <p>The import dialog lets you bring task shells from the project database onto the current workspace. You can filter by team, label category, status, and date range to narrow down which tasks to import. Selected tasks are placed on the workspace as shells — not copies, but references to the same underlying project records. Milestones and constraints can be imported alongside tasks.</p>
   <p>This is the day-to-day tool for curating workspace content — adding tasks for a specific team, pulling in an upcoming date range, or creating a focused view for a particular planning session.</p>
@@ -1237,12 +1297,17 @@ nav .nav-num {
   <h3>Create plan from project tasks</h3>
   <p>The create plan option generates a new plan on the workspace in one step. You choose an optional date range and a swimlane structure — for example by label category or by team — and the plan is created with task shells placed automatically based on their dates and the grouping you selected. This is a faster alternative to importing tasks manually and then creating and configuring a plan separately.</p>
 
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Sync%20and%20Import%20options.png" alt="Sync and import options" />
+  </div>
+
   <h2>What's different from V3</h2>
   <ul>
     <li><strong>Workspace data can now be uploaded to the project</strong> — in V3, teams, labels, and variance reasons were workspace-local and could not be shared or aligned across workspaces. The sync wizard promotes these to the project level with explicit conflict resolution</li>
     <li><strong>Cross-workspace consistency is now explicit</strong> — when the same team or label exists in multiple workspaces under slightly different names or colors, the conflict is surfaced and resolved before task data is uploaded. This ensures reporting is accurate rather than silently duplicating records</li>
     <li><strong>Selective import replaces manual duplication</strong> — in V3, getting tasks from one workspace into another required duplicating them manually. The import dialog lets you pull any subset of project tasks into a workspace as shells</li>
     <li><strong>Create plan from project tasks is new</strong> — there was no equivalent in V3. A complete plan with task shells can be generated automatically from existing project data in one step</li>
+    <li><strong>V3 plan swimlanes are migrated as label categories</strong> — since V4 swimlanes are linked to data fields rather than whiteboard position, the sync automatically converts each V3 swimlane into a label and groups them into a label category per workspace. This gives you a direct starting point for recreating the same plan layout in V4. See the <a href="#plan-visualization">Plan Visualization guide</a> for how swimlanes and data dimensions work in V4</li>
   </ul>
 
   <h2>What this means for your team</h2>
@@ -1313,6 +1378,10 @@ nav .nav-num {
 
   <h3>User Assignments <span class="badge-coming">Coming soon</span></h3>
   <p>User assignment management is currently handled at the workspace level. A project-level user assignment section in the Project CC is planned for a future release.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Project%20Control%20Center.gif" alt="Project Control Center overview" />
+  </div>
 
   <h2>What's different from V3</h2>
   <ul>
@@ -1599,6 +1668,113 @@ nav .nav-num {
 
   <div class="section-nav">
     <a href="#permissions"><span class="nav-dir">← Previous</span><span class="nav-title">Permissions</span></a>
+    <a class="next" href="#xer-import"><span class="nav-dir">Next →</span><span class="nav-title">XER Import &amp; P6 Integration</span></a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ 12. XER IMPORT -->
+<section class="doc-section" id="xer-import">
+  <div class="section-eyebrow">Guide 12</div>
+  <h1>XER Import &amp; P6 Integration</h1>
+
+  <div class="coming-soon">🚧 This entire feature area is in active development and not yet available in V4. The description below reflects the intended design. Details may evolve before release.</div>
+
+  <p class="intro-para">XER Import V4 changes how P6 master schedules connect to Hoylu. The key shift is that the full XER file is imported into the project database first — every activity, calendar, WBS node, activity code, and UDF — and users then bring a relevant subset of those activities onto a workspace when they need them.</p>
+
+  <p>This two-step approach means the project retains the full context of the master schedule at all times. If a planner needs to add activities to a workspace later — because scope has expanded or they want to look at a different phase — they can do so directly from the project database without going back to the XER file. The same applies to fields: rather than having to select which activity codes or UDFs to import upfront, all fields are available in the project and users can choose which ones to display at any point.</p>
+  <p>V4 also addresses two other gaps in the current integration: activities and tasks competing visually on the same workspace, and no way to feed actuals back to P6. The existing subtask workflow is preserved as-is.</p>
+
+  <h2>The problem it solves</h2>
+  <p>The current XER import reads target start and end dates only. Because calendars are ignored, date calculations in Hoylu may not reflect what schedulers see in P6 — activities that span non-working days will appear with different durations depending on which side you look at them from.</p>
+  <p>Activity codes and UDFs present a different problem. They can be imported today, but users have to select which fields to bring in at import time. If they later want to work with a field they didn't include, the only option is to re-import the entire file. There is also no way to use WBS structure as a grouping dimension — the hierarchy exists in P6 but is not carried across to Hoylu.</p>
+  <p>On the workspace, imported P6 activities and Hoylu tasks are rendered at the same visual weight — same size, similar styling — which makes plans harder to read than they should be, particularly on dense programmes where the master schedule and the field plan need to stay visually distinct.</p>
+  <p>And when field teams complete work ahead of or behind schedule, there is no path from Hoylu back to P6. Actuals captured in Hoylu have to be manually re-entered into the master schedule by the scheduler, creating a gap between what happened on site and what the master schedule reflects.</p>
+  <p>V4 addresses all four of these gaps.</p>
+
+  <h2>Key concepts</h2>
+  <div class="concept-list">
+    <div class="concept-item"><span class="term">Activity</span> — A Primavera P6 schedule element imported from an XER file. Stored in the project database as a distinct record type, separate from Hoylu tasks. Activities are excluded from PPC calculations — keeping the CPM and LPS worlds appropriately separate.</div>
+    <div class="concept-item"><span class="term">XER file</span> — The native export format of Primavera P6. Contains activities, calendars, WBS structure, relationships, activity codes, UDFs, and resource assignments.</div>
+    <div class="concept-item"><span class="term">WBS (Work Breakdown Structure)</span> — The hierarchical grouping structure of a P6 schedule. In V4, WBS becomes a first-class grouping dimension — plans can be organised by WBS level just as they can by team or label category today.</div>
+    <div class="concept-item"><span class="term">Activity Report</span> — A dedicated view in Project Insights listing all imported activities, filterable by state (warnings, changes) and other criteria. Serves as the control point for reviewing and triggering write-back to P6.</div>
+    <div class="concept-item"><span class="term">Write-back</span> — The process of exporting an updated XER file from Hoylu containing actuals (Actual Start, Actual Finish, Physical % Complete) ready to import into P6. Operates by updating existing activities only — new activities are never created from Hoylu.</div>
+    <div class="concept-item"><span class="term">Subtask</span> — A Hoylu task created directly from an imported activity. Connected to the parent activity to keep field planning anchored to the master schedule without being rigidly constrained by it. If a subtask extends beyond the activity's end date, a visual conflict warning appears on both the subtask and the activity.</div>
+  </div>
+
+  <h2>How it works</h2>
+
+  <h3>What's already working in V3</h3>
+  <p>The current XER import solves several real problems for field planning teams. Team information can be flexibly mapped from resources, activity codes, or UDFs at import time. Imported activities are visually distinct from Hoylu tasks and excluded from PPC calculations.</p>
+  <p>The most valuable existing workflow is subtask creation. Field planners can create Hoylu tasks directly from an imported activity — the subtask is connected to the parent activity, and any subtask that extends beyond the activity's end date triggers a visual conflict warning on both elements. This keeps field planning anchored to the master schedule without being rigidly constrained by it.</p>
+  <p>Users can navigate between activities that have warnings, making it easy to jump from one flagged activity to the next. A basic CSV export of flagged activities also exists, though the UX for this is not yet straightforward.</p>
+
+  <hr>
+
+  <h3>Richer data in</h3>
+  <p><strong>V3:</strong> Target start and end dates only. Calendars and WBS ignored. Activity codes and UDFs require re-import to change.</p>
+  <p><strong>V4:</strong> The full XER file is imported into the project database — every activity, calendar, WBS node, activity code, and UDF. Users then bring a relevant subset of those activities onto a workspace when they need them, and can add more at any point without going back to the XER file.</p>
+  <ul>
+    <li><strong>Calendars stored and respected</strong> — date calculations honor working days per activity, using the same calendar model as Hoylu tasks</li>
+    <li><strong>WBS becomes a grouping dimension</strong> — create a plan view grouped by WBS level 3, or any level, just like grouping by team or label category today</li>
+    <li><strong>All activity fields, UDFs and activity codes available</strong> — all fields are imported and stored; users decide which ones to display rather than selecting them at import time</li>
+  </ul>
+
+  <h3>A clearer visual language</h3>
+  <p><strong>V3:</strong> P6 activities and Hoylu tasks are rendered at the same visual weight — same size, similar styling — which makes plans harder to read on dense programmes.</p>
+  <p><strong>V4:</strong> Activities look like activities. Tasks look like tasks.</p>
+  <ul>
+    <li><strong>Slim CPM-style bars</strong> — familiar to schedulers, clearly subordinate to Hoylu tasks visually</li>
+    <li><strong>Dual bars</strong> — target (planned) dates shown as a background bar, actuals overlaid on top — classic tracking Gantt style</li>
+    <li><strong>Distinct milestone visualization</strong> — milestones are displayed differently from activities to make them immediately recognizable</li>
+    <li><strong>Critical path badge</strong> — toggle on a "CP" indicator on affected activities; no reliance on connection lines which are hidden by default</li>
+    <li><strong>WBS relationships on hover</strong> — hover over any activity to see its siblings and parent/child connections light up</li>
+  </ul>
+
+  <h3>Activity Report</h3>
+  <p>A dedicated report page in Project Insights — similar to the Constraint Log — giving schedulers a structured view of all imported activities without requiring them to navigate the workspace.</p>
+  <p>The report shows all activities with filters to narrow down the view. The most important filter is activity state:</p>
+  <ul>
+    <li><strong>Warnings</strong> — activities with a subtask conflict (a subtask extends beyond the activity's end date). This does not mean the activity has changed yet; it means a potential issue has been flagged that the scheduler needs to review.</li>
+    <li><strong>Changes</strong> — activities where actual dates or progress have been updated in Hoylu, representing data that is ready to be written back to the master schedule.</li>
+  </ul>
+  <p>The report also serves as the control point for the XER export — schedulers can review which activities have changes, decide which ones to include, and trigger the write-back from here rather than exporting everything at once.</p>
+
+  <h3>Writing actuals back to P6</h3>
+  <p><strong>V3:</strong> No write-back exists. Actuals captured in Hoylu have to be manually re-entered into P6 by the scheduler.</p>
+  <p><strong>V4:</strong> An updated XER file can be exported directly from Hoylu, ready to import into P6. During the export, the user provides an up-to-date XER file — Hoylu inserts the changes into it rather than generating a file from scratch. This ensures the write-back is always based on current P6 data and avoids overwriting anything that has changed in the master schedule since the last import.</p>
+  <p>Design decisions:</p>
+  <ul>
+    <li><strong>Update existing activities only</strong> — creating new activities in a P6 master schedule from an external tool is considered bad practice in the scheduling industry. P6 activity IDs, WBS placement, logic ties, and resource assignments are tightly controlled by the scheduler. Introducing new activities from outside risks corrupting the schedule's logic network. There is also no reliable way to round-trip new activities back into Hoylu after they are created in P6.</li>
+    <li><strong>Fields written back:</strong> Actual Start, Actual Finish, Physical % Complete</li>
+  </ul>
+
+  <h3>Re-importing an updated schedule</h3>
+  <p>When the scheduler sends an updated XER, users can re-import it with one action. Hoylu silently updates matched activities in place — no staging screen, no approval workflow. The task history handles the audit trail.</p>
+
+  <h2>What's different from V3</h2>
+  <ul>
+    <li><strong>Full XER stored in the project database</strong> — the entire file is imported upfront; users control what appears on a workspace, not what gets imported. Activities, fields, and structure can be added to a workspace at any point without re-importing from the XER.</li>
+    <li><strong>All activity fields, activity codes and UDFs available without re-import</strong> — all fields are stored at import time and can be surfaced as labels or filters at any point afterward.</li>
+    <li><strong>Calendars imported and applied</strong> — date calculations now respect the working day rules defined in the P6 schedule, rather than ignoring them.</li>
+    <li><strong>WBS stored as a first-class grouping dimension</strong> — plan views can be organised by WBS level, not just by team or label category.</li>
+    <li><strong>Distinct visual language for activities</strong> — slim CPM-style bars with dual target/actual display, clearly subordinate to Hoylu tasks on the workspace.</li>
+    <li><strong>Activity Report in Insights</strong> — a structured, filterable view of all activities including warning and change states; serves as the write-back control point.</li>
+    <li><strong>Write-back to P6</strong> — no equivalent exists in V3. Actuals (Actual Start, Actual Finish, Physical % Complete) can be exported back to P6 via an updated XER file.</li>
+  </ul>
+
+  <h2>What this means for your team</h2>
+  <div class="example"><div class="example-title">Example 1 — A scheduler and a superintendent working from the same data</div><p>A scheduler maintains the master programme in P6 and exports an XER at the start of each phase. The superintendent imports it into Hoylu and creates subtasks directly from the P6 activities — one or more Hoylu tasks per activity representing the day-to-day field planning work. As subtasks are completed, the superintendent's plan updates in real time. At the end of the week, the scheduler opens the Activity Report in Insights, reviews which activities now have actuals, and exports an updated XER directly from Hoylu. The P6 schedule reflects what actually happened on site without anyone re-entering dates manually.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Reading a dense programme without losing the field plan</div><p>A project manager opens a workspace that shows both the P6 master schedule and the field-level tasks in the same plan. In V3, activities and tasks looked similar enough that the workspace became hard to navigate. In V4, the slim CPM-style bars sit clearly beneath the task shells — the hierarchy is immediately readable at a glance. The project manager can hover over any activity to see its WBS siblings light up, giving structural context without cluttering the workspace permanently.</p></div>
+  <div class="example"><div class="example-title">Example 3 — Grouping by WBS instead of trade</div><p>A programme manager wants to see the plan organised by WBS level 2 rather than by trade. In V4, WBS is a grouping dimension just like team or label category — the plan can be rebuilt with one selection, showing a swimlane per WBS node. This is particularly useful on complex infrastructure projects where the master schedule's WBS structure maps more naturally to reporting than the trade breakdown used in day-to-day planning.</p></div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item"><div class="faq-q">Why does Hoylu only write back to existing activities — why not create new ones?</div><div class="faq-a">Creating new activities in a P6 master schedule from an external tool is considered bad practice in the scheduling industry. P6 activity IDs, WBS placement, logic ties, and resource assignments are tightly controlled by the scheduler. Introducing new activities from outside risks corrupting the schedule's logic network.</div></div>
+  <div class="faq-item"><div class="faq-q">What happens when the scheduler updates the master schedule and re-imports?</div><div class="faq-a">Matched activities are updated in place silently — no staging screen or approval workflow. Changes are recorded in the task history. Activities that no longer exist in the updated XER are flagged rather than deleted automatically.</div></div>
+  <div class="faq-item"><div class="faq-q">Is the subtask workflow changing in V4?</div><div class="faq-a">No. The ability to create Hoylu tasks directly from a P6 activity is preserved as-is. The conflict warning when a subtask extends beyond the activity's end date also remains unchanged.</div></div>
+  <div class="faq-item"><div class="faq-q">What fields are written back to P6?</div><div class="faq-a">Actual Start, Actual Finish, and Physical % Complete. These are the fields most commonly used by schedulers to track progress in P6.</div></div>
+
+  <div class="section-nav">
+    <a href="#public-api"><span class="nav-dir">← Previous</span><span class="nav-title">Public API &amp; Third-Party Integrations</span></a>
     <a class="next" href="#intro"><span class="nav-dir">↑ Back to top</span><span class="nav-title">Introduction</span></a>
   </div>
 </section>
