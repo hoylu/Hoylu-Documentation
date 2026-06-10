@@ -784,12 +784,20 @@ nav .nav-num {
   <p>Where a team name matches between a project team and a workspace team, both live tasks and classic tasks appear under the same entry in the filter list.</p>
   <p>In this first phase, navigation with F / Shift+F works only for task shells that are currently visible on the workspace. Support for navigating to non-visible elements is planned for a later phase.</p>
 
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Focus%20Mode%20-%20Last%20updated.gif" alt="Focus mode last updated filter" />
+  </div>
+
   <h3>Multi-instance indicator <span class="badge-coming">Coming soon</span></h3>
   <p>When the same task has more than one shell on the current workspace, a small badge appears automatically on each shell showing the number of other instances.</p>
   <p>Clicking the badge opens a panel listing the other shells of that task on this workspace, each with a navigation pin. Clicking a pin zooms the workspace to that shell.</p>
   <p><strong>Tab / Shift+Tab</strong> cycles between shells of the same task. This works for shells currently visible on the workspace.</p>
   <p><strong>Make unique</strong> — available from the context menu when a shell has other instances on the same workspace — creates a new independent live task from that shell. The shell is disconnected from the shared task record and becomes its own standalone task in the project database. The badge on any remaining shared shells updates immediately to reflect the reduced count.</p>
   <p><strong>Duplication shortcuts</strong>: Ctrl+D creates a full Nexus duplicate — a new independent task with a new shell. Ctrl+Shift+D creates a shell-only clone — a new shell pointing to the same underlying task record, which is what triggers the multi-instance indicator.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20Multiple%20Instances.gif" alt="Multi-instance indicator on task shell" />
+  </div>
 
   <h2>What's different from V3</h2>
   <p>The visual element on the workspace was the task in V3 — the representation and the data were inseparable. The V4 task shell is a purpose-built visual component that is independent of the data it represents, which makes a number of improvements possible.</p>
