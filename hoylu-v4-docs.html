@@ -530,7 +530,18 @@ nav .nav-num {
 
   <h2>What changed and why</h2>
   <p>The single most important change in V4 is that <strong>task data now lives at the project level</strong>, not inside individual workspace documents. In V3, every workspace was its own island — tasks, teams, labels, and settings all lived inside a workspace file. Getting data across workspaces meant duplicating it. Getting a project-wide report meant downloading every workspace and extracting the relevant data client-side. A mobile app would have to download thousands of tasks just to show a foreman their five tasks for the week.</p>
-  <p>In V4, tasks, milestones, and constraints are stored in a central project database. A task belongs to the project — it can appear in multiple workspaces simultaneously, and any change to that task is immediately reflected everywhere, regardless of where the change came from. A status update made through a task card on one workspace, an edit opened from a different workspace, a progress update submitted from the mobile app on site, or a date change pushed in from an external scheduling tool via the API — all of these write to the same underlying record and are visible across all views instantly. There is no sync step, no version conflict, and no workspace that holds a "fresher" version of the data than another.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Data%20Storage%20V3.png" alt="V3 data storage illustration" />
+  </div>
+
+  <p>In V4, tasks, milestones, and constraints are stored in a central project database. A task belongs to the project — it can appear in multiple workspaces simultaneously, and any change to that task is immediately reflected everywhere, regardless of where the change came from.</p>
+
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Data%20Storage%20V4.png" alt="V4 data storage illustration" />
+  </div>
+
+  <p>A status update made through a task card on one workspace, an edit opened from a different workspace, a progress update submitted from the mobile app on site, or a date change pushed in from an external scheduling tool via the API — all of these write to the same underlying record and are visible across all views instantly. There is no sync step, no version conflict, and no workspace that holds a "fresher" version of the data than another.</p>
 
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Cross%20workspace%20updates.png" alt="Cross-workspace updates illustration" />
