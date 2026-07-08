@@ -544,7 +544,7 @@ nav .nav-num {
   <p>A status update made through a task card on one workspace, an edit opened from a different workspace, a progress update submitted from the mobile app on site, or a date change pushed in from an external scheduling tool via the API — all of these write to the same underlying record and are visible across all views instantly. There is no sync step, no version conflict, and no workspace that holds a "fresher" version of the data than another.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Cross%20workspace%20updates.png" alt="Cross-workspace updates illustration" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Cross%20workspace%20updates.gif" alt="Cross-workspace updates illustration" />
   </div>
 
   <p><em>A concrete foreman marks a task complete on their phone on site. At the same moment, the project manager's programme plan on their desktop reflects the update — as does the Insights dashboard and any other workspace that task appears in.</em></p>
@@ -724,7 +724,7 @@ nav .nav-num {
   <p>Text layout adjusts as the card resizes. When horizontal space is limited, the title moves into the description area and scales up to remain readable. When a task has no description, the title makes use of the available space more efficiently. The card always tries to show as much useful information as the space allows.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Task%20Variants.png" alt="Task card variants" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Task%20Variants.gif" alt="Task card variants" />
   </div>
 
   <h4>Multi-week tasks</h4>
@@ -1829,4 +1829,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-20% 0px -70% 0px' });
 
-sections.forEach(s =
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
