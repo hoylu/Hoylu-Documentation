@@ -625,7 +625,7 @@ nav .nav-num {
   <p>This means the same task can have cards in multiple workspaces at the same time. A task planned in a six-week look-ahead and tracked in a weekly work plan is the same record — update its status in one workspace and the change is reflected everywhere. Removing a card from a workspace does not affect the task itself or its presence in other workspaces.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20Loading.gif" alt="Task card loading animation" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Card%20Loading.gif" alt="Task card loading animation" />
   </div>
 
   <h3>What a task contains</h3>
@@ -705,7 +705,7 @@ nav .nav-num {
   <p>Every task card is divided into three areas. The left strip shows the team color and team name — this area is always visible regardless of how small the card gets, giving a consistent visual anchor for who owns the task. The main body shows the task title and, when there is enough space, the description. The status area sits at the bottom-right and changes color to reflect the current status of the task. A thin color bar runs along the very bottom edge of the card, ensuring the status color remains visible even when the card is small or the status icon scrolls out of view.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell.png" alt="Task card layout" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Card.png" alt="Task card layout" />
   </div>
 
   <h4>Adaptive sizing</h4>
@@ -721,7 +721,7 @@ nav .nav-num {
   <p>Old:</p>
   <div class="doc-image"><img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Classic%20Task.png" alt="V3 classic task rendering" /></div>
   <p>New:</p>
-  <div class="doc-image"><img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20multi%20week.png" alt="V4 multi-week task card" /></div>
+  <div class="doc-image"><img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Card%20-%20multi%20week.png" alt="V4 multi-week task card" /></div>
 
   <h3>Title and connection dot visibility on long cards</h3>
   <p>Because task cards are now single continuous elements, a task spanning many weeks can extend well beyond the visible viewport. Two improvements address this directly.</p>
@@ -732,7 +732,7 @@ nav .nav-num {
   <p>Each of the five task statuses has a distinct color reflected in both the status area and the bottom color bar. Status is readable at a glance even when zoomed out, without needing to read the status icon. Title and status remain visible at all zoom levels.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20Status%20Options.png" alt="Task card status options" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Card%20-%20Status%20Options.png" alt="Task card status options" />
   </div>
 
   <h4>Team color visibility in overview mode</h4>
@@ -742,7 +742,7 @@ nav .nav-num {
   <p>Milestones and constraints use the same card structure as tasks but with an inverted color scheme — dark background with light text — making them easy to distinguish at a glance even in a dense plan. They each have a distinctive icon: a diamond for milestones and a stylized hourglass for constraints. Both have no duration and are displayed on a single date.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Milestone%20Shell.png" alt="Milestone card" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Milestone%20Card.png" alt="Milestone card" />
   </div>
 
   <hr>
@@ -755,7 +755,7 @@ nav .nav-num {
   <p>Clicking the status area of a task card opens a status menu directly on the workspace, without needing to open the full editor. The menu shows all available status options with their respective colors, allowing a quick status change in a single step.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20Change%20Status.png" alt="Status change interaction" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Card%20-%20Change%20Status.png" alt="Status change interaction" />
   </div>
 
   <h4>Replanning an incomplete task <span class="badge-coming">Coming soon</span></h4>
@@ -785,11 +785,10 @@ nav .nav-num {
   </table>
   <div class="callout"><strong>Note:</strong> The plus and minus keys are being remapped from zoom in/out. Zooming remains available via scroll wheel, pinch, Ctrl+scroll, and toolbar controls.</div>
 
-  <h3>Focus mode <span class="badge-coming">Coming soon</span></h3>
-  <div class="coming-soon">🚧 Focus mode support for live tasks is currently in development.</div>
+  <h3>Focus mode</h3>
   <p>Focus mode allows you to filter the workspace to highlight only elements that match a set of criteria — tasks, milestones, and constraints that don't match are greyed out, making it easier to concentrate on a specific team's work, a status, or a label. Keyboard navigation with F and Shift+F moves between matching elements.</p>
   <p>In V4, live task cards are included in all Focus filters alongside classic workspace elements. The available filters are: Type, Team, Assignee, Status, Label, and Label Category. A new <strong>Last Update</strong> filter is also introduced in V4, allowing you to surface tasks that have been changed within a selected time window — this filter did not exist in V3.</p>
-  <p>Where a team name matches between a project team and a workspace team, both live tasks and classic tasks appear under the same entry in the filter list.</p>
+  <p>Where a team name matches between a project team and a workspace team, both live tasks and classic tasks appear under the same combined entry in the filter list — using the project team's color if the two differ. Teams, labels, or other values that exist on only one side (for example, a workspace team not yet synced to the project) still appear in the list on their own.</p>
   <p>In this first phase, navigation with F / Shift+F works only for task cards that are currently visible on the workspace. Support for navigating to non-visible elements is planned for a later phase.</p>
 
   <div class="doc-image">
@@ -800,11 +799,12 @@ nav .nav-num {
   <p>When the same task has more than one card on the current workspace, a small badge appears automatically on each card showing the number of other instances.</p>
   <p>Clicking the badge opens a panel listing the other cards of that task on this workspace, each with a navigation pin. Clicking a pin zooms the workspace to that card.</p>
   <p><strong>Tab / Shift+Tab</strong> cycles between cards of the same task. This works for cards currently visible on the workspace.</p>
-  <p><strong>Make unique</strong> — available from the context menu when a card has other instances on the same workspace — creates a new independent live task from that card. The card is disconnected from the shared task record and becomes its own standalone task in the project database. The badge on any remaining shared cards updates immediately to reflect the reduced count.</p>
-  <p><strong>Duplication shortcuts</strong>: Ctrl+D creates a full Nexus duplicate — a new independent task with a new card. Ctrl+Shift+D creates a card-only clone — a new card pointing to the same underlying task record, which is what triggers the multi-instance indicator.</p>
+  <p><strong>Make unique</strong> — available from the context menu when a card has other instances on the same workspace, or via the <strong>#</strong> or <strong>/</strong> keyboard shortcut when the card is selected — creates a new independent live task from that card. The card is disconnected from the shared task record and becomes its own standalone task in the project database, keeping its current size. The badge on any remaining shared cards updates immediately to reflect the reduced count.</p>
+  <p><strong>Duplication shortcuts</strong>: Ctrl+D creates a full Nexus duplicate — a new independent task with a new card. <strong>+</strong> creates a card-only clone — a new card pointing to the same underlying task record, which is what triggers the multi-instance indicator. Holding Alt and dragging a task card now behaves the same way as Ctrl+D, creating a full independent duplicate rather than a card-only clone — this was a common point of confusion, since a card-only clone doesn't create a new task and won't respond independently to status changes.</p>
+  <p>A duplicated task — whether created via Ctrl+D, Alt-drag, or Make unique — always starts at Unplanned status and keeps the same card size as the one it was duplicated from, regardless of the original task's status or size.</p>
 
   <div class="doc-image">
-    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Shell%20-%20Multiple%20Instances.gif" alt="Multi-instance indicator on task card" />
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Card%20-%20Multiple%20Instances.gif" alt="Multi-instance indicator on task card" />
   </div>
 
   <h2>What's different from V3</h2>
@@ -862,7 +862,7 @@ nav .nav-num {
 
   <h2>How it works</h2>
   <h3>Navigation</h3>
-  <p>The editor is organised into pages. You move between them using the dropdown at the top of the editor, or by clicking the page indicator dots at the bottom. The number of dots reflects how many pages are currently available — some pages can be enabled or disabled at the workspace level, so the editor may show more or fewer pages depending on how the workspace is configured.</p>
+  <p>The editor is organised into pages. You move between them using the dropdown at the top of the editor, or by clicking the page indicator dots at the bottom. The number of dots reflects how many pages are currently available — some pages can be enabled or disabled at the workspace level, so the editor may show more or fewer pages depending on how the workspace is configured. When the editor switches to a different task — for example when you close one task and open another — it always returns to the General page, so it's never left showing another page for the wrong task.</p>
 
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20Navigation.gif" alt="Task editor navigation" />
@@ -883,7 +883,9 @@ nav .nav-num {
   </div>
 
   <h3>Connections page</h3>
-  <p>The Connections page lists all dependencies and links associated with the task. In V3, dependency information was only visible on the task visualization on the workspace — there was no way to see or manage connections from the editor itself. In V4, the Connections page brings this information into the editor, making it accessible regardless of how or where the task is being viewed. Dependencies show connected tasks and whether they are upstream or downstream. Links are external references such as URLs to documents or resources. From this page you can navigate directly to a connected task or remove a connection. Dependency conflict warnings — flagging cases where a task's schedule is in tension with connected tasks — are coming soon to this page.</p>
+  <p>The Connections page lists all dependencies and links associated with the task. In V3, dependency information was only visible on the task visualization on the workspace — there was no way to see or manage connections from the editor itself. In V4, the Connections page brings this information into the editor, making it accessible regardless of how or where the task is being viewed. Dependencies show connected tasks and whether they are upstream or downstream. Links are external references such as URLs to documents or resources. From this page you can navigate directly to a connected task, import a related task onto the workspace, or remove a connection.</p>
+  <p>Dependency conflict warnings are now shown directly on this page. If a listed task is in schedule conflict with the task you're editing, its row is shown in red with a warning triangle next to its navigation pin — clicking the triangle opens the same assistive rescheduling dialog available on the workspace, now as a movable panel positioned beside the editor. If a related task has a conflict with a different task instead, its row is shown in red without the triangle, making it clear whose schedules are actually in tension.</p>
+  <p>If a connected task hasn't been imported onto the current workspace, its row shows a disabled import icon — clicking it brings the task onto the workspace next to the one you're editing, so it's easy to review without it jumping into a plan automatically. Predecessors import to the left of the reference task, consistent with existing Jira import behavior. Connections cannot be added, removed, or imported in read-only workspaces.</p>
 
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20Connection%20Page.png" alt="Task editor connections page" />
@@ -904,19 +906,21 @@ nav .nav-num {
     <li><strong>Multi-page structure</strong> — task information is organised into focused pages rather than a single form, making it faster to navigate and easier to extend with new capabilities over time</li>
     <li><strong>Time fields</strong> — start time and due time can now be set for hour-level precision, which was not available in V3</li>
     <li><strong>Calendar picker</strong> — a task can now be assigned a specific project calendar, ensuring date calculations respect the correct working days</li>
-    <li><strong>Connections page</strong> — dependencies and links are now viewable and manageable directly in the editor. In V3, connection information was only visible on the task visualization on the workspace, making it inaccessible in list views or other contexts</li>
+    <li><strong>Connections page</strong> — dependencies and links are now viewable and manageable directly in the editor, including dependency conflict warnings and the ability to import a related task straight onto the workspace. In V3, connection information was only visible on the task visualization on the workspace, making it inaccessible in list views or other contexts</li>
     <li><strong>History page</strong> — a full, read-only audit trail of every change made to a task, recorded automatically. This had no equivalent in V3</li>
     <li><strong>Extensible by design</strong> — the page structure is built to accommodate new pages over time. Labels are the next planned addition</li>
   </ul>
 
   <h2>What this means for your team</h2>
   <div class="example"><div class="example-title">Example 1 — Understanding why a task moved</div><p>During a weekly look-ahead session, a superintendent notices that a concrete task has shifted two weeks later than originally planned. Rather than asking around, they open the task editor and navigate to the History page. The log shows three entries: a date change made by the foreman six days ago, a crew size reduction the week before that, and the original committed date at the start of the phase. The superintendent can see exactly what changed, who changed it, and when — without having to piece it together from memory or a chat thread.</p></div>
-  <div class="example"><div class="example-title">Example 2 — Reviewing a task's dependencies without opening the plan</div><p>A foreman is working from the task list view during the daily huddle and wants to check what needs to finish before their MEP rough-in task can start. Rather than navigating to the full phase plan to find the dependency lines, they open the task editor and go to the Connections page. The upstream dependencies are listed there — including which tasks are complete and which are still in progress. They get the information they need without switching context.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Reviewing a task's dependencies without opening the plan</div><p>A foreman is working from the task list view during the daily huddle and wants to check what needs to finish before their MEP rough-in task can start. Rather than navigating to the full phase plan to find the dependency lines, they open the task editor and go to the Connections page. The upstream dependencies are listed there — including which tasks are complete and which are still in progress, with any schedule conflicts flagged in red. If one of those tasks hasn't been imported onto the current workspace, they can bring it in directly from the panel to take a closer look.</p></div>
 
   <h2>Frequently asked questions</h2>
   <div class="faq-item"><div class="faq-q">Where do I find variance reasons and outcome notes?</div><div class="faq-a">Both are on the General page of the editor, available when a task has a status of Incomplete.</div></div>
   <div class="faq-item"><div class="faq-q">Why can't I see the Progress Update page in some workspaces?</div><div class="faq-a">Progress tracking can be enabled or disabled at the workspace level. If the page isn't visible, it has been turned off for that workspace. A Workspace Admin can enable it in the workspace settings.</div></div>
   <div class="faq-item"><div class="faq-q">Can I see a task's full history from any workspace?</div><div class="faq-a">Yes. The History page shows all changes made to the task across its entire lifetime, regardless of which workspace or context the change was made from.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I know if a connected task has a schedule conflict?</div><div class="faq-a">On the Connections page, a task in conflict with the one you're editing shows its row in red with a warning triangle next to the navigation pin. If the conflict is with a different task instead, the row shows red without the triangle. Clicking the triangle opens the assistive rescheduling dialog.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I bring a connected task onto my workspace from the editor?</div><div class="faq-a">Yes. If a connected task hasn't been imported onto the current workspace, its row shows an import icon. Clicking it places the task on the workspace next to the one you're editing, so you can review it without it being automatically inserted into a plan.</div></div>
 
   <div class="section-nav">
     <a href="#task-visualization"><span class="nav-dir">← Previous</span><span class="nav-title">Task Visualization</span></a>
@@ -1491,7 +1495,7 @@ nav .nav-num {
   <p>Off-days are no longer shown as shaded columns on the plan. Instead, each task card is responsible for visualizing its own non-working days — days within a task's duration that are non-working are shown with a hatched overlay directly on the card. This is what makes it possible for tasks with different calendars to coexist in the same plan without visual conflicts. A full description of this visualization is covered in the <a href="#task-visualization">Task Visualization guide</a>.</p>
 
   <div class="doc-image">
-    <img src="https://github.com/hoylu/Hoylu-Documentation/blob/main/images/Task%20Shell%20-%20Different%20Calendars.png?raw=true" alt="Task cards with different calendars" />
+    <img src="https://github.com/hoylu/Hoylu-Documentation/blob/main/images/Task%20Card%20-%20Different%20Calendars.png?raw=true" alt="Task cards with different calendars" />
   </div>
 
   <h3>Migrating calendars from V3</h3>
