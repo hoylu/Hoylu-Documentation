@@ -1010,13 +1010,15 @@ nav .nav-num {
   <p>An incomplete task without a replanned replacement will display a warning on its card, making unresolved replanning visible at a glance without disrupting the ability to mark tasks incomplete quickly in the field.</p>
   <p>The replanned connection is visually distinct from standard dependency connections, and like all project-level connections it is stored in the project database and visible across all workspaces where the connected tasks have cards.</p>
 
-  <h3>Creating linked tasks <span class="badge-coming">Coming soon</span></h3>
-  <p>V4 introduces a set of shortcuts for quickly creating a new live task in a predefined relationship to an existing one — a predecessor, a subtask, or a successor. All tasks and connections created this way are stored in the project database as live records immediately.</p>
-  <p><strong>Predecessor</strong> — a new task placed one working day before the selected task's start, linked with an FS dependency (predecessor → selected task).</p>
-  <p><strong>Subtask</strong> — a new task placed at the selected task's start date and bounded by it, linked with SS and FF dependencies to keep it within the parent's duration.</p>
-  <p><strong>Successor</strong> — a new task placed on the first working day after the selected task ends, linked with an FS dependency (selected task → successor).</p>
-  <p>Each newly created task inherits the calendar of the task it was created from, so working day placement is always consistent.</p>
-  <p>These can be triggered from the <strong>context menu</strong> (quick single-task create), the <strong>connection dot radial menu</strong>, or a <strong>multi-subtask modal</strong> that splits a task's duration into several subtasks at once — by total length, by number of working days, or by day of week. A fourth entry point allows inserting a new task <strong>inline into an existing connection</strong>, replacing it with two new connections to the inserted task.</p>
+  <h3>Creating linked tasks</h3>
+  <p>V4 provides a set of shortcuts for quickly creating a new live task in a predefined relationship to an existing one — a predecessor, a subtask, or a successor. Available now from the context menu when a single task is selected, creating the new task immediately with no dialog. All tasks and connections created this way are live records, stored in the project database immediately, with the new task's card placed on the current workspace.</p>
+  <p><strong>Predecessor</strong> — a new task placed one working day before the selected task's start, linked with an FS dependency (predecessor → selected task). Shortcut: Alt+←.</p>
+  <p><strong>Subtask</strong> — a new task placed at the selected task's start date and bounded by it, linked with SS and FF dependencies to keep it within the parent's duration. Shortcut: Alt+↓.</p>
+  <p><strong>Successor</strong> — a new task placed on the first working day after the selected task ends, linked with an FS dependency (selected task → successor). Shortcut: Alt+→.</p>
+  <p>A linked task created this way always starts at Unplanned status, regardless of the parent task's status, and inherits the parent's calendar — if the calculated placement date falls on a non-working day, it's moved to the nearest valid working day.</p>
+  <p>Holding Ctrl while selecting any of these options creates the task and immediately opens its editor, instead of just selecting the new card.</p>
+  <p><strong>Inserting a task into a connection</strong> is also available now. When a single connection is selected, a button appears on the connection line to insert a new 1-day live task inline, splitting the connection into two FS dependencies to the inserted task. The button only appears when the connection exits at the end (right) of its source task and enters at the start (left) of its target — not for SF connections or other incompatible orientations, where the correct insertion dependency would be ambiguous.</p>
+  <p><strong>Additional entry points</strong> <span class="badge-coming">Coming at a later stage</span> — a connection dot radial menu offering the same three options, and a multi-subtask modal for splitting a task's duration into several subtasks at once.</p>
 
   <h2>What's different from V3</h2>
   <ul>
@@ -1037,6 +1039,8 @@ nav .nav-num {
   <div class="faq-item"><div class="faq-q">What happened to connections between notes and other non-task elements?</div><div class="faq-a">These remain as workspace-level connections and work exactly as before, including full styling options. They are not stored in the project database.</div></div>
   <div class="faq-item"><div class="faq-q">How do dependency warnings work if not all tasks are loaded in my workspace?</div><div class="faq-a">Warnings are validated server-side against the full project data, so they apply regardless of which tasks are currently visible on the whiteboard. A warning will appear on a task even if its connected predecessor or successor is not imported into the current workspace.</div></div>
   <div class="faq-item"><div class="faq-q">What is the replanned connection?</div><div class="faq-a">A planned connection type that links an incomplete task to its replacement when work is replanned. Unlike standard dependencies, replanned connections are excluded from dependency validation — a task cannot conflict with its own replacement. Incomplete tasks without a replanned replacement display a warning on their card, making unresolved replanning visible in the plan. It is coming in a future release.</div></div>
+  <div class="faq-item"><div class="faq-q">What status does a newly created predecessor, subtask, or successor have?</div><div class="faq-a">Always Unplanned, regardless of the parent task's status.</div></div>
+  <div class="faq-item"><div class="faq-q">Are there keyboard shortcuts for creating linked tasks?</div><div class="faq-a">Yes — when a single task is selected: Alt+← for predecessor, Alt+↓ for subtask, Alt+→ for successor.</div></div>
 
   <div class="section-nav">
     <a href="#task-editor"><span class="nav-dir">← Previous</span><span class="nav-title">Task Editor</span></a>
