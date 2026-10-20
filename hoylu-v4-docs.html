@@ -563,7 +563,7 @@ nav .nav-num {
   <p><strong>Project-level calendars.</strong> Each project can now have multiple calendars. Teams and individual tasks can be assigned their own calendar, so different trades with different working weeks can coexist in the same plan without interference. <em>A concrete crew on a six-day week and a finishing trade on a five-day week can sit in the same plan with correct date calculations and off-day visualisation for each.</em></p>
   <p><strong>A public API.</strong> For the first time, Hoylu exposes a read and write API for project task data. External tools — reporting platforms, scheduling software, BIM integrations — can connect directly to live project data using service tokens, without any manual export or sync step. <em>A Power BI dashboard can pull live PPC and milestone data from Hoylu automatically, giving executives an always-current programme view without anyone having to prepare a report.</em></p>
   <p><strong>Project-level settings.</strong> Teams, label categories, variance reasons, and calendars are now defined once at the project level and apply across all workspaces. A new Project Control Center sits alongside the workspace Control Center, with the project's own visual identity, so the scope of every setting is immediately clear. <em>Adding a new trade team mid-project means one update in the Project Control Center — it appears in every workspace instantly, with no per-workspace configuration needed.</em></p>
-  <p><strong>P6 master schedule integration.</strong> <span class="badge-coming">In development</span> The XER import is being rebuilt on the V4 data model. The full XER file — activities, calendars, WBS hierarchy, activity codes, and UDFs — is imported into the project database, and planners then bring relevant subsets onto a workspace as needed. A dedicated Activity Report in Insights and write-back of actuals to P6 are also part of this workstream. See the <a href="#xer-import">XER Import &amp; P6 Integration guide</a> for full details.</p>
+  <p><strong>P6 master schedule integration.</strong> <span class="badge-coming">Partially available</span> The XER import is being rebuilt on the V4 data model. The full XER file — activities, calendars, WBS hierarchy, activity codes, and UDFs — is imported into the project database, and planners then bring relevant subsets onto a workspace as needed. A dedicated Activity Report in Insights and write-back of actuals to P6 are also part of this workstream. See the <a href="#xer-import">XER Import &amp; P6 Integration guide</a> for full details.</p>
 
   <h2>What this means for your team</h2>
   <p>V4 delivers meaningful improvements across nearly every area of Hoylu, and teams should upgrade now to benefit from them. Like any ambitious product release, there are specific areas still in progress — the <a href="#xer-import">XER Import &amp; P6 Integration</a> and the mobile app are the most notable examples, and a handful of interaction models are still being finalized. These are known gaps that are actively being worked on. Hoylu has always been a product that evolves quickly in response to how teams actually use it, and V4 is no exception — it is a strong foundation that will keep getting better.</p>
@@ -598,7 +598,7 @@ nav .nav-num {
     <a class="index-card" href="#calendars"><span class="num">9</span>Calendars</a>
     <a class="index-card" href="#permissions"><span class="num">10</span>Permissions</a>
     <a class="index-card" href="#public-api"><span class="num">11</span>Public API &amp; Third-Party Integrations</a>
-    <a class="index-card" href="#xer-import"><span class="num">12</span>XER Import &amp; P6 Integration <span class="badge-coming">In development</span></a>
+    <a class="index-card" href="#xer-import"><span class="num">12</span>XER Import &amp; P6 Integration <span class="badge-coming">Partially available</span></a>
   </div>
 
   <div class="section-nav">
@@ -674,9 +674,10 @@ nav .nav-num {
 
   <h2>Frequently asked questions</h2>
   <div class="faq-item"><div class="faq-q">Is upgrading to V4 mandatory?</div><div class="faq-a">Not immediately. V3 continues to work after V4 launches, and there is no forced migration. The upgrade is a deliberate step that teams take when they are ready.</div></div>
-  <div class="faq-item"><div class="faq-q">Do all workspaces need to be part of a project to use V4 features?</div><div class="faq-a">Yes. The central task database and all V4 planning capabilities require a workspace to be part of a Hoylu project. Workspaces that are not part of a project continue to work exactly as they did in V3 and are not affected by the changes described in this guide. The goal over time is for all active workspaces to move into projects, but there is no forced migration and non-project workspaces remain fully supported.</div></div>
+  <div class="faq-item"><div class="faq-q">Do all workspaces need to be part of a project to use V4 features?</div><div class="faq-a">Yes. The central task database and all V4 planning capabilities require a workspace to be part of a Hoylu project. Workspaces that are not part of a project continue to work exactly as they did in V3 and are not affected by the changes described in this guide. A new workspace created in a project with V4 enabled starts in V4 mode automatically. A workspace created from a template or by duplicating another workspace takes its workspace settings, including the V3/V4 mode, from that source instead. The goal over time is for all active workspaces to move into projects, but there is no forced migration and non-project workspaces remain fully supported.</div></div>
   <div class="faq-item"><div class="faq-q">Can I still use V3 after V4 launches?</div><div class="faq-a">Yes, V3 continues to work and there is no forced migration. That said, our focus going forward is V4 — it delivers meaningful improvements for projects of all sizes, not just large or complex ones. The long-term goal is to phase out V3, and while there is no set timeline for that, teams are encouraged to move to V4 when they are ready. The upgrade process is designed to be manageable, and the benefits are available from day one.</div></div>
   <div class="faq-item"><div class="faq-q">Can I use V3 and V4 at the same time, on the same project?</div><div class="faq-a">The two versions use different data models and do not share a live connection. You can sync existing V3 workspaces into V4 as part of a migration, but after that the V4 version of the data lives in the project database and is no longer linked back to the V3 workspace. Running both in parallel as an ongoing workflow — where changes in V3 automatically reflect in V4 or the other way around — is not supported. The recommended approach is to migrate a project to V4 when your team is ready to make the switch fully. See the <a href="#bulk-import">Bulk Import &amp; Workspace Sync guide</a> for the recommended migration process.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I copy task cards from one workspace to another?</div><div class="faq-a">Yes, within the same project. Ctrl+C / Ctrl+V pastes full duplicates, which are new, independent tasks. Ctrl+C / Ctrl+Shift+V pastes card-only clones that point to the same underlying tasks. If you paste into a workspace that belongs to a different project, or to no project, the live tasks are left out and all other elements paste as usual. See the <a href="#task-visualization">Task Visualization guide</a> for the full set of duplication shortcuts.</div></div>
 
   <div class="section-nav">
     <a href="#intro"><span class="nav-dir">← Previous</span><span class="nav-title">Introduction</span></a>
@@ -746,6 +747,11 @@ nav .nav-num {
 
   <h4>Team color visibility in overview mode</h4>
   <p>When zoomed out to overview level, the white overlay on the main body of the card is reduced so the team color fills more of the card surface. This makes it easier to read a dense plan by trade at a glance, without needing to zoom in to identify the team strip on the left edge.</p>
+  <h4>Connection icon</h4>
+  <p>A task card shows a connection icon whenever the task has at least one connection, even if the connected task, milestone, or constraint is not on the current workspace. This makes links to work outside the current view visible without opening the task editor.</p>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Card%20-%20Connection%20Icon.png" alt="Task card connection icon" />
+  </div>
 
   <h4>Milestones and constraints</h4>
   <p>Milestones and constraints use the same card structure as tasks but with an inverted color scheme — dark background with light text — making them easy to distinguish at a glance even in a dense plan. They each have a distinctive icon: a diamond for milestones and a stylized hourglass for constraints. Both have no duration and are displayed on a single date.</p>
@@ -796,6 +802,7 @@ nav .nav-num {
   <p>Because a task card represents a project-level record, ejecting it from a workspace and deleting it from the project are two distinct operations with very different consequences.</p>
   <p><strong>Ejecting a card</strong> takes the task off the current workspace only. The task record remains fully active in the project database — it continues to appear in any other workspace that has a card for it and is still included in all project-level reporting and PPC calculations. Ejecting a card is a workspace curation action; it does not affect the task's existence or visibility anywhere else.</p>
   <p><strong>Deleting a task</strong> removes the underlying record from the project database. The task is flagged as deleted and immediately enters a deleted state in every workspace where it currently has a card — not just the one you deleted it from. A deleted card renders with a dark overlay and a trash icon. The task is excluded from all reporting and dashboards from the moment it is deleted.</p>
+  <p>Tasks in Committed, Complete, or Incomplete status can only be deleted by workspace admins.</p>
 
   <h4>The deleted state</h4>
   <p>When a task is deleted, its card remains visible on every workspace where it appeared — it does not disappear immediately. This is intentional. The deleted state serves two purposes: it gives the user who deleted the task a visible confirmation and an opportunity to restore it, and it notifies collaborators in other workspaces that the task has been removed from the project so they can react independently.</p>
@@ -816,6 +823,8 @@ nav .nav-num {
 
   <h4>Undo</h4>
   <p>An undo capability lets you reverse your most recent actions on the workspace. Undo doesn't remove the last step from a task's history — it adds a new history step that reverses the effect of the one before it, so the full sequence of changes stays visible rather than being erased.</p>
+  <h4>Progress indicator for longer operations</h4>
+  <p>When an action takes longer to complete, a spinner appears on the workspace. This applies to layout actions and to undo, redo, or delete with several items selected. While the spinner is shown, other actions and keyboard shortcuts are blocked until the operation finishes.</p>
 
   <h3>Focus mode</h3>
   <p>Focus mode allows you to filter the workspace to highlight only elements that match a set of criteria — tasks, milestones, and constraints that don't match are greyed out, making it easier to concentrate on a specific team's work, a status, or a label. Keyboard navigation with F and Shift+F moves between matching elements.</p>
@@ -833,6 +842,7 @@ nav .nav-num {
   <p><strong>Tab / Shift+Tab</strong> cycles between cards of the same task. This works for cards currently visible on the workspace.</p>
   <p><strong>Make unique</strong> — available from the context menu when a card has other instances on the same workspace, or via the <strong>#</strong> or <strong>/</strong> keyboard shortcut when the card is selected — creates a new independent live task from that card. The card is disconnected from the shared task record and becomes its own standalone task in the project database, keeping its current size. The badge on any remaining shared cards updates immediately to reflect the reduced count.</p>
   <p><strong>Duplication shortcuts</strong>: Ctrl+D creates a full duplicate — a new independent task with a new card. <strong>+</strong> creates a card-only clone — a new card pointing to the same underlying task record, which is what triggers the multi-instance indicator. Holding Alt and dragging a task card now behaves the same way as Ctrl+D, creating a full independent duplicate rather than a card-only clone — this was a common point of confusion, since a card-only clone doesn't create a new task and won't respond independently to status changes. Copy and paste follow the same default: Ctrl+C / Ctrl+V, or Paste from the right-click context menu, creates a full duplicate. To paste a card-only clone instead, use Ctrl+Shift+V, or Shift+click the Paste button — both are called out with a tooltip on the button. Copy and paste aren't available on deleted tasks.</p>
+  <p><strong>Copying between workspaces</strong> — Ctrl+C / Ctrl+V and Ctrl+C / Ctrl+Shift+V also work between workspaces of the same project. Ctrl+V pastes full duplicates, which are new, independent tasks; Ctrl+Shift+V pastes card-only clones that point to the same underlying tasks. If you paste into a workspace that belongs to a different project, or to no project, the live tasks are left out and all other elements paste as usual.</p>
   <p>A duplicated task — whether created via Ctrl+D, Alt-drag, or Make unique — always starts at Unplanned status and keeps the same card size as the one it was duplicated from, regardless of the original task's status or size.</p>
 
   <div class="doc-image">
@@ -911,7 +921,9 @@ nav .nav-num {
     <tr><td>Complete</td><td>Status, variance reason, outcome notes</td><td>Title, team/person, dates, duration, time fields, calendar, progress (locked at 100%)</td></tr>
   </table>
   <p>"Editable" for Status means the control itself isn't greyed out — but which transitions are actually available depends on the task's current status and your role. Regular users have no valid transitions out of Complete or Incomplete; Project Admins can still override with Ctrl+click. See the <a href="#task-visualization">Task Visualization guide</a> for the full transition table.</p>
+  <p>What you can edit in the task editor also depends on the workspace's user guidance setting. If you are not allowed to edit an element — for example because it is assigned to a team you are not a member of — your changes are blocked and a message explains why. See the <a href="#project-control-center">Project Control Center &amp; Labels guide</a>.</p>
   <p>The Connections page isn't affected by a task's own status lock — dependencies can still be added, removed, or resolved for Committed, Complete, or Incomplete tasks, unless the workspace itself is read-only.</p>
+  <p>For constraints, the resolved date stays editable when the constraint is Committed or Complete, and is locked when it is Incomplete. Marking a constraint Complete fills an empty resolved date with today's date; an existing resolved date is left unchanged.</p>
 
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20General.png" alt="Task editor general page" />
@@ -929,6 +941,7 @@ nav .nav-num {
   <p>The Connections page lists all dependencies and links associated with the task. In V3, dependency information was only visible on the task visualization on the workspace — there was no way to see or manage connections from the editor itself. In V4, the Connections page brings this information into the editor, making it accessible regardless of how or where the task is being viewed. Dependencies show connected tasks and whether they are upstream or downstream. Links are external references such as URLs to documents or resources. From this page you can navigate directly to a connected task, import a related task onto the workspace, or remove a connection.</p>
   <p>Dependency conflict warnings are now shown directly on this page. If a listed task is in schedule conflict with the task you're editing, its row is shown in red with a warning triangle next to its navigation pin — clicking the triangle opens the same assistive rescheduling dialog available on the workspace, now as a movable panel positioned beside the editor. If a related task has a conflict with a different task instead, its row is shown in red without the triangle, making it clear whose schedules are actually in tension.</p>
   <p>If a connected task hasn't been imported onto the current workspace, its row shows a disabled import icon — clicking it brings the task onto the workspace next to the one you're editing, so it's easy to review without it jumping into a plan automatically. Predecessors import to the left of the reference task, consistent with existing Jira import behavior. Connections cannot be added, removed, or imported in read-only workspaces.</p>
+  <p>The Connections page also lists a task's parent and child relationships alongside its dependencies and links. Connected tasks that have been deleted are hidden by default; an option on the page shows them, and a deleted task can be restored directly from there.</p>
 
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20Connection%20Page.png" alt="Task editor connections page" />
@@ -940,6 +953,9 @@ nav .nav-num {
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Task%20Editor%20-%20History%20Page.png" alt="Task editor history page" />
   </div>
+
+  <h3>Deleting and restoring a task</h3>
+  <p>A <strong>Delete task</strong> button in the editor deletes the task from the project. This works the same as deleting it on the workspace: every card for the task enters the deleted state. When the editor shows a task that has been deleted, it marks it clearly and offers to restore it. See the <a href="#task-visualization">Task Visualization guide</a> for the full deletion behavior.</p>
 
   <div class="coming-soon">A dedicated <strong>Labels page</strong> is the next planned addition to the editor. Labels can already be assigned to tasks today through the existing label assignment dialog on the workspace — the new page will bring that management directly into the task editor.</div>
 
@@ -1058,6 +1074,9 @@ nav .nav-num {
   <p><strong>Inserting a task into a connection</strong> is also available now. When a single connection is selected, a button appears on the connection line to insert a new 1-day live task inline, splitting the connection into two FS dependencies to the inserted task. The button only appears when the connection exits at the end (right) of its source task and enters at the start (left) of its target — not for SF connections or other incompatible orientations, where the correct insertion dependency would be ambiguous.</p>
   <p><strong>Connection dot radial menu</strong> — single-click a task's connection dot to open a small radial menu with the same three options: Create Predecessor, Create Subtask, and Create Successor. Ctrl+click creates the task and immediately opens its editor, the same as the other entry points.</p>
   <p><strong>Multi-subtask modal</strong> — available from the context menu or Ctrl+Ins, this opens a modal for splitting a task's duration into several subtasks at once. Three options: Full duration (a single subtask matching the parent's full working-day duration), Split by length (specify a number of working days per subtask, with the last one taking the remainder), and Split by day of week (for example, splitting every Monday, which can produce subtasks of varying length). Enter confirms the modal without opening the task editor for the parent. Connections between the resulting subtasks are drawn as dotted orange lines, distinct from standard dependencies.</p>
+
+  <h3>Importing connected tasks</h3>
+  <p>A task card shows a connection icon whenever the task has at least one connection, even if the connected task is not on the current workspace (see the <a href="#task-visualization">Task Visualization guide</a>). To bring those tasks in, use the import button in the task's pin menu: it imports all connected tasks that are not yet on the workspace in one step. The same action is available with the <strong>I</strong> keyboard shortcut, and it can be undone and redone like any other workspace action. To import a single connected task instead, use the import icon on the Connections page in the task editor.</p>
 
   <h2>What's different from V3</h2>
   <ul>
@@ -1247,10 +1266,14 @@ nav .nav-num {
   <p>Insights is a single shared component that appears in three contexts. At the project level it gives a view across all workspaces and all tasks in the project, with the option to filter down to a specific workspace — Ctrl/Cmd+click Project Insights from the project dashboard to open it as its own page in a new browser tab. Inside a workspace, the same component appears with the workspace filter pre-applied — by default you see only the tasks relevant to that workspace, though the filter can be removed to see the full project view without leaving the workspace; a pop-out button in the panel header opens the same view as a standalone page in a new tab. The views and charts are identical in all three contexts; only the scope and surrounding chrome change.</p>
 
   <h3>Optimized for phone and tablet</h3>
-  <p>All four views — charts, task list, weekly work plan, and constraint log — now adapt to phone and tablet screens, in the standalone page, a workspace, or the project dashboard alike. Filters open in a drawer that slides in from the right, matching the desktop layout, with a filter icon showing how many filters are active. Tapping a task's title in the task list, weekly work plan, or constraint log opens the task editor as a drawer; date range and label category are available directly in the toolbar. Touch targets are sized for fingers rather than a mouse.</p>
+  <p>All views now adapt to phone and tablet screens, in the standalone page, a workspace, or the project dashboard alike. Filters open in a drawer that slides in from the right, matching the desktop layout, with a filter icon showing how many filters are active. Tapping a task's title in the task list, weekly work plan, or constraint log opens the task editor as a drawer; date range and label category are available directly in the toolbar. Touch targets are sized for fingers rather than a mouse.</p>
 
   <h3>Filters</h3>
-  <p>Filters appear in a panel on the left side of the Insights panel. You can filter by workspace, team, assignee, status, and label category. The status filter also includes a With Warnings option, letting you isolate tasks with an active warning regardless of their current status. Each view's date range picker also includes quick presets — such as This week, Last 4 weeks, or Whole project — tailored to that view, alongside the option to set an exact range. The filter panel applies to all four views — charts, task list, weekly work plan, and constraint log — and filters are preserved when switching between views, so you don't need to reconfigure them each time.</p>
+  <p>Filters appear in a panel on the left side of the Insights panel. You can filter by workspace, team, assignee, status, and label category. The status filter also includes a With Warnings option, letting you isolate tasks with an active warning regardless of their current status. Each view's date range picker also includes quick presets — such as This week, Last 4 weeks, or Whole project — tailored to that view, alongside the option to set an exact range. The filter panel applies to all views, and filters are preserved when switching between views, so you don't need to reconfigure them each time.</p>
+  <p>Below the shared filters, the filter panel has a section with options that apply only to the current view. In the task list and the weekly work plan, a Type filter narrows the view to tasks, milestones, or constraints. In the task list and the constraint log, checkboxes show elements without dates and deleted elements; deleted elements appear semi-transparent with their title struck through. The chart view and the Activities view have no view-specific options.</p>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20-%20View%20Specific%20Filters.png" alt="Insights view-specific filters" />
+  </div>
 
   <h3>Jumping to a task</h3>
   <p>Every task shown in Insights links back to its location in the workspace — opening it takes you straight to that task's card on the whiteboard. If the task hasn't been imported into a workspace yet, it opens the import dialog instead so you can bring it in.</p>
@@ -1261,6 +1284,12 @@ nav .nav-num {
 
   <h3>Sharing insights</h3>
   <p>Share options — copy link, QR code, and email — are available from the panel header in every view, wherever you're viewing Insights from. Opening a shared link always opens the standalone page in a new tab, reproducing the exact same filters, date range, and view — it never opens the dashboard or a workspace around it, keeping the link mobile-friendly. On mobile, the QR code option moves into the filter drawer alongside the other filter controls.</p>
+
+  <h3>Embedding Insights in a workspace</h3>
+  <p>Pasting a Project Insights link onto a workspace creates a page-sized Hoylu Insights portal that shows the linked view live inside the workspace. For now, pasting the link is the only way to create one — the portal type is not yet listed in the Insert Portal menu. On older app versions, the portal appears as a standard link portal.</p>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20Portals.png" alt="Hoylu Insights portal on a workspace" />
+  </div>
 
   <h3>Chart view</h3>
   <p>The chart view is organised into two areas. At the top, a KPI section shows summary tiles and three overview charts side by side: Task PPC, Task Status distribution, and Variance reason distribution. The summary tiles show headline numbers including total tasks, milestones, constraints, PPC, uncommitted tasks, and tasks past due. These give a quick health check of the project at a glance.</p>
@@ -1289,6 +1318,12 @@ nav .nav-num {
   <h3>Constraint Log</h3>
   <p>The Constraint Log lists all constraints in the project — external dependencies and fixed dates that affect the plan. It shows which constraints are resolved, which are outstanding, and which are past due. At project level this view is new in V4; it was previously only available within individual workspaces.</p>
 
+  <h3>Activities</h3>
+  <p>The Activities view lists the Primavera P6 activities imported into the project from an XER file, including activity warnings, activity IDs, and status. Full details are in the <a href="#xer-import">XER Import &amp; P6 Integration guide</a>.</p>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20-%20Activity%20report.png" alt="Insights Activities view" />
+  </div>
+
   <h3>Updated PPC calculation</h3>
   <p>The way PPC is calculated has changed in V4. In V3, a task that spanned multiple weeks contributed to the PPC score for each of those weeks — completing a five-week task improved PPC across five separate week buckets. In V4, a task contributes to PPC only in the week it is completed. This gives a more accurate picture of week-by-week plan reliability. Additionally, future tasks are excluded from PPC calculations — if a selected date range extends into the future, only completed weeks contribute to the score. A date range set entirely in the future will show PPC as not applicable.</p>
 
@@ -1298,10 +1333,10 @@ nav .nav-num {
     <li><strong>One unified component in three contexts</strong> — V3 had two separate reporting components for workspace and project level, with different capabilities. V4 uses one shared component across the project dashboard, a workspace, and a standalone page that opens in its own browser tab — the workspace filter is now removable, too</li>
     <li><strong>WWP and Constraint Log at project level</strong> — both views were previously only available inside individual workspaces. In V4 they are available at the project level</li>
     <li><strong>Redesigned chart view</strong> — a KPI section with summary tiles now sits above scrollable full-width charts, each with its own independent date range instead of one shared filter for everything. Charts and the task list are now separate views rather than combined in one panel</li>
-    <li><strong>Filters, warnings, and date presets</strong> — filters moved to a left-side panel, making room for label category filtering; the status filter now includes a With Warnings option; and every date range picker offers quick presets (This week, Last 4 weeks, Whole project, etc.) alongside an exact range. Filters persist across all four views</li>
+    <li><strong>Filters, warnings, and date presets</strong> — filters moved to a left-side panel, making room for label category filtering; the status filter now includes a With Warnings option; and every date range picker offers quick presets (This week, Last 4 weeks, Whole project, etc.) alongside an exact range. Filters persist across all views</li>
     <li><strong>Expanded WWP grouping and sorting</strong> — in V3, the WWP could only group by team or swimlane and always sorted by start date. In V4, grouping options include team, status, and any label category, groups expand automatically, and — on phone and tablet — the title column stays pinned when scrolling through weeks. Sorting is flexible across start date, due date, status, team, and title</li>
     <li><strong>Updated PPC calculation</strong> — tasks now contribute to PPC only in the week they are completed, not across all weeks they span</li>
-    <li><strong>Built for phone and tablet, and easy to share</strong> — all four views adapt to smaller screens, with a slide-in filter drawer and touch-sized controls; any view can be shared via copy link, QR code, or email, always opening as the standalone page in a new tab; and opening a task from any view jumps straight to its location in the workspace</li>
+    <li><strong>Built for phone and tablet, and easy to share</strong> — all views adapt to smaller screens, with a slide-in filter drawer and touch-sized controls; any view can be shared via copy link, QR code, or email, always opening as the standalone page in a new tab; and opening a task from any view jumps straight to its location in the workspace</li>
     <li><strong>Export options</strong> — PDF export from the task list is now available. CSV export is coming at a later stage</li>
   </ul>
 
@@ -1348,7 +1383,7 @@ nav .nav-num {
   <h2>Key concepts</h2>
   <div class="concept-list">
     <div class="concept-item"><span class="term">Sync</span> — The process of uploading workspace-level data (teams, labels, variance reasons, tasks, and connections) to the project database. Runs in three phases with explicit conflict resolution for shared elements. During sync, several automatic operations are also applied: V3 plan swimlanes are converted to label categories to support plan recreation in V4, lines between tasks are converted to FS dependencies, and task titles over 100 characters are split into title and description.</div>
-    <div class="concept-item"><span class="term">Conflict</span> — A mismatch between a workspace record and a project record with the same name but different properties — for example, a team with a different color, or a label in a different category. Resolved by choosing which version to keep, or keeping both with a unique name for one of them.</div>
+    <div class="concept-item"><span class="term">Conflict</span> — A mismatch between a workspace record and a project record with the same name but different properties — for example, a team with a different color, or a label with a different color in the same category. Resolved by choosing which version to keep, or keeping both with a unique name for one of them.</div>
     <div class="concept-item"><span class="term">Import</span> — Selecting tasks from the project database and placing their cards on the current workspace, filtered by team, label, date range, or other criteria.</div>
     <div class="concept-item"><span class="term">Create plan from project tasks</span> — A one-step operation that generates a new plan with task cards placed automatically based on a chosen date range and swimlane structure.</div>
   </div>
@@ -1361,7 +1396,7 @@ nav .nav-num {
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Sync%20Wizard.png" alt="Sync wizard" />
   </div>
 
-  <p><strong>Phase 1 — Shared elements.</strong> Teams, label categories, labels, and variance reasons are compared between the workspace and the project database. Where there is a clean match, the data is merged automatically. Where a conflict is detected — for example, a team with the same name but a different color, or a label assigned to a different category — a conflict resolution screen is shown. For each conflict, you can choose to keep the workspace version, keep the project version, or keep both (in which case you must provide a unique name for one of them). Calendar data is also converted and uploaded in this phase.</p>
+  <p><strong>Phase 1 — Shared elements.</strong> Teams, label categories, labels, and variance reasons are compared between the workspace and the project database. Where there is a clean match, the data is merged automatically. Where a conflict is detected — for example, a team with the same name but a different color — a conflict resolution screen is shown. Labels are compared within their category: labels with the same name in different categories are separate labels and do not conflict. For each conflict, you can choose to keep the workspace version, keep the project version, or keep both (in which case you must provide a unique name for one of them). Calendar data is also converted and uploaded in this phase.</p>
 
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Illustration%20-%20Conflict%20resolution.png" alt="Conflict resolution illustration" />
@@ -1373,7 +1408,7 @@ nav .nav-num {
 
   <h3>What sync does automatically</h3>
   <p>In addition to uploading tasks, connections, and shared elements, the sync performs several automatic operations to make the transition to V4 smoother.</p>
-  <p><strong>Swimlane label categories.</strong> For each workspace that contains a V3 plan, sync creates a new label category named "Swimlanes for WS [workspace number]" and a label for each swimlane in that plan — preserving the swimlane color and order. This gives you everything you need to recreate the same plan layout in V4. Since V3 allowed only one plan per workspace, there will be at most one swimlane label category per workspace.</p>
+  <p><strong>Swimlane label categories.</strong> For each workspace that contains a V3 plan, sync creates a new label category named "Swimlanes for WS [workspace number]" and a label for each swimlane in that plan — preserving the swimlane color and order. This gives you everything you need to recreate the same plan layout in V4. Since V3 allowed only one plan per workspace, there will be at most one swimlane label category per workspace. Swimlane labels keep the swimlane's original name — no numeric suffix such as "_1" is added when the same name exists in another category. A swimlane without a title gets the label's ID as its name.</p>
   <p>To recreate the plan in V4, use <strong>Create plan from project tasks</strong> and choose to organise swimlanes by label category, then select "Swimlanes for WS [workspace number]" — the resulting plan will have the same swimlane structure as the original V3 plan, with tasks placed at their correct dates. You can also start from a new, unlinked plan and link it to that label category directly, then use the plan's own import button to pull in matching tasks — see <a href="#plan-visualization">Importing into a plan</a> in the Plan Visualization guide.</p>
 
   <div class="doc-image">
@@ -1442,7 +1477,7 @@ nav .nav-num {
     <div class="concept-item"><span class="term">Project team</span> — A team defined at the project level, assignable to live tasks. Distinct from a workspace team, which applies only to classic tasks.</div>
     <div class="concept-item"><span class="term">Variance reason</span> — A project-level explanation for why a committed task was not completed as planned. Defined in the Project CC and used in the task editor and in <a href="#project-insights">Project Insights</a> reporting.</div>
     <div class="concept-item"><span class="term">Workspace label upgrade</span> — The process of converting workspace-only labels to project labels, triggered via the "upgrade workspace labels" button. Runs a label-only sync to the project database.</div>
-    <div class="concept-item"><span class="term">V3/V4 toggle</span> — A workspace-level switch in the Control Center header that moves a workspace between V3 (classic) and V4 (live) behavior. Only a workspace admin can flip it.</div>
+    \1\n    <div class="concept-item"><span class="term">Team membership</span> — The users assigned to each project team. Managed in the Project Control Center and used by the user guidance setting to decide who can edit live elements.</div>\n    <div class="concept-item"><span class="term">User guidance</span> — A workspace setting that controls who can edit live tasks, milestones, and constraints: any contributor, members of the assigned team only, or workspace admins only.</div>
   </div>
 
   <h2>How it works</h2>
@@ -1456,13 +1491,25 @@ nav .nav-num {
     <li>The main menu shows the live import and upload options in place of the classic ones, and the Insights panel button appears — it stays hidden in V3</li>
     <li>Export Plan to PDF and Export Plan to CSV are hidden, because the classic export doesn't include live task data yet. This will be revisited once the API-based export path is decided</li>
     <li>In the Asset Panel, "Hoylu Plan (New)" appears instead of "Hoylu Plan (Classic)" — the two entry points are mutually exclusive depending on the mode you're in</li>
-    <li>Workspace labels switch to rendering semi-transparently, matching the label-upgrade behavior described in Workspace labels during migration</li>
+    \1\n    <li>The User Assignments tab is hidden — in V4, team membership in the Project Control Center replaces it</li>
   </ul>
   <p>One thing that doesn't change with the toggle: Hoylu Connections. You'll see both "Hoylu Connections (Classic)" and "Hoylu Connections (Live)" in either mode, since that's about how existing connections render rather than which new elements you can create.</p>
+  <p>A new workspace created in a project with V4 enabled starts with the switch set to V4 automatically. A workspace created from a template or by duplicating another workspace takes its workspace settings, including the V3/V4 mode, from that source instead.</p>
 
   <h3>Live task, milestone, and constraint settings</h3>
   <p>The Control Center section for task, milestone, and constraint settings is now split in two. In V3 (classic) mode you see one section labeled "Classic." In V4 (live) mode you see the equivalent section relabeled "Live," with the icon swapped from the classic task icon to the live task icon — replacing the single combined section that used to show regardless of mode.</p>
-  <p>The Live section also adds one new option: whether an incomplete task automatically gets a replacement task created, or whether you'd rather do that yourself. It defaults to on, matching current behavior, and applies to new tasks only. Turn it off if your team prefers to review and create the replacement task manually rather than have Hoylu do it automatically.</p>
+  \1
+  <p>The Live section also sets the <strong>user guidance</strong> for the workspace — who can edit live elements. It is set separately for tasks, milestones, and constraints, each with three options:</p>
+  <ul>
+    <li><strong>Any contributor</strong> — any user with project write access can edit</li>
+    <li><strong>Team members only</strong> — only members of the team the element is assigned to, and workspace admins, can edit; for everyone else it is read-only</li>
+    <li><strong>Admins only</strong> — only workspace admins can edit</li>
+  </ul>
+  <p>The defaults are <em>Team members only</em> for tasks, <em>Admins only</em> for milestones, and <em>Any contributor</em> for constraints. The setting applies everywhere an element can be changed: the task editor, moving or resizing cards, the status button on the card, and assistive rescheduling. When an edit is blocked, a message explains why — an error message for <em>Team members only</em>, an information message for <em>Admins only</em>.</p>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Control%20Center%20-%20User%20Guidance.png" alt="User guidance settings in the Control Center" />
+  </div>
+  <div class="callout">⚠️ <strong>Check team membership after upgrading.</strong> Tasks default to <em>Team members only</em>. Until users are added to teams in the Team Membership section of the Project Control Center, only workspace admins and members of a task's team can edit that task. Assign team members before teams start working, or switch the task setting to <em>Any contributor</em> in the workspace Control Center.</div>
 
   <h3>Opening the Project Control Center</h3>
   <p>The Project Control Center opens as a separate panel alongside the workspace CC. It displays the project's name, icon, and color gradient at the top — the same visual identity used in the permissions panel and the project dashboard — making it immediately clear which project's settings you are editing.</p>
@@ -1474,6 +1521,8 @@ nav .nav-num {
   <h3>Labels</h3>
   <p>The Labels section in the Project CC is where project-level labels and label categories are managed. Labels created here are available for assignment across all workspaces in the project — on live tasks, milestones, constraints, and also on workspace elements like notes and shapes. Unlike teams, variance reasons, and calendars which only apply to live tasks, a project label can be assigned to any workspace element regardless of whether it is connected to the project database.</p>
   <p>Labels are organised into categories. Each category groups a set of related labels — for example an "Area" category for different site zones, or a "Phase" category for project phases. Label categories drive grouping in the Weekly Work Plan view, reporting filters, and swimlane assignment in plans — see the <a href="#plan-visualization">Plan Visualization guide</a> for how swimlanes link to label categories, including how dragging a task between swimlanes updates its label to match.</p>
+  <p>Label names must be unique within a category, but the same name can be used in different categories — for example, "Level 1" in both an "Area" and a "Phase" category. Creating a duplicate name within the same category shows the message "Value already in category". Hidden or deleted labels are not counted in this check. The same rule applies in the workspace Control Center.</p>
+  <p>Each label category has a visibility option that controls how its labels appear on elements: <strong>Always visible</strong>, or <strong>Visible only on hover / when selected</strong>. The option is set per workspace, so changing it in one workspace does not affect other workspaces of the project.</p>
 
   <h3>Workspace labels during migration</h3>
   <p>During migration from V3 to V4, a workspace may still have workspace-level labels that have not yet been promoted to project labels. These appear semi-transparent in the label assignment dialog and on elements — still visible but no longer assignable to new elements. An <strong>"upgrade workspace labels"</strong> button appears in both the label assignment dialog and the workspace CC, triggering a label-only sync that converts matching workspace labels to project labels. Once workspace and project labels are fully in sync, the workspace label section is hidden.</p>
@@ -1491,8 +1540,11 @@ nav .nav-num {
   <h3>Calendars</h3>
   <p>The Calendars section is only available in the Project CC — there is no workspace-level equivalent. This is where project calendars are created, named, and configured with working days and exceptions. The full calendar model is described in the <a href="#calendars">Calendars guide</a>.</p>
 
-  <h3>User Assignments</h3>
-  <div class="coming-soon">🚧 <strong>In development:</strong> User assignment isn't implemented for V4 yet — there is no project-level user assignment in the Project CC, and any user assignments set at the workspace level are ignored for live tasks. This is actively in development.</div>
+  <h3>Team Membership</h3>
+  <p>The Team Membership section in the Project CC lists all project teams and the users assigned to each one, or "No members" for an empty team. The add-users icon on a team opens a dialog listing all project members grouped by email domain; domains that appear only once are collected in a "Mixed" group at the top. Tick a user to add or remove them, or tick a domain to add or remove all of its users at once. Search finds users across all groups. Project Admins and Project Contributors can manage team membership.</p>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Project%20Control%20Center%20-%20Team%20Membership.png" alt="Team Membership in the Project Control Center" />
+  </div>
 
   <div class="doc-image">
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Project%20Control%20Center.gif" alt="Project Control Center overview" />
@@ -1505,7 +1557,7 @@ nav .nav-num {
     <li><strong>Label categories are now a first-class concept</strong> — labels can be organised into named categories that drive reporting, grouping in the WWP, and swimlane assignment. This was not possible in V3</li>
     <li><strong>Calendars are project-level only</strong> — the workspace-level calendar settings from V3 (in Timeline Settings) have been replaced by project-level calendars managed entirely in the Project CC</li>
     <li><strong>Workspace labels are being phased out</strong> — workspace-only labels appear semi-transparent and can no longer be assigned to new elements. An upgrade path converts them to project labels</li>
-    <li><strong>User Assignments not yet available</strong> — V4 has no user assignment yet, at either the project or workspace level; workspace-level assignments carried over from V3 are ignored for live tasks. This is in development</li>
+    <li><strong>Team membership replaces user assignments</strong> — instead of assigning teams to users per workspace, users are assigned to teams once at the project level. Each workspace's user guidance setting then decides whether any contributor, only team members, or only admins can edit live tasks, milestones, and constraints</li>
     <li><strong>The V3/V4 switch now lives in the Control Center header</strong> — it used to be part of the toolbar settings. Now it's a single workspace-admin-only switch at the top of the workspace CC, and flipping it rewires the toolbar, main menu, wizards, and export options in one step</li>
     <li><strong>Task, milestone, and constraint settings are split by mode</strong> — a single combined CC section in V3 becomes two clearly labeled sections (Classic and Live) once V4 is enabled, and the Live section adds an option to turn off automatic replanning-on-incomplete for new tasks</li>
   </ul>
@@ -1519,7 +1571,8 @@ nav .nav-num {
   <div class="faq-item"><div class="faq-q">What is the difference between the workspace CC and the Project CC?</div><div class="faq-a">The workspace CC contains settings specific to a single workspace — page layout, toolbar configuration, connection styles. The Project CC contains settings that apply across the entire project and all its workspaces — labels, teams, variance reasons, and calendars. If a change should affect all workspaces, it belongs in the Project CC.</div></div>
   <div class="faq-item"><div class="faq-q">Why do some of my labels appear faded?</div><div class="faq-a">Labels that appear semi-transparent are workspace-only labels that have not yet been promoted to project labels. They are still visible on existing elements but can no longer be assigned to new ones. Use the "upgrade workspace labels" button in the label assignment dialog to convert them.</div></div>
   <div class="faq-item"><div class="faq-q">Can I still use the teams I set up in V3?</div><div class="faq-a">Yes. Workspace teams continue to work for classic tasks. For live tasks, you will need to set up teams in the Project CC. After a workspace sync, workspace and project teams are initially aligned but can drift independently if changes are made to either.</div></div>
-  <div class="faq-item"><div class="faq-q">What happened to the Timeline Settings from V3?</div><div class="faq-a">The calendar settings that were in Timeline Settings — default work days and day-specific exceptions — have been replaced by the Calendars section in the Project CC. See the <a href="#calendars">Calendars guide</a> for a full description.</div></div>
+  \1
+  <div class="faq-item"><div class="faq-q">Why can't I edit a task even though I'm a Contributor?</div><div class="faq-a">The workspace's user guidance setting may restrict editing. By default, only members of a task's team and workspace admins can edit it. Ask to be added to the team in the Team Membership section of the Project CC, or ask a workspace admin to change the setting to <em>Any contributor</em>.</div></div>
 
   <div class="section-nav">
     <a href="#bulk-import"><span class="nav-dir">← Previous</span><span class="nav-title">Bulk Import &amp; Workspace Sync</span></a>
@@ -1687,6 +1740,9 @@ nav .nav-num {
     <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Permissions%20-%20Join%20project%20confirmation.png" alt="Join project confirmation prompt" />
   </div>
 
+  <h3>Team-based editing for live elements</h3>
+  <p>Within a workspace, the user guidance setting can further narrow who edits live tasks, milestones, and constraints — limiting editing to members of the element's team, or to workspace admins only. It never grants more access than a user's project role allows, and workspace admins can always edit. Team membership is managed in the Project Control Center by Project Admins and Project Contributors. The options and defaults are described in the <a href="#project-control-center">Project Control Center &amp; Labels guide</a>.</p>
+
   <h2>What's different from V3</h2>
   <ul>
     <li><strong>Access is now managed at the project level</strong> — in V3, permissions were primarily workspace-level. In V4, every user must be a project member with a project role before they can access any workspace in that project</li>
@@ -1697,6 +1753,7 @@ nav .nav-num {
     <li><strong>The security gap is closed</strong> — in V3, sharing a workspace link could give non-project members access. In V4, non-project members cannot open any workspace even with a direct link unless public sharing is explicitly enabled</li>
     <li><strong>Public sharing replaces Link Sharing</strong> — the previous Link Sharing setting has been replaced by Public Sharing &amp; Default Access, which includes a transparent opt-in prompt for new members</li>
     <li><strong>The sharing dialog shows project context</strong> — the redesigned dialog shows project name, color, and all project members alongside their roles, replacing the previous per-workspace user list</li>
+    <li><strong>Team-based editing</strong> — the user guidance setting can limit editing of live elements to team members or admins. By default, tasks can only be edited by members of their team and workspace admins</li>
   </ul>
 
   <h2>What this means for your team</h2>
@@ -1713,6 +1770,7 @@ nav .nav-num {
   <div class="faq-item"><div class="faq-q">What is the difference between a Project Viewer and a Workspace Viewer?</div><div class="faq-a">A Project Viewer is a project-level role that limits a user to read-only access across all workspaces in the project. A Workspace Viewer is the access level set for a specific workspace. A Project Contributor can be set as a Workspace Viewer on one workspace and a Workspace Editor on another. A Project Viewer can only ever be a Workspace Viewer — the project role acts as a ceiling.</div></div>
   <div class="faq-item"><div class="faq-q">What happens if someone with a shared link is not a project member?</div><div class="faq-a">If public sharing is disabled on the workspace, they cannot open it — even with a direct link. If public sharing is enabled, they will be shown a prompt informing them that opening the workspace will add them to the project. They can choose to continue or cancel.</div></div>
   <div class="faq-item"><div class="faq-q">What replaced Link Sharing?</div><div class="faq-a">The Public Sharing &amp; Default Access setting replaces Link Sharing. Workspaces that previously had Link Sharing enabled have been automatically migrated — Link Sharing set to "read" maps to Public Sharing as Viewers, and "edit" maps to Public Sharing as Contributors.</div></div>
+  <div class="faq-item"><div class="faq-q">Why can't I edit a task even though I'm a Contributor?</div><div class="faq-a">The workspace's user guidance setting may restrict editing. By default, only members of a task's team and workspace admins can edit it. Ask to be added to the team in the Team Membership section of the Project CC, or ask a workspace admin to change the setting to <em>Any contributor</em>.</div></div>
 
   <div class="section-nav">
     <a href="#calendars"><span class="nav-dir">← Previous</span><span class="nav-title">Calendars</span></a>
@@ -1794,7 +1852,7 @@ nav .nav-num {
   <div class="section-eyebrow">Guide 12</div>
   <h1>XER Import &amp; P6 Integration</h1>
 
-  <div class="coming-soon">🚧 This entire feature area is in active development and not yet available in V4. The description below reflects the intended design. Details may evolve before release.</div>
+  <div class="coming-soon">🚧 <strong>Partially available.</strong> XER import into the project, activity visualization on the workspace, subtasks with hierarchy connections, and the Activities view in Project Insights are available now. WBS grouping, field display options, re-import of updated schedules, and write-back to P6 are in active development and marked <em>(coming soon)</em> below.</div>
 
   <p class="intro-para">XER Import V4 changes how P6 master schedules connect to Hoylu. The key shift is that the full XER file is imported into the project database first — every activity, calendar, WBS node, activity code, and UDF — and users then bring a relevant subset of those activities onto a workspace when they need them.</p>
 
@@ -1831,32 +1889,37 @@ nav .nav-num {
   <p><strong>V3:</strong> Target start and end dates only. Calendars and WBS ignored. Activity codes and UDFs require re-import to change.</p>
   <p><strong>V4:</strong> The full XER file is imported into the project database — every activity, calendar, WBS node, activity code, and UDF. Users then bring a relevant subset of those activities onto a workspace when they need them, and can add more at any point without going back to the XER file.</p>
   <ul>
-    <li><strong>Calendars stored and respected</strong> — date calculations honor working days per activity, using the same calendar model as Hoylu tasks</li>
-    <li><strong>WBS becomes a grouping dimension</strong> — create a plan view grouped by WBS level 3, or any level, just like grouping by team or label category today</li>
-    <li><strong>All activity fields, UDFs and activity codes available</strong> — all fields are imported and stored; users decide which ones to display rather than selecting them at import time</li>
+    <li><strong>All activity fields, UDFs and activity codes imported</strong> — every field is read in and stored with the activity. Options to choose which fields are displayed are <em>(coming soon)</em></li>
+    <li><strong>WBS becomes a grouping dimension</strong> <em>(coming soon)</em> — create a plan view grouped by WBS level 3, or any level, just like grouping by team or label category today</li>
   </ul>
 
   <h3>A clearer visual language</h3>
   <p><strong>V3:</strong> P6 activities and Hoylu tasks are rendered at the same visual weight — same size, similar styling — which makes plans harder to read on dense programmes.</p>
   <p><strong>V4:</strong> Activities look like activities. Tasks look like tasks.</p>
   <ul>
-    <li><strong>Slim CPM-style bars</strong> — familiar to schedulers, clearly subordinate to Hoylu tasks visually</li>
-    <li><strong>Dual bars</strong> — target (planned) dates shown as a background bar, actuals overlaid on top — classic tracking Gantt style</li>
-    <li><strong>Distinct milestone visualization</strong> — milestones are displayed differently from activities to make them immediately recognizable</li>
-    <li><strong>Critical path badge</strong> — toggle on a "CP" indicator on affected activities; no reliance on connection lines which are hidden by default</li>
-    <li><strong>WBS relationships on hover</strong> — hover over any activity to see its siblings and parent/child connections light up</li>
+    <li><strong>Slim activity bars</strong> — on a plan, activities are half the height of a Hoylu task, clearly subordinate to the field plan. On the whiteboard they can be resized to full task size</li>
+    <li><strong>Color by progress, not team</strong> — blue for activities not yet complete, red for incomplete activities on the critical path (zero or negative float), green once both actual dates are set</li>
+    <li><strong>Activity milestones</strong> — shown in yellow with a diamond at the right end</li>
+    <li><strong>Date deviation chevrons</strong> — when an activity's dates in Hoylu differ from the P6 planned or actual dates, a chevron pattern overlays the bar, pointing left if Hoylu is earlier and right if later. Chevrons are hidden when zoomed out</li>
+    <li><strong>Subtask warnings</strong> — an activity shows a warning when one of its child Hoylu tasks extends outside the activity's duration. Conflicts between the imported dependencies of two activities are not flagged</li>
+    <li><strong>Details on hover</strong> — hovering an activity shows its WBS, activity ID, status, and float</li>
   </ul>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Activities.png" alt="P6 activities on a plan" />
+  </div>
 
+  <h3>Working with activities</h3>
+  <p>Activities can be moved and resized on the workspace. In the task editor, only the start date, end date, and duration of an activity can be changed (only the due date for activity milestones); title, calendar, planned dates, actual dates, and progress are shown read-only. Relations imported from the XER file are read-only. Deleting an activity card only removes it from the workspace — the activity itself stays in the project — and duplicating creates another card, not a new activity.</p>
+  <p><strong>Subtasks and hierarchy connections.</strong> Use <em>Insert subtask</em> from the element menu, or <em>Create subtasks</em> from the More menu (split by duration or weekday), to create regular Hoylu tasks under an activity. Each subtask is linked to its activity with a hierarchy connection — a grey line without arrowheads, separate from dependencies. You can also link an existing task to an activity by drawing a line from the activity's hierarchy pin to the task, or from the task's note pin to the activity. Hierarchy connections can be deleted, and they update automatically when a task's activity is set, replaced, or cleared.</p>
+  <hr>
   <h3>Activity Report</h3>
-  <p>A dedicated report page in Project Insights — similar to the Constraint Log — giving schedulers a structured view of all imported activities without requiring them to navigate the workspace.</p>
-  <p>The report shows all activities with filters to narrow down the view. The most important filter is activity state:</p>
-  <ul>
-    <li><strong>Warnings</strong> — activities with a subtask conflict (a subtask extends beyond the activity's end date). This does not mean the activity has changed yet; it means a potential issue has been flagged that the scheduler needs to review.</li>
-    <li><strong>Changes</strong> — activities where actual dates or progress have been updated in Hoylu, representing data that is ready to be written back to the master schedule.</li>
-  </ul>
-  <p>The report also serves as the control point for the XER export — schedulers can review which activities have changes, decide which ones to include, and trigger the write-back from here rather than exporting everything at once.</p>
-
-  <h3>Writing actuals back to P6</h3>
+  <p>The Activities view in Project Insights lists all imported activities, with their P6 planned and actual dates, Hoylu dates, an activity ID column, and status. The Warnings column shows arrows when Hoylu dates differ from the XER dates (left for earlier, right for later) and a warning triangle when one of the activity's child tasks extends outside its duration. Filters include activity type (activity or activity milestone). Clicking an activity title opens its editor.</p>
+  <p>The view also has an <strong>Import XER</strong> button. Project admins can also drop an XER file onto the workspace. After a successful import, the list refreshes and the date range switches to the whole project. Large files can show a timeout warning; the import still completes on the server.</p>
+  <div class="doc-image">
+    <img src="https://raw.githubusercontent.com/hoylu/Hoylu-Documentation/main/images/Insights%20-%20Activity%20report.png" alt="Insights Activities view" />
+  </div>
+  <p>A Changes state and the selection of activities for write-back to P6 are <em>(coming soon)</em>.</p>
+  <h3>Writing actuals back to P6 <em>(coming soon)</em></h3>
   <p><strong>V3:</strong> No write-back exists. Actuals captured in Hoylu have to be manually re-entered into P6 by the scheduler.</p>
   <p><strong>V4:</strong> An updated XER file can be exported directly from Hoylu, ready to import into P6. During the export, the user provides an up-to-date XER file — Hoylu inserts the changes into it rather than generating a file from scratch. This ensures the write-back is always based on current P6 data and avoids overwriting anything that has changed in the master schedule since the last import.</p>
   <p>Design decisions:</p>
@@ -1865,24 +1928,22 @@ nav .nav-num {
     <li><strong>Fields written back:</strong> Actual Start, Actual Finish, Physical % Complete</li>
   </ul>
 
-  <h3>Re-importing an updated schedule</h3>
+  <h3>Re-importing an updated schedule <em>(coming soon)</em></h3>
   <p>When the scheduler sends an updated XER, users can re-import it with one action. Hoylu silently updates matched activities in place — no staging screen, no approval workflow. The task history handles the audit trail.</p>
 
-  <h2>What's different from V3</h2>
-  <ul>
-    <li><strong>Full XER stored in the project database</strong> — the entire file is imported upfront; users control what appears on a workspace, not what gets imported. Activities, fields, and structure can be added to a workspace at any point without re-importing from the XER.</li>
-    <li><strong>All activity fields, activity codes and UDFs available without re-import</strong> — all fields are stored at import time and can be surfaced as labels or filters at any point afterward.</li>
-    <li><strong>Calendars imported and applied</strong> — date calculations now respect the working day rules defined in the P6 schedule, rather than ignoring them.</li>
-    <li><strong>WBS stored as a first-class grouping dimension</strong> — plan views can be organised by WBS level, not just by team or label category.</li>
-    <li><strong>Distinct visual language for activities</strong> — slim CPM-style bars with dual target/actual display, clearly subordinate to Hoylu tasks on the workspace.</li>
-    <li><strong>Activity Report in Insights</strong> — a structured, filterable view of all activities including warning and change states; serves as the write-back control point.</li>
-    <li><strong>Write-back to P6</strong> — no equivalent exists in V3. Actuals (Actual Start, Actual Finish, Physical % Complete) can be exported back to P6 via an updated XER file.</li>
-  </ul>
+  \1
+    <li><strong>Full XER stored in the project database</strong> — the entire file is imported upfront; users control what appears on a workspace, not what gets imported.</li>
+    <li><strong>All activity fields, activity codes and UDFs stored</strong> — all fields are read in at import time. Options to choose which are displayed are <em>(coming soon)</em>.</li>
+    <li><strong>WBS as a grouping dimension</strong> <em>(coming soon)</em> — plan views organised by WBS level, not just by team or label category.</li>
+    <li><strong>Distinct visual language for activities</strong> — slim bars colored by progress and critical path, with chevrons showing deviations from the P6 dates, clearly subordinate to Hoylu tasks on the workspace.</li>
+    <li><strong>Activity Report in Insights</strong> — a structured, filterable view of all activities and their warnings, with XER import built in.</li>
+    <li><strong>Write-back to P6</strong> <em>(coming soon)</em> — actuals (Actual Start, Actual Finish, Physical % Complete) exported back to P6 via an updated XER file.</li>
+  \2
 
   <h2>What this means for your team</h2>
   <div class="example"><div class="example-title">Example 1 — A scheduler and a superintendent working from the same data</div><p>A scheduler maintains the master programme in P6 and exports an XER at the start of each phase. The superintendent imports it into Hoylu and creates subtasks directly from the P6 activities — one or more Hoylu tasks per activity representing the day-to-day field planning work. As subtasks are completed, the superintendent's plan updates in real time. At the end of the week, the scheduler opens the Activity Report in Insights, reviews which activities now have actuals, and exports an updated XER directly from Hoylu. The P6 schedule reflects what actually happened on site without anyone re-entering dates manually.</p></div>
-  <div class="example"><div class="example-title">Example 2 — Reading a dense programme without losing the field plan</div><p>A project manager opens a workspace that shows both the P6 master schedule and the field-level tasks in the same plan. In V3, activities and tasks looked similar enough that the workspace became hard to navigate. In V4, the slim CPM-style bars sit clearly beneath the task cards — the hierarchy is immediately readable at a glance. The project manager can hover over any activity to see its WBS siblings light up, giving structural context without cluttering the workspace permanently.</p></div>
-  <div class="example"><div class="example-title">Example 3 — Grouping by WBS instead of trade</div><p>A programme manager wants to see the plan organised by WBS level 2 rather than by trade. In V4, WBS is a grouping dimension just like team or label category — the plan can be rebuilt with one selection, showing a swimlane per WBS node. This is particularly useful on complex infrastructure projects where the master schedule's WBS structure maps more naturally to reporting than the trade breakdown used in day-to-day planning.</p></div>
+  <div class="example"><div class="example-title">Example 2 — Reading a dense programme without losing the field plan</div><p>A project manager opens a workspace that shows both the P6 master schedule and the field-level tasks in the same plan. In V3, activities and tasks looked similar enough that the workspace became hard to navigate. In V4, the slim CPM-style bars sit clearly beneath the task cards — the hierarchy is immediately readable at a glance. The project manager can hover over any activity to see its child activities highlighted, giving structural context without cluttering the workspace permanently.</p></div>
+  <div class="example"><div class="example-title">Example 3 — Grouping by WBS instead of trade <em>(coming soon)</em></div><p>A programme manager wants to see the plan organised by WBS level 2 rather than by trade. In V4, WBS is a grouping dimension just like team or label category — the plan can be rebuilt with one selection, showing a swimlane per WBS node. This is particularly useful on complex infrastructure projects where the master schedule's WBS structure maps more naturally to reporting than the trade breakdown used in day-to-day planning.</p></div>
 
   <h2>Frequently asked questions</h2>
   <div class="faq-item"><div class="faq-q">Why does Hoylu only write back to existing activities — why not create new ones?</div><div class="faq-a">Creating new activities in a P6 master schedule from an external tool is considered bad practice in the scheduling industry. P6 activity IDs, WBS placement, logic ties, and resource assignments are tightly controlled by the scheduler. Introducing new activities from outside risks corrupting the schedule's logic network.</div></div>
