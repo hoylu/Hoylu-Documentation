@@ -1477,7 +1477,9 @@ nav .nav-num {
     <div class="concept-item"><span class="term">Project team</span> — A team defined at the project level, assignable to live tasks. Distinct from a workspace team, which applies only to classic tasks.</div>
     <div class="concept-item"><span class="term">Variance reason</span> — A project-level explanation for why a committed task was not completed as planned. Defined in the Project CC and used in the task editor and in <a href="#project-insights">Project Insights</a> reporting.</div>
     <div class="concept-item"><span class="term">Workspace label upgrade</span> — The process of converting workspace-only labels to project labels, triggered via the "upgrade workspace labels" button. Runs a label-only sync to the project database.</div>
-    \1\n    <div class="concept-item"><span class="term">Team membership</span> — The users assigned to each project team. Managed in the Project Control Center and used by the user guidance setting to decide who can edit live elements.</div>\n    <div class="concept-item"><span class="term">User guidance</span> — A workspace setting that controls who can edit live tasks, milestones, and constraints: any contributor, members of the assigned team only, or workspace admins only.</div>
+    <div class="concept-item"><span class="term">V3/V4 toggle</span> — A workspace-level switch in the Control Center header that moves a workspace between V3 (classic) and V4 (live) behavior. Only a workspace admin can flip it.</div>
+    <div class="concept-item"><span class="term">Team membership</span> — The users assigned to each project team. Managed in the Project Control Center and used by the user guidance setting to decide who can edit live elements.</div>
+    <div class="concept-item"><span class="term">User guidance</span> — A workspace setting that controls who can edit live tasks, milestones, and constraints: any contributor, members of the assigned team only, or workspace admins only.</div>
   </div>
 
   <h2>How it works</h2>
@@ -1491,14 +1493,15 @@ nav .nav-num {
     <li>The main menu shows the live import and upload options in place of the classic ones, and the Insights panel button appears — it stays hidden in V3</li>
     <li>Export Plan to PDF and Export Plan to CSV are hidden, because the classic export doesn't include live task data yet. This will be revisited once the API-based export path is decided</li>
     <li>In the Asset Panel, "Hoylu Plan (New)" appears instead of "Hoylu Plan (Classic)" — the two entry points are mutually exclusive depending on the mode you're in</li>
-    \1\n    <li>The User Assignments tab is hidden — in V4, team membership in the Project Control Center replaces it</li>
+    <li>Workspace labels switch to rendering semi-transparently, matching the label-upgrade behavior described in Workspace labels during migration</li>
+        <li>The User Assignments tab is hidden — in V4, team membership in the Project Control Center replaces it</li>
   </ul>
   <p>One thing that doesn't change with the toggle: Hoylu Connections. You'll see both "Hoylu Connections (Classic)" and "Hoylu Connections (Live)" in either mode, since that's about how existing connections render rather than which new elements you can create.</p>
   <p>A new workspace created in a project with V4 enabled starts with the switch set to V4 automatically. A workspace created from a template or by duplicating another workspace takes its workspace settings, including the V3/V4 mode, from that source instead.</p>
 
   <h3>Live task, milestone, and constraint settings</h3>
   <p>The Control Center section for task, milestone, and constraint settings is now split in two. In V3 (classic) mode you see one section labeled "Classic." In V4 (live) mode you see the equivalent section relabeled "Live," with the icon swapped from the classic task icon to the live task icon — replacing the single combined section that used to show regardless of mode.</p>
-  \1
+  <p>The Live section also adds one new option: whether an incomplete task automatically gets a replacement task created, or whether you'd rather do that yourself. It defaults to on, matching current behavior, and applies to new tasks only. Turn it off if your team prefers to review and create the replacement task manually rather than have Hoylu do it automatically.</p>
   <p>The Live section also sets the <strong>user guidance</strong> for the workspace — who can edit live elements. It is set separately for tasks, milestones, and constraints, each with three options:</p>
   <ul>
     <li><strong>Any contributor</strong> — any user with project write access can edit</li>
@@ -1571,7 +1574,7 @@ nav .nav-num {
   <div class="faq-item"><div class="faq-q">What is the difference between the workspace CC and the Project CC?</div><div class="faq-a">The workspace CC contains settings specific to a single workspace — page layout, toolbar configuration, connection styles. The Project CC contains settings that apply across the entire project and all its workspaces — labels, teams, variance reasons, and calendars. If a change should affect all workspaces, it belongs in the Project CC.</div></div>
   <div class="faq-item"><div class="faq-q">Why do some of my labels appear faded?</div><div class="faq-a">Labels that appear semi-transparent are workspace-only labels that have not yet been promoted to project labels. They are still visible on existing elements but can no longer be assigned to new ones. Use the "upgrade workspace labels" button in the label assignment dialog to convert them.</div></div>
   <div class="faq-item"><div class="faq-q">Can I still use the teams I set up in V3?</div><div class="faq-a">Yes. Workspace teams continue to work for classic tasks. For live tasks, you will need to set up teams in the Project CC. After a workspace sync, workspace and project teams are initially aligned but can drift independently if changes are made to either.</div></div>
-  \1
+  <div class="faq-item"><div class="faq-q">What happened to the Timeline Settings from V3?</div><div class="faq-a">The calendar settings that were in Timeline Settings — default work days and day-specific exceptions — have been replaced by the Calendars section in the Project CC. See the <a href="#calendars">Calendars guide</a> for a full description.</div></div>
   <div class="faq-item"><div class="faq-q">Why can't I edit a task even though I'm a Contributor?</div><div class="faq-a">The workspace's user guidance setting may restrict editing. By default, only members of a task's team and workspace admins can edit it. Ask to be added to the team in the Team Membership section of the Project CC, or ask a workspace admin to change the setting to <em>Any contributor</em>.</div></div>
 
   <div class="section-nav">
@@ -1931,14 +1934,15 @@ nav .nav-num {
   <h3>Re-importing an updated schedule <em>(coming soon)</em></h3>
   <p>When the scheduler sends an updated XER, users can re-import it with one action. Hoylu silently updates matched activities in place — no staging screen, no approval workflow. The task history handles the audit trail.</p>
 
-  \1
+  <h2>What's different from V3</h2>
+  <ul>
     <li><strong>Full XER stored in the project database</strong> — the entire file is imported upfront; users control what appears on a workspace, not what gets imported.</li>
     <li><strong>All activity fields, activity codes and UDFs stored</strong> — all fields are read in at import time. Options to choose which are displayed are <em>(coming soon)</em>.</li>
     <li><strong>WBS as a grouping dimension</strong> <em>(coming soon)</em> — plan views organised by WBS level, not just by team or label category.</li>
     <li><strong>Distinct visual language for activities</strong> — slim bars colored by progress and critical path, with chevrons showing deviations from the P6 dates, clearly subordinate to Hoylu tasks on the workspace.</li>
     <li><strong>Activity Report in Insights</strong> — a structured, filterable view of all activities and their warnings, with XER import built in.</li>
     <li><strong>Write-back to P6</strong> <em>(coming soon)</em> — actuals (Actual Start, Actual Finish, Physical % Complete) exported back to P6 via an updated XER file.</li>
-  \2
+  </ul>
 
   <h2>What this means for your team</h2>
   <div class="example"><div class="example-title">Example 1 — A scheduler and a superintendent working from the same data</div><p>A scheduler maintains the master programme in P6 and exports an XER at the start of each phase. The superintendent imports it into Hoylu and creates subtasks directly from the P6 activities — one or more Hoylu tasks per activity representing the day-to-day field planning work. As subtasks are completed, the superintendent's plan updates in real time. At the end of the week, the scheduler opens the Activity Report in Insights, reviews which activities now have actuals, and exports an updated XER directly from Hoylu. The P6 schedule reflects what actually happened on site without anyone re-entering dates manually.</p></div>
